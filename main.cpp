@@ -2,7 +2,7 @@
 #include "Board.h"
 #include "PreparatoryFunctions.h"
 #include "Generator.h"
-#include "ValuationFunctions.h"
+#include "Valuator.h"
 #include "EngineFunctions.h"
 #include "SpecialsManager.h"
 #include "Debug.h"
@@ -33,7 +33,6 @@ void onStartGame()
 {
 	setInitialBoard();
 	setMoves();
-	setValues();
 	initWelcome();
 }
 

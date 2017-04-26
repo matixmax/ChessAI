@@ -1,7 +1,7 @@
 #include "Debug.h"
 #include "Definitions.h"
 #include "Generator.h"
-#include "ValuationFunctions.h"
+#include "Valuator.h"
 #include "EngineFunctions.h"
 #include "Globals.h"
 #include "Board.h"
@@ -9,26 +9,26 @@
 using namespace std;
 
 vector<Board> Debug::GenerateMoves(const Board &position, int8 color) {
-	vector<Board> available_positions;
+	vector<Board> availablePositions;
 	Generator generator(position);
 	while (generator.HasNext(color))
-		available_positions.push_back(generator.GetNextPosition(color));
-	return available_positions;
+		availablePositions.push_back(generator.GetNextPosition(color));
+	return availablePositions;
 }
 
 void Debug::printValues(const Board &test_board, int8 color) {
-	int phase = checkGamePhase(test_board);
+	int phase = Valuator::i().checkGamePhase(test_board);
 	cout << "phase " << phase << endl;
-	cout << "material valuation " << materialValuation(test_board, color) << endl;
-	if (phase == MATTING)
-		cout << "matting pos value " << mattingPositionalValue(test_board, color) << endl;
+	cout << "material valuation " << Valuator::i().materialValuation(test_board, color) << endl;
+	if (phase == Valuator::MATTING)
+		cout << "matting pos value " << Valuator::i().mattingPositionalValue(test_board, color) << endl;
 	else {
-		cout << "pawn pos value " << pawnsPositionalValue(test_board, color, phase) << endl;
-		cout << "knights pos value " << knightsPositionalValue(test_board, color) << endl;
-		cout << "bishops pos value " << bishopsPositionalValue(test_board, color, phase) << endl;
-		cout << "rooks pos value " << rooksPositionalValue(test_board, color, phase) << endl;
-		cout << "queens pos value " << queenPositionalValue(test_board, color, phase) << endl;
-		cout << "king pos value " << kingPositionalValue(test_board, color, phase) << endl;
+		cout << "pawn pos value " << Valuator::i().pawnsPositionalValue(test_board, color, phase) << endl;
+		cout << "knights pos value " << Valuator::i().knightsPositionalValue(test_board, color) << endl;
+		cout << "bishops pos value " << Valuator::i().bishopsPositionalValue(test_board, color, phase) << endl;
+		cout << "rooks pos value " << Valuator::i().rooksPositionalValue(test_board, color, phase) << endl;
+		cout << "queens pos value " << Valuator::i().queenPositionalValue(test_board, color, phase) << endl;
+		cout << "king pos value " << Valuator::i().kingPositionalValue(test_board, color, phase) << endl;
 	}
 }
 

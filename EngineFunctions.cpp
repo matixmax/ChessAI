@@ -2,7 +2,7 @@
 #include "EngineFunctions.h"
 #include "Definitions.h"
 #include "Generator.h"
-#include "ValuationFunctions.h"
+#include "Valuator.h"
 #include "Board.h"
 #include "Globals.h"
 #include "FiguresInfo.h"
@@ -100,21 +100,21 @@ bool userMove(int curr_pos, int next_pos, Board &chessboard, int8 color, bool tr
 
 int MarkPosition(const Board &position, int8 color){
     //printBoard(position);
-    int result = materialValuation(position, WHITE);
-    int phase = checkGamePhase(position);
-    if (phase == MATTING)
-        return result + mattingPositionalValue(position, color);
-    result += pawnsPositionalValue(position, color, phase);
-    result += knightsPositionalValue(position, color);
-    result += bishopsPositionalValue(position, color, phase);
-    result += rooksPositionalValue(position, color, phase);
-    result += queenPositionalValue(position, color, phase);
-    result += kingPositionalValue(position, color, phase);
+    int result = Valuator::i().materialValuation(position, WHITE);
+    int phase = Valuator::i().checkGamePhase(position);
+    if (phase == Valuator::MATTING)
+        return result + Valuator::i().mattingPositionalValue(position, color);
+    result += Valuator::i().pawnsPositionalValue(position, color, phase);
+    result += Valuator::i().knightsPositionalValue(position, color);
+    result += Valuator::i().bishopsPositionalValue(position, color, phase);
+    result += Valuator::i().rooksPositionalValue(position, color, phase);
+    result += Valuator::i().queenPositionalValue(position, color, phase);
+    result += Valuator::i().kingPositionalValue(position, color, phase);
     return result;
 }
 
 int MarkMaterial(const Board &position, int8 color){
-    return materialValuation(position, color);
+    return Valuator::i().materialValuation(position, color);
 }
 
 int AlfaBetaMinimax(int level, const Board &position, int8 color, int alfa, int beta, bool max){

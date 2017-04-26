@@ -7,9 +7,6 @@
 #include <algorithm>
 #include <unordered_map>
 #include <omp.h>
-#include "Special.h"
-
-using namespace std;
 
 #define K 0 //king
 #define H 1 //queen 
@@ -34,21 +31,3 @@ using namespace std;
 #define END 3
 
 using int8 = char;
-
-struct BoardStates{
-    int8 shah;
-    BoardStates();
-};
-
-struct Board{
-    vector<int8> board;
-    vector<int8> positions;
-    vector<int8> colors;
-    BoardStates states;
-    Board();
-    Board(vector<int8> board, vector<int8> positions, vector<int8> colors, BoardStates state = BoardStates());
-};
-
-extern Board base_board;
-extern vector<int8> *moves;
-extern vector<Special*> g_specials;

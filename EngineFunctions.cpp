@@ -1,24 +1,28 @@
 #include <algorithm>
 #include "Definitions.h"
-#include "Functions.h"
+#include "PreparatoryFunctions.h"
 #include "EngineFunctions.h"
 #include "Generator.h"
 #include "ValuationFunctions.h"
+#include "Board.h"
+#include "Globals.h"
+
+using namespace std;
 
 bool checkFiguresMovement(int curr_pos, int next_pos, const Board &chessboard){
     int8 figure = chessboard.board[curr_pos];
     int distance = 1;
-    for (unsigned int move_id = 0; move_id < moves[figure].size() && distance < 8; move_id++){
-        if (moves[figure][move_id] == RANGED_FAR){
+    for (unsigned int move_id = 0; move_id < g_figMoves[figure].size() && distance < 8; move_id++){
+        if (g_figMoves[figure][move_id] == RANGED_FAR){
             distance++;
             move_id = 0;
         }
-        int previus_pos = curr_pos + (distance - 1) * moves[figure][move_id];
-        int pos = curr_pos + distance * moves[figure][move_id];
+        int previus_pos = curr_pos + (distance - 1) * g_figMoves[figure][move_id];
+        int pos = curr_pos + distance * g_figMoves[figure][move_id];
         if (pos< 0 || pos >= 64 || abs(pos % 8 - previus_pos % 8) > 2 )continue;
         if (pos == next_pos){
             while (pos != curr_pos){
-                pos = pos - moves[figure][move_id];
+                pos = pos - g_figMoves[figure][move_id];
                 if (pos != curr_pos && chessboard.board[pos] != EMPTY)
                     return false;
             }
@@ -26,11 +30,11 @@ bool checkFiguresMovement(int curr_pos, int next_pos, const Board &chessboard){
         }
     }
     if (figure == Pc || figure == Pb){
-        if (moves[figure][0] * 2 + curr_pos == next_pos)
+        if (g_figMoves[figure][0] * 2 + curr_pos == next_pos)
             return true;
-        if (chessboard.colors[next_pos] == not(chessboard.colors[curr_pos]) && moves[figure + 2][0] + curr_pos == next_pos)
+        if (chessboard.colors[next_pos] == not(chessboard.colors[curr_pos]) && g_figMoves[figure + 2][0] + curr_pos == next_pos)
             return true;
-        if (chessboard.colors[next_pos] == not(chessboard.colors[curr_pos]) && moves[figure + 2][1] + curr_pos == next_pos)
+        if (chessboard.colors[next_pos] == not(chessboard.colors[curr_pos]) && g_figMoves[figure + 2][1] + curr_pos == next_pos)
             return true;
     }
     return false;

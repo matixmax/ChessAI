@@ -1,4 +1,7 @@
 #include "ValuationFunctions.h"
+#include "Board.h"
+
+using namespace std;
 
 int *figure_values = new int[7];
 

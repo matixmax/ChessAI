@@ -3,6 +3,8 @@
 #include "Generator.h"
 #include "ValuationFunctions.h"
 #include "EngineFunctions.h"
+#include "Globals.h"
+#include "Board.h"
 
 using namespace std;
 
@@ -33,7 +35,7 @@ void printValues(const Board &test_board, int8 color) {
 void posValuationTest() {
 	setInitialBoard();
 	setMoves();
-	Board test_board = base_board;
+	Board test_board = g_baseBoard;
 	int curr_pos, next_pos;
 	while (true) {
 		while (true) {
@@ -52,7 +54,7 @@ void posValuationTest() {
 void boardStatesAndAttackPosTest() {
 	setInitialBoard();
 	setMoves();
-	Board test_board = base_board;
+	Board test_board = g_baseBoard;
 	int curr_pos, next_pos;
 	while (true) {
 		while (true) {

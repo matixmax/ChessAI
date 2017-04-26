@@ -1,7 +1,11 @@
 
 #include "Definitions.h"
-#include "Functions.h"
+#include "PreparatoryFunctions.h"
 #include "Generator.h"
+#include "Board.h"
+#include "Globals.h"
+
+using namespace std;
 
 Generator::Generator(vector<int8> chessboard, vector<int8> positions, vector<int8> colors): chessboard(chessboard, positions, colors){
 	current_figure[BLACK] = K;			current_figure[WHITE] = K;
@@ -77,11 +81,11 @@ vector<Board> Generator::GetAvailableMovements(const Board &chessboard, int8 col
     for (int figure : Generator::getFiguresOrder(chessboard, color)){
         int8 fig_move_idx = getFigureNbFromPosIdx(figure, color);
         int8 curr_pos = chessboard.positions[figure];
-        for (int8 move_idx = 0; move_idx < (int8)moves[fig_move_idx].size(); move_idx++){
-            if (moves[fig_move_idx][move_idx] == RANGED_FAR)continue;
-            if (*moves[getFigureNbFromPosIdx(figure, color)].rbegin() == RANGED_FAR){
+        for (int8 move_idx = 0; move_idx < (int8)g_figMoves[fig_move_idx].size(); move_idx++){
+            if (g_figMoves[fig_move_idx][move_idx] == RANGED_FAR)continue;
+            if (*g_figMoves[getFigureNbFromPosIdx(figure, color)].rbegin() == RANGED_FAR){
                 for (int8 distance = 1; distance < 8; distance++){
-                    int8 movement = moves[fig_move_idx][move_idx] * distance;
+                    int8 movement = g_figMoves[fig_move_idx][move_idx] * distance;
                     bool atacked = false;
                     if (validateMovement(chessboard, curr_pos, movement, atacked, distance)){
                         if (atacked){
@@ -96,7 +100,7 @@ vector<Board> Generator::GetAvailableMovements(const Board &chessboard, int8 col
                 }
             }
             else{
-                int8 movement = moves[fig_move_idx][move_idx];
+                int8 movement = g_figMoves[fig_move_idx][move_idx];
                 bool atacked = false;
                 if (validateMovement(chessboard, curr_pos, movement, atacked, 1)){
                     if (atacked){
@@ -319,7 +323,7 @@ int8 Generator::nextPos(int8 color){
 	int8 fig = this->current_figure[color] + color * 16;
 	int8 curr_pos = this->chessboard.positions[fig];
 	int8 fig_move_idx = getFigureNbFromPosIdx(fig, color) + attack_pawns;
-	int8 movement = moves[fig_move_idx][this->current_move[color]] * this->current_move_distance[color];
+	int8 movement = g_figMoves[fig_move_idx][this->current_move[color]] * this->current_move_distance[color];
     bool attacked = false;
     if (curr_pos == DESTROYED || !validateMovement(curr_pos, movement, attacked) || !pawnCondition(color, curr_pos + movement)){
 		this->slideMovement(fig, fig_move_idx);
@@ -362,7 +366,7 @@ vector<Board> Generator::getAttackPawnMoves(const Board &chessboard, int8 color)
     vector<Board> attack_moves;
     for (int8 figure = 8; figure < 16; figure++){
         for (int8 i = 0; i < 2; i++){
-            int8 movement = moves[7 + color][i];
+            int8 movement = g_figMoves[7 + color][i];
             int8 curr_pos = chessboard.positions[figure + 16 * color];
             bool atacked = false;
             if (curr_pos != DESTROYED && validateMovement(chessboard, curr_pos, movement, atacked, 1)){
@@ -442,12 +446,12 @@ void Generator::staticDestroyAttackedFig(Board &board, int8 pos, int8 color, int
 
 void Generator::slideMovement(int8 fig, int8 fig_move_idx, bool increase_range){
 	int8 color = fig / 16;
-	if (increase_range && *moves[getFigureNbFromPosIdx(fig,color)].rbegin() == RANGED_FAR && this->current_move_distance[color] < 8){
+	if (increase_range && *g_figMoves[getFigureNbFromPosIdx(fig,color)].rbegin() == RANGED_FAR && this->current_move_distance[color] < 8){
 		this->current_move_distance[color]++;
 		return;
 	}
 	this->current_move_distance[color] = 1;
-	if (this->current_move[color] < (int8)moves[fig_move_idx].size() - 1){
+	if (this->current_move[color] < (int8)g_figMoves[fig_move_idx].size() - 1){
 		this->current_move[color]++;
 		return;
 	}

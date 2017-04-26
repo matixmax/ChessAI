@@ -1,10 +1,13 @@
 #include "Definitions.h"
-#include "Functions.h"
+#include "PreparatoryFunctions.h"
 #include "Generator.h"
 #include "ValuationFunctions.h"
 #include "EngineFunctions.h"
 #include "SpecialsManager.h"
 #include "debugFunctions.h"
+#include "Globals.h"
+
+using namespace std;
 
 void initWelcome()
 {
@@ -35,7 +38,7 @@ void onStartGame()
 
 int main() {
 	onStartGame();
-	Board last_board = base_board;
+	Board last_board = g_baseBoard;
 	printBoard(last_board);
 	while (true) {
 		last_board = NormalAlfaBeta(last_board, WHITE, 4);

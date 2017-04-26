@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Definitions.h"
-#include "Functions.h"
+#include "PreparatoryFunctions.h"
+#include "Board.h"
 
 #define DEBUT 0
 #define MID_GAME 1
@@ -15,7 +16,7 @@ void setValues();
 bool matCondition(const Board & chessboard, int8 color);
 int getFiguresInStartPos(const Board & chessboard);
 int countSumOfPawns(const Board & chessboard, int8 color);
-pair<int, int> countMaterial(const Board & chessboard);
+std::pair<int, int> countMaterial(const Board & chessboard);
 int checkGamePhase(const Board & chessboard);
 int materialValuation(const Board & chessboard, int8 color);
 int proximityToTheCenter(int8 pos);

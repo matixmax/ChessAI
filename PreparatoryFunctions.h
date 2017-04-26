@@ -1,7 +1,7 @@
 #pragma once
 #include "Definitions.h"
+#include "Board.h"
 
-//Preparatory Functions
 void setInitialBoard();
 void setMoves();
 void printBoard();

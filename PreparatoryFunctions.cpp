@@ -1,9 +1,12 @@
 ﻿#include "Definitions.h"
-#include "Functions.h"
+#include "PreparatoryFunctions.h"
 #include <string>
+#include "Globals.h"
+
+using namespace std;
 
 void setInitialBoard(){
-	base_board.board = 
+	g_baseBoard.board = 
 		   { W, S, G, H, K, G, S, W,
 			 Pc,Pc,Pc,Pc,Pc,Pc,Pc,Pc,
 			 E, E, E, E, E, E, E, E,
@@ -12,7 +15,7 @@ void setInitialBoard(){
 			 E, E, E, E, E, E, E, E,
 			 Pb,Pb,Pb,Pb,Pb,Pb,Pb,Pb,
 			 W, S, G, H, K, G, S, W };
-	base_board.colors =
+	g_baseBoard.colors =
 		   { BLACK, BLACK, BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
 			 BLACK, BLACK, BLACK, BLACK, BLACK, BLACK, BLACK, BLACK,
 			 E,		E,	   E,	  E,	 E,		E,	   E,	  E,
@@ -21,7 +24,7 @@ void setInitialBoard(){
 			 E,		E,	   E,	  E,	 E,		E,	   E,	  E,
 			 WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
 			 WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE };
-	base_board.positions = 
+	g_baseBoard.positions = 
 		   { 4,  3,  0,  7,  1,  6,  2,  5, // position K H W W S S G G
 		     8,  9,  10, 11, 12, 13, 14, 15,//			PbPbPbPbPbPbPbPb
 			 60, 59, 56, 63, 57, 62, 58, 61,//			K H W W S S G G
@@ -38,52 +41,52 @@ void setInitialBoard(){
 //56 57 58 59 60 61 62 63
 void setMoves(){
 	// pawns moves
-	moves[Pc].push_back(8);
-	moves[Pb].push_back(-8);
-	moves[Pca].push_back(7);
-	moves[Pca].push_back(9);
-	moves[Pba].push_back(-7);
-	moves[Pba].push_back(-9);
+	g_figMoves[Pc].push_back(8);
+	g_figMoves[Pb].push_back(-8);
+	g_figMoves[Pca].push_back(7);
+	g_figMoves[Pca].push_back(9);
+	g_figMoves[Pba].push_back(-7);
+	g_figMoves[Pba].push_back(-9);
 	//King moves
-	moves[K].push_back(-8);
-	moves[K].push_back(-7);
-	moves[K].push_back(1);
-	moves[K].push_back(9);
-	moves[K].push_back(8);
-	moves[K].push_back(7);
-	moves[K].push_back(-1);
-	moves[K].push_back(-9);
+	g_figMoves[K].push_back(-8);
+	g_figMoves[K].push_back(-7);
+	g_figMoves[K].push_back(1);
+	g_figMoves[K].push_back(9);
+	g_figMoves[K].push_back(8);
+	g_figMoves[K].push_back(7);
+	g_figMoves[K].push_back(-1);
+	g_figMoves[K].push_back(-9);
 	//Queen moves
-	moves[H].push_back(-8);
-	moves[H].push_back(-7);
-	moves[H].push_back(1);
-	moves[H].push_back(9);
-	moves[H].push_back(8);
-	moves[H].push_back(7);
-	moves[H].push_back(-1);
-	moves[H].push_back(-9);
-	moves[H].push_back(RANGED_FAR);
+	g_figMoves[H].push_back(-8);
+	g_figMoves[H].push_back(-7);
+	g_figMoves[H].push_back(1);
+	g_figMoves[H].push_back(9);
+	g_figMoves[H].push_back(8);
+	g_figMoves[H].push_back(7);
+	g_figMoves[H].push_back(-1);
+	g_figMoves[H].push_back(-9);
+	g_figMoves[H].push_back(RANGED_FAR);
 	//Rook moves
-	moves[W].push_back(-8);
-	moves[W].push_back(1);
-	moves[W].push_back(8);
-	moves[W].push_back(-1);
-	moves[W].push_back(RANGED_FAR);
+	g_figMoves[W].push_back(-8);
+	g_figMoves[W].push_back(1);
+	g_figMoves[W].push_back(8);
+	g_figMoves[W].push_back(-1);
+	g_figMoves[W].push_back(RANGED_FAR);
 	//Bishop moves
-	moves[G].push_back(-7);
-	moves[G].push_back(9);
-	moves[G].push_back(7);
-	moves[G].push_back(-9);
-	moves[G].push_back(RANGED_FAR);
+	g_figMoves[G].push_back(-7);
+	g_figMoves[G].push_back(9);
+	g_figMoves[G].push_back(7);
+	g_figMoves[G].push_back(-9);
+	g_figMoves[G].push_back(RANGED_FAR);
 	//Knight moves
-	moves[S].push_back(-15);
-	moves[S].push_back(-6);
-	moves[S].push_back(10);
-	moves[S].push_back(17);
-	moves[S].push_back(15);
-	moves[S].push_back(6);
-	moves[S].push_back(-10);
-	moves[S].push_back(-17);
+	g_figMoves[S].push_back(-15);
+	g_figMoves[S].push_back(-6);
+	g_figMoves[S].push_back(10);
+	g_figMoves[S].push_back(17);
+	g_figMoves[S].push_back(15);
+	g_figMoves[S].push_back(6);
+	g_figMoves[S].push_back(-10);
+	g_figMoves[S].push_back(-17);
 }
 
 string numToSign(int8 a, int8 color){
@@ -118,8 +121,8 @@ void printBoard(){
 	for (int i = 0; i < 8; i++){
 		cout << '#';
 		for (int j = 0; j < 7; j++)
-			cout << numToSign(base_board.board[i * 8 + j], base_board.colors[i * 8 + j]) << "|";
-		cout << numToSign(base_board.board[i * 8 + 7], base_board.colors[i * 8 + 7]) << '#' << endl;
+			cout << numToSign(g_baseBoard.board[i * 8 + j], g_baseBoard.colors[i * 8 + j]) << "|";
+		cout << numToSign(g_baseBoard.board[i * 8 + 7], g_baseBoard.colors[i * 8 + 7]) << '#' << endl;
 		if (i < 7){
 			cout << "#-----------------------#" << endl;
 		}

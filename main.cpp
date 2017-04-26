@@ -1,10 +1,11 @@
 #include "Definitions.h"
+#include "Board.h"
 #include "PreparatoryFunctions.h"
 #include "Generator.h"
 #include "ValuationFunctions.h"
 #include "EngineFunctions.h"
 #include "SpecialsManager.h"
-#include "debugFunctions.h"
+#include "Debug.h"
 #include "Globals.h"
 
 using namespace std;

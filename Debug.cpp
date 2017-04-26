@@ -1,4 +1,4 @@
-#include "debugFunctions.h"
+#include "Debug.h"
 #include "Definitions.h"
 #include "Generator.h"
 #include "ValuationFunctions.h"
@@ -8,7 +8,7 @@
 
 using namespace std;
 
-vector<Board> GenerateMoves(const Board &position, int8 color) {
+vector<Board> Debug::GenerateMoves(const Board &position, int8 color) {
 	vector<Board> available_positions;
 	Generator generator(position);
 	while (generator.HasNext(color))
@@ -16,7 +16,7 @@ vector<Board> GenerateMoves(const Board &position, int8 color) {
 	return available_positions;
 }
 
-void printValues(const Board &test_board, int8 color) {
+void Debug::printValues(const Board &test_board, int8 color) {
 	int phase = checkGamePhase(test_board);
 	cout << "phase " << phase << endl;
 	cout << "material valuation " << materialValuation(test_board, color) << endl;
@@ -32,7 +32,7 @@ void printValues(const Board &test_board, int8 color) {
 	}
 }
 
-void posValuationTest() {
+void Debug::posValuationTest() {
 	setInitialBoard();
 	setMoves();
 	Board test_board = g_baseBoard;
@@ -51,7 +51,7 @@ void posValuationTest() {
 	}
 }
 
-void boardStatesAndAttackPosTest() {
+void Debug::boardStatesAndAttackPosTest() {
 	setInitialBoard();
 	setMoves();
 	Board test_board = g_baseBoard;

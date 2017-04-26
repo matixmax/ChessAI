@@ -1,5 +1,6 @@
 #pragma once
 #include "Definitions.h"
+#include "Board.h"
 
 #define WINDOW_EPSILON 125
 

@@ -1,11 +1,11 @@
 #include <algorithm>
-#include "Definitions.h"
-#include "PreparatoryFunctions.h"
 #include "EngineFunctions.h"
+#include "Definitions.h"
 #include "Generator.h"
 #include "ValuationFunctions.h"
 #include "Board.h"
 #include "Globals.h"
+#include "FiguresInfo.h"
 
 using namespace std;
 
@@ -32,17 +32,22 @@ bool checkFiguresMovement(int curr_pos, int next_pos, const Board &chessboard){
     if (figure == Pc || figure == Pb){
         if (g_figMoves[figure][0] * 2 + curr_pos == next_pos)
             return true;
-        if (chessboard.colors[next_pos] == not(chessboard.colors[curr_pos]) && g_figMoves[figure + 2][0] + curr_pos == next_pos)
+        if (chessboard.colors[next_pos] == FigInfo().not(chessboard.colors[curr_pos]) 
+				&& g_figMoves[figure + 2][0] + curr_pos == next_pos)
             return true;
-        if (chessboard.colors[next_pos] == not(chessboard.colors[curr_pos]) && g_figMoves[figure + 2][1] + curr_pos == next_pos)
+        if (chessboard.colors[next_pos] == FigInfo().not(chessboard.colors[curr_pos]) 
+				&& g_figMoves[figure + 2][1] + curr_pos == next_pos)
             return true;
     }
     return false;
 }
 
 bool checkShah(const Board &chessboard, int8 color){
-    vector<Board> k;
-    if (Generator::GetPosAttackMove(chessboard, chessboard.positions[getPositionIndex(K, color)], not(color), true).size() == 0)
+	auto possibleAttacks = Generator::GetPosAttackMove(	chessboard,
+								chessboard.positions[FigInfo().getPosIndex(K, color)],
+								FigInfo().not(color),
+								true);
+	if ( possibleAttacks.size() == 0 )
         return false;
     return true;
 }
@@ -79,12 +84,12 @@ bool userMove(int curr_pos, int next_pos, Board &chessboard, int8 color, bool tr
     copy_board.positions[figure] = next_pos;
     copy_board.board[curr_pos] = EMPTY;
     copy_board.colors[curr_pos] = EMPTY;
-    copy_board.board[next_pos] = getFigureNbFromPosIdx(figure, figure / 16);
+    copy_board.board[next_pos] = FigInfo().getFigNumber(figure, figure / 16);
     copy_board.colors[next_pos] = figure / 16;
     if (!trick_mode && checkShah(copy_board, color))
         copy_board.states.shah = color;
-    if (!trick_mode && checkShah(copy_board, not(color)))
-        copy_board.states.shah = not(color);
+    if (!trick_mode && checkShah(copy_board, FigInfo().not(color)))
+        copy_board.states.shah = FigInfo().not(color);
     if (!trick_mode && chessboard.states.shah != EMPTY && copy_board.states.shah != EMPTY){
         cout << "shah detect" << endl;
         return false;
@@ -132,7 +137,7 @@ int AlfaBetaMinimax(int level, const Board &position, int8 color, int alfa, int 
     //SortingPositions(position, available_moves)
     if (available_positions.size() == 0)return AlfaBetaMinimax(0, position, color, alfa, beta, max);
     for (Board next_position : available_positions){
-        int tmp_value = AlfaBetaMinimax(level - 1, next_position, not(color), alfa, beta, !max);
+        int tmp_value = AlfaBetaMinimax(level - 1, next_position, FigInfo().not(color), alfa, beta, !max);
         if (max){
             if (tmp_value >= beta)return tmp_value;
             if (tmp_value > alfa)alfa = tmp_value;
@@ -148,19 +153,13 @@ int AlfaBetaMinimax(int level, const Board &position, int8 color, int alfa, int 
 
 int ForcefulAlfaBeta(int level, const Board &position, int8 color, int old_material, bool max){
     if (level == 0) return MarkMaterial(position, WHITE);
-#ifdef TimeOut
-    mountTime();
-#endif
     vector<Board> available_positions = Generator::GetAttackMovements(position, color);
-#ifdef TimeOut
-    checkTime(1,"force movement");
-#endif
     //SortingPositions(position, available_moves)
     int best = INT32_MIN, worst = INT32_MAX;
     if (available_positions.size() == 0)return old_material;
 
     for (Board next_position : available_positions){
-        int tmp_value = ForcefulAlfaBeta(level - 1, next_position, not(color), old_material, !max);
+        int tmp_value = ForcefulAlfaBeta(level - 1, next_position, FigInfo().not(color), old_material, !max);
         if (max){
             if (tmp_value > best)best = tmp_value;
         }
@@ -203,7 +202,7 @@ Board NormalAlfaBeta(Board &position, int8 color, int level){
     int i;
     #pragma omp parallel for default(none) private(i) shared(values, level, available_positions, color, alfa, beta)
     for (i = 0; i < (int)available_positions.size(); i++){
-        values[i] = AlfaBetaMinimax(level - 1, available_positions[i], not(color), alfa, beta, false);
+        values[i] = AlfaBetaMinimax(level - 1, available_positions[i], FigInfo().not(color), alfa, beta, false);
     }
     for (unsigned i = 0; i < values.size(); i++){
         if (values[i] > best){

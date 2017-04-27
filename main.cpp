@@ -3,7 +3,7 @@
 #include "PreparatoryFunctions.h"
 #include "Generator.h"
 #include "Valuator.h"
-#include "EngineFunctions.h"
+#include "Engine.h"
 #include "SpecialsManager.h"
 #include "Debug.h"
 #include "Globals.h"
@@ -25,7 +25,7 @@ Board makeUserMove(Board last_board)
 			SpecialsManager::I().getFormCode(make_pair(curr_pos, next_pos))->update();
 			cin >> curr_pos >> next_pos;
 		}
-	} while (!userMove(curr_pos, next_pos, last_board, BLACK));
+	} while (!Engine().userMove(curr_pos, next_pos, last_board, BLACK));
 	return last_board;
 }
 
@@ -41,7 +41,7 @@ int main() {
 	Board last_board = g_baseBoard;
 	printBoard(last_board);
 	while (true) {
-		last_board = NormalAlfaBeta(last_board, WHITE, 4);
+		last_board = Engine().NormalAlfaBeta(last_board, WHITE, 4);
 		if (last_board.states.shah == END) {
 			break;
 		}

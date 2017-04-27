@@ -2,7 +2,7 @@
 #include "Definitions.h"
 #include "Generator.h"
 #include "Valuator.h"
-#include "EngineFunctions.h"
+#include "Engine.h"
 #include "Globals.h"
 #include "Board.h"
 
@@ -41,7 +41,7 @@ void Debug::posValuationTest() {
 		while (true) {
 			cin >> curr_pos >> next_pos;
 			if (curr_pos == -1)break;
-			userMove(curr_pos, next_pos, test_board, BLACK, true);
+			Engine().userMove(curr_pos, next_pos, test_board, BLACK, true);
 			printBoard(test_board);
 		}
 		cout << "WHITE" << endl;
@@ -60,7 +60,7 @@ void Debug::boardStatesAndAttackPosTest() {
 		while (true) {
 			cin >> curr_pos >> next_pos;
 			if (curr_pos == -1)break;
-			userMove(curr_pos, next_pos, test_board, BLACK);
+			Engine().userMove(curr_pos, next_pos, test_board, BLACK);
 			printBoard(test_board);
 		}
 		cin >> next_pos;

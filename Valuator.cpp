@@ -1,6 +1,6 @@
 #include "Valuator.h"
 #include "Board.h"
-#include "FiguresInfo.h"
+#include "FigInfo.h"
 
 using namespace std;
 
@@ -82,11 +82,11 @@ int Valuator::materialValuation(const Board & chessboard, int8 color) {
 int Valuator::pawnsPositionalValue(const Board & chessboard, int8 color, int phase) {
 	int value = 0;
 	for (int pawn = 0; pawn < 8; pawn++) {
-		int my_pos = chessboard.positions[FigInfo().getPosIndex(P, color, pawn)];
-		int enemy_pos = chessboard.positions[FigInfo().getPosIndex(P, FigInfo().not(color), pawn)];
+		int my_pos = chessboard.positions[FigInfo::getPosIndex(P, color, pawn)];
+		int enemy_pos = chessboard.positions[FigInfo::getPosIndex(P, FigInfo::not(color), pawn)];
 		if (my_pos != DESTROYED && izolatedPawn(chessboard, color, my_pos))
 			value -= 20;
-		if (enemy_pos != DESTROYED && izolatedPawn(chessboard, FigInfo().not(color), enemy_pos))
+		if (enemy_pos != DESTROYED && izolatedPawn(chessboard, FigInfo::not(color), enemy_pos))
 			value += 20;
 		if (my_pos != DESTROYED && mirroredPawn(chessboard, color, my_pos))
 			value -= 10;
@@ -124,7 +124,7 @@ int Valuator::pawnsPositionalValue(const Board & chessboard, int8 color, int pha
 int Valuator::rooksPositionalValue(const Board & chessboard, int8 color, int phase) {
 	int value = 0;
 	int8 rooks_pos[4];
-	int8 rooks_color[] = { color, color, FigInfo().not(color), FigInfo().not(color) };
+	int8 rooks_color[] = { color, color, FigInfo::not(color), FigInfo::not(color) };
 	int8 king_pos[2];
 	if (color == WHITE) {
 		if (chessboard.board[56] == W && chessboard.colors[56] == color)value += 5;
@@ -135,9 +135,9 @@ int Valuator::rooksPositionalValue(const Board & chessboard, int8 color, int pha
 		if (chessboard.board[7] == W && chessboard.colors[7] == color)value += 5;
 	}
 	for (int i = 0; i < 4; i++)
-		rooks_pos[i] = chessboard.positions[FigInfo().getPosIndex(W, rooks_color[i], i % 2)];
-	king_pos[0] = chessboard.positions[FigInfo().getPosIndex(K, color)];
-	king_pos[1] = chessboard.positions[FigInfo().getPosIndex(K, FigInfo().not(color))];
+		rooks_pos[i] = chessboard.positions[FigInfo::getPosIndex(W, rooks_color[i], i % 2)];
+	king_pos[0] = chessboard.positions[FigInfo::getPosIndex(K, color)];
+	king_pos[1] = chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))];
 	value += rookInOpenLineValue(chessboard, rooks_pos, rooks_color);
 	if (phase != DEBUT) {
 		value += 2 * proximityOfFields(rooks_pos[0], king_pos[1]);
@@ -160,10 +160,10 @@ int Valuator::rooksPositionalValue(const Board & chessboard, int8 color, int pha
 int Valuator::queenPositionalValue(const Board & chessboard, int8 color, int phase) {
 	int value = 0;
 	int factor = 0;
-	int my_queen = chessboard.positions[FigInfo().getPosIndex(H, color)];
-	int enemy_queen = chessboard.positions[FigInfo().getPosIndex(H, FigInfo().not(color))];
-	int my_king = chessboard.positions[FigInfo().getPosIndex(K, color)];
-	int enemy_king = chessboard.positions[FigInfo().getPosIndex(K, FigInfo().not(color))];
+	int my_queen = chessboard.positions[FigInfo::getPosIndex(H, color)];
+	int enemy_queen = chessboard.positions[FigInfo::getPosIndex(H, FigInfo::not(color))];
+	int my_king = chessboard.positions[FigInfo::getPosIndex(K, color)];
+	int enemy_king = chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))];
 	switch (phase) {
 	case DEBUT:
 		factor = -2;
@@ -199,8 +199,8 @@ int Valuator::kingPositionalValue(const Board & chessboard, int8 color, int phas
 		factor += 5;
 	case EARLY_ENDING:
 		factor += 3;
-		value += factor * proximityToTheCenter(chessboard.positions[FigInfo().getPosIndex(K, color)]);
-		value -= factor * proximityToTheCenter(chessboard.positions[FigInfo().getPosIndex(K, FigInfo().not(color))]);
+		value += factor * proximityToTheCenter(chessboard.positions[FigInfo::getPosIndex(K, color)]);
+		value -= factor * proximityToTheCenter(chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))]);
 		break;
 	}
 	return value;
@@ -208,12 +208,12 @@ int Valuator::kingPositionalValue(const Board & chessboard, int8 color, int phas
 
 int Valuator::knightsPositionalValue(const Board & chessboard, int8 color) {
 	int valuate = 0;
-	valuate += proximityToTheCenter(chessboard.positions[FigInfo().getPosIndex(S, color, 0)]);
-	valuate += proximityToTheCenter(chessboard.positions[FigInfo().getPosIndex(S, color, 1)]);
+	valuate += proximityToTheCenter(chessboard.positions[FigInfo::getPosIndex(S, color, 0)]);
+	valuate += proximityToTheCenter(chessboard.positions[FigInfo::getPosIndex(S, color, 1)]);
 	valuate -= proximityToTheCenter(
-		chessboard.positions[FigInfo().getPosIndex(S, FigInfo().not(color), 0)]);
+		chessboard.positions[FigInfo::getPosIndex(S, FigInfo::not(color), 0)]);
 	valuate -= proximityToTheCenter(
-		chessboard.positions[FigInfo().getPosIndex(S, FigInfo().not(color), 1)]);
+		chessboard.positions[FigInfo::getPosIndex(S, FigInfo::not(color), 1)]);
 	return valuate;
 }
 
@@ -234,23 +234,23 @@ int Valuator::bishopsPositionalValue(const Board & chessboard, int8 color, int p
 	int values[] = { 0, 0, 0, 0 };
 	int8 bishop_colors[] = { WHITE, WHITE, BLACK, BLACK };
 	for (int i = 0; i < 4; i++) {
-		int8 my_pos = chessboard.positions[FigInfo().getPosIndex(G, bishop_colors[i], i % 2)];
+		int8 my_pos = chessboard.positions[FigInfo::getPosIndex(G, bishop_colors[i], i % 2)];
 		if (my_pos == DESTROYED)
 			continue;
 		int8 figures_in_diagonals[] = { -1, -1, -1, -1 };//diagonals in accordance with the clockwise
 		int max_distance = 7 - my_pos % 8; // to the right
 		for (int distance = 1; distance <= max_distance; distance++) {
 			if (figures_in_diagonals[0] == -1 && my_pos + (-7 * distance) > 0 && chessboard.board[my_pos + (-7 * distance)] != EMPTY)
-				figures_in_diagonals[0] = FigInfo().getPosIndex(chessboard.board[my_pos + (-7 * distance)], chessboard.colors[my_pos + (-7 * distance)]);
+				figures_in_diagonals[0] = FigInfo::getPosIndex(chessboard.board[my_pos + (-7 * distance)], chessboard.colors[my_pos + (-7 * distance)]);
 			if (figures_in_diagonals[1] == -1 && my_pos + (9 * distance) < 64 && chessboard.board[my_pos + (9 * distance)] != EMPTY)
-				figures_in_diagonals[1] = FigInfo().getPosIndex(chessboard.board[my_pos + (9 * distance)], chessboard.colors[my_pos + (9 * distance)]);
+				figures_in_diagonals[1] = FigInfo::getPosIndex(chessboard.board[my_pos + (9 * distance)], chessboard.colors[my_pos + (9 * distance)]);
 		}
 		max_distance = my_pos % 8; // to the left
 		for (int distance = 1; distance <= max_distance; distance++) {
 			if (figures_in_diagonals[2] == -1 && my_pos + (7 * distance) < 64 && chessboard.board[my_pos + (7 * distance)] != EMPTY)
-				figures_in_diagonals[2] = FigInfo().getPosIndex(chessboard.board[my_pos + (7 * distance)], chessboard.colors[my_pos + (7 * distance)]);
+				figures_in_diagonals[2] = FigInfo::getPosIndex(chessboard.board[my_pos + (7 * distance)], chessboard.colors[my_pos + (7 * distance)]);
 			if (figures_in_diagonals[3] == -1 && my_pos + (-9 * distance) > 0 && chessboard.board[my_pos + (-9 * distance)] != EMPTY)
-				figures_in_diagonals[3] = FigInfo().getPosIndex(chessboard.board[my_pos + (-9 * distance)], chessboard.colors[my_pos + (-9 * distance)]);
+				figures_in_diagonals[3] = FigInfo::getPosIndex(chessboard.board[my_pos + (-9 * distance)], chessboard.colors[my_pos + (-9 * distance)]);
 		}
 		for (int j = 0; j < 4; j++) {
 			if (figures_in_diagonals[j] != -1) {
@@ -269,10 +269,10 @@ int Valuator::bishopsPositionalValue(const Board & chessboard, int8 color, int p
 
 int Valuator::mattingPositionalValue(const Board & chessboard, int8 color) {//color = matting page color
 	int value = 0;
-	int8 enemy_king = chessboard.positions[FigInfo().getPosIndex(K, FigInfo().not(color))];
+	int8 enemy_king = chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))];
 	value -= 9 * proximityToTheCenter(enemy_king);
-	int8 my_knights[2] = { chessboard.positions[FigInfo().getPosIndex(S, color, 0)], chessboard.positions[FigInfo().getPosIndex(S, color, 1)] };
-	int8 my_king = chessboard.positions[FigInfo().getPosIndex(K, color)];
+	int8 my_knights[2] = { chessboard.positions[FigInfo::getPosIndex(S, color, 0)], chessboard.positions[FigInfo::getPosIndex(S, color, 1)] };
+	int8 my_king = chessboard.positions[FigInfo::getPosIndex(K, color)];
 	value += 2 * proximityOfFields(my_knights[0], enemy_king);
 	value += 2 * proximityOfFields(my_knights[1], enemy_king);
 	value += 2 * proximityOfFields(my_king, enemy_king);
@@ -291,8 +291,8 @@ int Valuator::safetyKingPossitionalValue(const Board & chessboard, int8 color) {
 		10, 15, -40, -40, -40, -40, 15, 10,
 		15, 25, 10, -5, -10, 5, 25, 15 };
 	int value = 0;
-	int8 my_king = chessboard.positions[FigInfo().getPosIndex(K, color)];
-	int8 enemy_king = chessboard.positions[FigInfo().getPosIndex(K, FigInfo().not(color))];
+	int8 my_king = chessboard.positions[FigInfo::getPosIndex(K, color)];
+	int8 enemy_king = chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))];
 	if (color == WHITE) {
 		(my_king / 8 < 4) ? value -= 400 : value += king_safety[my_king];
 		(enemy_king / 8 >= 4) ? value += 400 : value -= king_safety[enemy_king];
@@ -337,7 +337,7 @@ int Valuator::connectedRooksAndMobilityValue(const Board & chessboard, int8* roo
 			int pos[2] = { pos_x + move[2 * j], pos_y + move[2 * j + 1] };
 			while (pos[0] >= 0 && pos[1] >= 0 && pos[0] <= 7 && pos[1] <= 7) {
 				if (chessboard.board[pos[1] * 8 + pos[0]] != EMPTY) {
-					figures_in_lines[j] = FigInfo().getPosIndex(chessboard.board[pos[1] * 8 + pos[0]], chessboard.colors[pos[1] * 8 + pos[0]]);
+					figures_in_lines[j] = FigInfo::getPosIndex(chessboard.board[pos[1] * 8 + pos[0]], chessboard.colors[pos[1] * 8 + pos[0]]);
 					break;
 				}
 				movement_counter++;
@@ -345,10 +345,10 @@ int Valuator::connectedRooksAndMobilityValue(const Board & chessboard, int8* roo
 				pos[1] += move[2 * j + 1];
 			}
 			if (figures_in_lines[j] != -1) {
-				if (figures_in_lines[j] / 16 == FigInfo().not(rooks_color[i]))
+				if (figures_in_lines[j] / 16 == FigInfo::not(rooks_color[i]))
 					movement_counter++;
 				else {
-					if (FigInfo().getFigNumber(figures_in_lines[j], rooks_color[i]) == W)
+					if (FigInfo::getFigNumber(figures_in_lines[j], rooks_color[i]) == W)
 						values[i] += 10;
 				}
 			}
@@ -364,7 +364,7 @@ int Valuator::rookInOpenLineValue(const Board & chessboard, int8* rooks_pos, int
 		if (rooks_pos[i] == DESTROYED)
 			continue;
 		int8 pos_x = rooks_pos[i] % 8;
-		int8 my_pawn = P + rooks_color[i], enemy_pawn = P + FigInfo().not(rooks_color[i]);
+		int8 my_pawn = P + rooks_color[i], enemy_pawn = P + FigInfo::not(rooks_color[i]);
 		bool open = true, self_open = true;
 		for (int j = 0; j < 8; j++) {
 			if (chessboard.board[pos_x + j * 8] == my_pawn)
@@ -420,10 +420,10 @@ bool Valuator::mirroredPawn(const Board & chessboard, int8 color, int8 pos) {
 }
 
 bool Valuator::matCondition(const Board &chessboard, int8 color) {
-	if (chessboard.positions[FigInfo().getPosIndex(H, color)] != DESTROYED)
+	if (chessboard.positions[FigInfo::getPosIndex(H, color)] != DESTROYED)
 		return true;
-	if (chessboard.positions[FigInfo().getPosIndex(W, color, 0)] != DESTROYED
-		|| chessboard.positions[FigInfo().getPosIndex(W, color, 1)] != DESTROYED)
+	if (chessboard.positions[FigInfo::getPosIndex(W, color, 0)] != DESTROYED
+		|| chessboard.positions[FigInfo::getPosIndex(W, color, 1)] != DESTROYED)
 		return true;
 	int sum_of_pawns = countSumOfPawns(chessboard, color);
 	if (sum_of_pawns == 0)
@@ -439,7 +439,7 @@ int Valuator::getFiguresInStartPos(const Board & chessboard) {
 		60, 59, 56, 63, 57, 62, 58, 61,  //			 K H W W S S G G
 		48, 49, 50, 51, 52, 53, 54, 55 };//			 PwPwPwPbwbPwPwPw
 	for (int i = 0; i < NUMBER_OF_POSITIONS; i++) {
-		if (chessboard.positions[i] == begin_positions[i] && i != FigInfo().getPosIndex(K, i / 16))
+		if (chessboard.positions[i] == begin_positions[i] && i != FigInfo::getPosIndex(K, i / 16))
 			figures_in_start++;
 	}
 	return figures_in_start;
@@ -448,7 +448,7 @@ int Valuator::getFiguresInStartPos(const Board & chessboard) {
 int Valuator::countSumOfPawns(const Board & chessboard, int8 color) {
 	int sum_of_pawns = 0;
 	for (int i = 0; i < 8; i++) {
-		if (chessboard.positions[FigInfo().getPosIndex(P, color, i)] != DESTROYED)
+		if (chessboard.positions[FigInfo::getPosIndex(P, color, i)] != DESTROYED)
 			sum_of_pawns++;
 	}
 	return sum_of_pawns;

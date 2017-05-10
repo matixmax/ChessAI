@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Definitions.h"
-#include "PreparatoryFunctions.h"
+#include "GuiModule.h"
 #include "Board.h"
 
 class Generator{

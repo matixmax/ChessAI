@@ -10,7 +10,7 @@ using SpecialsDictionary = std::unordered_map<std::string, std::unique_ptr<Speci
 class SpecialsManager
 {
 public:
-	static SpecialsManager& I();
+	static SpecialsManager& i();
 
 	bool isSpecialCode(std::pair<int, int> code);
 	Special* getFormCode(std::pair<int, int> code);

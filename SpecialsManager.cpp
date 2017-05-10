@@ -22,7 +22,7 @@ Special* SpecialsManager::getFromName(string name)
 	return m_specials[name].get();
 }
 
-SpecialsManager& SpecialsManager::I()
+SpecialsManager& SpecialsManager::i()
 {
 	static SpecialsManager instance;
 	return instance;

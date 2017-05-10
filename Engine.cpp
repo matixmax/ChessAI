@@ -5,7 +5,7 @@
 #include "Valuator.h"
 #include "Board.h"
 #include "Globals.h"
-#include "FiguresInfo.h"
+#include "FigInfo.h"
 
 using namespace std;
 
@@ -32,10 +32,10 @@ bool Engine::checkFiguresMovement(int curr_pos, int next_pos, const Board &chess
     if (figure == Pc || figure == Pb){
         if (g_figMoves[figure][0] * 2 + curr_pos == next_pos)
             return true;
-        if (chessboard.colors[next_pos] == FigInfo().not(chessboard.colors[curr_pos]) 
+        if (chessboard.colors[next_pos] == FigInfo::not(chessboard.colors[curr_pos]) 
 				&& g_figMoves[figure + 2][0] + curr_pos == next_pos)
             return true;
-        if (chessboard.colors[next_pos] == FigInfo().not(chessboard.colors[curr_pos]) 
+        if (chessboard.colors[next_pos] == FigInfo::not(chessboard.colors[curr_pos]) 
 				&& g_figMoves[figure + 2][1] + curr_pos == next_pos)
             return true;
     }
@@ -44,8 +44,8 @@ bool Engine::checkFiguresMovement(int curr_pos, int next_pos, const Board &chess
 
 bool Engine::checkShah(const Board &chessboard, int8 color){
 	auto possibleAttacks = Generator::GetPosAttackMove(	chessboard,
-								chessboard.positions[FigInfo().getPosIndex(K, color)],
-								FigInfo().not(color),
+								chessboard.positions[FigInfo::getPosIndex(K, color)],
+								FigInfo::not(color),
 								true);
 	if ( possibleAttacks.size() == 0 )
         return false;
@@ -84,12 +84,12 @@ bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int8 color,
     copy_board.positions[figure] = next_pos;
     copy_board.board[curr_pos] = EMPTY;
     copy_board.colors[curr_pos] = EMPTY;
-    copy_board.board[next_pos] = FigInfo().getFigNumber(figure, figure / 16);
+    copy_board.board[next_pos] = FigInfo::getFigNumber(figure, figure / 16);
     copy_board.colors[next_pos] = figure / 16;
     if (!trick_mode && checkShah(copy_board, color))
         copy_board.states.shah = color;
-    if (!trick_mode && checkShah(copy_board, FigInfo().not(color)))
-        copy_board.states.shah = FigInfo().not(color);
+    if (!trick_mode && checkShah(copy_board, FigInfo::not(color)))
+        copy_board.states.shah = FigInfo::not(color);
     if (!trick_mode && chessboard.states.shah != EMPTY && copy_board.states.shah != EMPTY){
         cout << "shah detect" << endl;
         return false;
@@ -123,21 +123,15 @@ int Engine::AlfaBetaMinimax(int level, const Board &position, int8 color, int al
         int result = ForcefulAlfaBeta(4, position, color, material, true) - material;
         return result + MarkPosition(position, WHITE);
     }
-#ifdef TimeOut
-    mountTime();
-#endif
     vector<Board> available_positions;
     if (level==1)
         available_positions = Generator::GetAvailableMovements(position, color, true);
     else
         available_positions = Generator::GetAvailableMovements(position, color);
-#ifdef TimeOut
-    checkTime(0,"movement generate");
-#endif
     //SortingPositions(position, available_moves)
     if (available_positions.size() == 0)return AlfaBetaMinimax(0, position, color, alfa, beta, max);
     for (Board next_position : available_positions){
-        int tmp_value = AlfaBetaMinimax(level - 1, next_position, FigInfo().not(color), alfa, beta, !max);
+        int tmp_value = AlfaBetaMinimax(level - 1, next_position, FigInfo::not(color), alfa, beta, !max);
         if (max){
             if (tmp_value >= beta)return tmp_value;
             if (tmp_value > alfa)alfa = tmp_value;
@@ -158,10 +152,11 @@ int Engine::ForcefulAlfaBeta(int level, const Board &position, int8 color, int o
     int best = INT32_MIN, worst = INT32_MAX;
     if (available_positions.size() == 0)return old_material;
 
-    for (Board next_position : available_positions){
-        int tmp_value = ForcefulAlfaBeta(level - 1, next_position, FigInfo().not(color), old_material, !max);
+    for (Board &next_position : available_positions){
+        int tmp_value = ForcefulAlfaBeta(level - 1, next_position, FigInfo::not(color), old_material, !max);
         if (max){
-            if (tmp_value > best)best = tmp_value;
+            //if (tmp_value > best)best = tmp_value;
+			best = std::max(best, tmp_value);
         }
         else{
             if (tmp_value < worst)worst = tmp_value;
@@ -173,16 +168,10 @@ int Engine::ForcefulAlfaBeta(int level, const Board &position, int8 color, int o
 }
 
 Board Engine::NormalAlfaBeta(Board &position, int8 color, int level){
-    #ifdef TimeOut
-    mountTime();
-    #endif
     vector<Board> available_positions = Generator::GetAvailableMovements(position, color);
-    #ifdef TimeOut
-    checkTime(0, "movment generate");
-    #endif
     available_positions.pop_back(); //empty movement erase
     vector<Board> no_shah_moves;
-    for (Board next_pos : available_positions){
+    for (Board &next_pos : available_positions){
         if (!checkShah(next_pos, color))
             no_shah_moves.push_back(next_pos);
     }
@@ -201,15 +190,11 @@ Board Engine::NormalAlfaBeta(Board &position, int8 color, int level){
     values.resize(available_positions.size());
     int i;
     #pragma omp parallel for default(none) private(i) shared(values, level, available_positions, color, alfa, beta)
-    for (i = 0; i < (int)available_positions.size(); i++){
-        values[i] = AlfaBetaMinimax(level - 1, available_positions[i], FigInfo().not(color), alfa, beta, false);
+    for (i = 0; i < static_cast<int>( available_positions.size() ); i++){
+        values[i] = AlfaBetaMinimax(level - 1, available_positions[i], FigInfo::not(color), alfa, beta, false);
     }
-    for (unsigned i = 0; i < values.size(); i++){
-        if (values[i] > best){
-            best = values[i];
-            best_id = i;
-        }
-    }
+	auto it = std::max_element(values.begin(), values.end());
+	best_id = std::distance(values.begin(), it);
     if (available_positions[best_id].states.shah == color)
         available_positions[best_id].states.shah = EMPTY;
     return available_positions[best_id];

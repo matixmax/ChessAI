@@ -5,6 +5,7 @@
 #include "Engine.h"
 #include "Globals.h"
 #include "Board.h"
+#include "Initializator.h"
 
 using namespace std;
 
@@ -33,16 +34,15 @@ void Debug::printValues(const Board &test_board, int8 color) {
 }
 
 void Debug::posValuationTest() {
-	setInitialBoard();
-	setMoves();
+	Initializator::init();
 	Board test_board = g_baseBoard;
 	int curr_pos, next_pos;
 	while (true) {
 		while (true) {
 			cin >> curr_pos >> next_pos;
 			if (curr_pos == -1)break;
-			Engine().userMove(curr_pos, next_pos, test_board, BLACK, true);
-			printBoard(test_board);
+			Engine::userMove(curr_pos, next_pos, test_board, BLACK, true);
+			GuiModule::printBoard(test_board);
 		}
 		cout << "WHITE" << endl;
 		printValues(test_board, WHITE);
@@ -52,22 +52,21 @@ void Debug::posValuationTest() {
 }
 
 void Debug::boardStatesAndAttackPosTest() {
-	setInitialBoard();
-	setMoves();
+	Initializator::init();
 	Board test_board = g_baseBoard;
 	int curr_pos, next_pos;
 	while (true) {
 		while (true) {
 			cin >> curr_pos >> next_pos;
 			if (curr_pos == -1)break;
-			Engine().userMove(curr_pos, next_pos, test_board, BLACK);
-			printBoard(test_board);
+			Engine::userMove(curr_pos, next_pos, test_board, BLACK);
+			GuiModule::printBoard(test_board);
 		}
 		cin >> next_pos;
 		cout << "Possible attack" << endl;
 		vector<Board> attack_boards = Generator::GetPosAttackMove(test_board, next_pos, WHITE);
 		for (Board position : attack_boards) {
-			printBoard(position);
+			GuiModule::printBoard(position);
 			if (position.states.shah != EMPTY)cout << "SHAH" << endl;
 		}
 	}

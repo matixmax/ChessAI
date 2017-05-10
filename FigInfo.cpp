@@ -1,4 +1,4 @@
-#include "FiguresInfo.h"
+#include "FigInfo.h"
 
 int8 FigInfo::getPosIndex(int8 fig, int8 color, int8 number) {
 	//first pos for:	   K  H  W  S  G  Pc Pb 

@@ -1,3 +1,4 @@
+
 #include "Special.h"
 
 Special::Special(std::string name)

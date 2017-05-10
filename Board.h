@@ -13,4 +13,5 @@ struct Board {
             std::vector<int8> positions, 
             std::vector<int8> colors, 
             BoardStates state = BoardStates());
+    static Board createEmptyBoard();
 };

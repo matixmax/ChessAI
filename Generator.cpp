@@ -8,57 +8,57 @@
 
 using namespace std;
 
-Generator::Generator(vector<int8> chessboard, vector<int8> positions, vector<int8> colors): chessboard(chessboard, positions, colors){
-    current_figure[BLACK] = K;            current_figure[WHITE] = K;
-    current_move[BLACK] = 0;            current_move[WHITE] = 0;
-    current_move_distance[BLACK] = 1;    current_move_distance[WHITE] = 1;
-    next_pos[BLACK] = -1;                next_pos[WHITE] = -1;
-    attack[BLACK] = false;                attack[WHITE] = false;
-    special_moves[BLACK] = 0;            special_moves[WHITE] = 0;
+Generator::Generator(vector<int8> chessboard, vector<int8> positions, vector<int8> colors): m_chessboard(chessboard, positions, colors){
+    m_currentFigure[BLACK] = K;          m_currentFigure[WHITE] = K;
+    m_currentMove[BLACK] = 0;            m_currentMove[WHITE] = 0;
+    m_currentMoveDistance[BLACK] = 1;    m_currentMoveDistance[WHITE] = 1;
+    m_nextPos[BLACK] = -1;               m_nextPos[WHITE] = -1;
+    m_attack[BLACK] = false;             m_attack[WHITE] = false;
+    m_specialMoves[BLACK] = 0;           m_specialMoves[WHITE] = 0;
 }
 
 Generator::Generator(Board board): Generator(board.board, board.positions, board.colors){
 }
 
-Generator::Generator(const Generator &generator): chessboard(generator.chessboard){
-    current_figure[BLACK] = generator.current_figure[BLACK];            
-    current_figure[WHITE] = generator.current_figure[WHITE];
-    current_move[BLACK] = generator.current_move[BLACK];            
-    current_move[WHITE] = generator.current_move[WHITE];
-    current_move_distance[BLACK] = generator.current_move_distance[BLACK];    
-    current_move_distance[WHITE] = generator.current_move_distance[WHITE];
-    next_pos[BLACK] = generator.next_pos[BLACK];                
-    next_pos[WHITE] = generator.next_pos[WHITE];
-    attack[BLACK] = generator.attack[BLACK];
-    attack[WHITE] = generator.attack[WHITE];
-    special_moves[BLACK] = generator.special_moves[BLACK];
-    special_moves[WHITE] = generator.special_moves[WHITE];
+Generator::Generator(const Generator &generator): m_chessboard(generator.m_chessboard){
+    m_currentFigure[BLACK] = generator.m_currentFigure[BLACK];            
+    m_currentFigure[WHITE] = generator.m_currentFigure[WHITE];
+    m_currentMove[BLACK] = generator.m_currentMove[BLACK];            
+    m_currentMove[WHITE] = generator.m_currentMove[WHITE];
+    m_currentMoveDistance[BLACK] = generator.m_currentMoveDistance[BLACK];    
+    m_currentMoveDistance[WHITE] = generator.m_currentMoveDistance[WHITE];
+    m_nextPos[BLACK] = generator.m_nextPos[BLACK];                
+    m_nextPos[WHITE] = generator.m_nextPos[WHITE];
+    m_attack[BLACK] = generator.m_attack[BLACK];
+    m_attack[WHITE] = generator.m_attack[WHITE];
+    m_specialMoves[BLACK] = generator.m_specialMoves[BLACK];
+    m_specialMoves[WHITE] = generator.m_specialMoves[WHITE];
 }
 
 Board Generator::GetNextPosition(int8 color){
-    Board result(this->chessboard);
-    if (this->next_pos[color] == -1)
-        this->next_pos[color] = nextPos(color);
-    if (this->next_pos[color] == -1)
+    Board result(m_chessboard);
+    if (m_nextPos[color] == -1)
+        m_nextPos[color] = nextPos(color);
+    if (m_nextPos[color] == -1)
         return result;
-    int last_fig = this->current_figure[color];
-    if (this->current_move[color] == 0 && this->current_move_distance[color] == 1)
+    int last_fig = m_currentFigure[color];
+    if (m_currentMove[color] == 0 && m_currentMoveDistance[color] == 1)
         last_fig--;
-    if (this->attack[color])
-        destroyAttackedFig(result, this->next_pos[color], color);
+    if (m_attack[color])
+        destroyAttackedFig(result, m_nextPos[color], color);
     result.board[result.positions[last_fig + 16 * color]] = EMPTY;
     result.colors[result.positions[last_fig + 16 * color]] = EMPTY;
-    result.board[this->next_pos[color]] = FigInfo::getFigNumber(last_fig + color *16, color);
-    result.colors[this->next_pos[color]] = color;
-    result.positions[last_fig + 16 * color] = this->next_pos[color];
-    this->next_pos[color] = -1;
+    result.board[m_nextPos[color]] = FigInfo::getFigNumber(last_fig + color *16, color);
+    result.colors[m_nextPos[color]] = color;
+    result.positions[last_fig + 16 * color] = m_nextPos[color];
+    m_nextPos[color] = -1;
     return result;
 }
 
 bool Generator::HasNext(int8 color){
-    if (this->next_pos[color] == -1)
-        this->next_pos[color] = nextPos(color);
-    return (this->next_pos[color] != -1);
+    if (m_nextPos[color] == -1)
+        m_nextPos[color] = nextPos(color);
+    return (m_nextPos[color] != -1);
 }
 
 vector<Board> Generator::GetAttackMovements(const Board &chessboard, int8 color){
@@ -206,21 +206,21 @@ Board Generator::getBoard(const Board &chessboard, int8 color, int8 figure, int8
 
 bool Generator::pawnCondition(int8 color, int8 next_pos, bool double_move){
     if (double_move){
-        if (this->chessboard.board[next_pos - ((-color * 2) - 1) * 8] != EMPTY ||
-                this->chessboard.board[next_pos] != EMPTY)
+        if (m_chessboard.board[next_pos - ((-color * 2) - 1) * 8] != EMPTY ||
+                m_chessboard.board[next_pos] != EMPTY)
             return false;
-        if (this->chessboard.board[next_pos + 1] == Pb - color ||
-                this->chessboard.board[next_pos - 1] == Pb - color) // beating in passing
+        if (m_chessboard.board[next_pos + 1] == Pb - color ||
+                m_chessboard.board[next_pos - 1] == Pb - color) // beating in passing
             int8 beating_in_passing = 1;
         return true;
     }
-    if (this->current_figure[color] < 8)//its no pawn
+    if (m_currentFigure[color] < 8)//its no pawn
         return true;
-    if (this->special_moves[color] == 0){
-        this->attack[color] = false; // this pawn can't attack
-        return !(this->chessboard.board[next_pos] != EMPTY);
+    if (m_specialMoves[color] == 0){
+        m_attack[color] = false; // this pawn can't attack
+        return !(m_chessboard.board[next_pos] != EMPTY);
     }
-    return !(this->chessboard.colors[next_pos] != (color ^ 1));
+    return !(m_chessboard.colors[next_pos] != (color ^ 1));
 }
 
 bool Generator::validateMovement(int8 curr_pos, int8 move, bool& attacked){
@@ -230,13 +230,13 @@ bool Generator::validateMovement(int8 curr_pos, int8 move, bool& attacked){
     int8 next_pos = curr_pos + move;
     if (next_pos < 0 || next_pos > 63)
         return false;
-    if (this->chessboard.board[next_pos] != EMPTY){
-        if (this->chessboard.colors[next_pos] != this->chessboard.colors[curr_pos])
+    if (m_chessboard.board[next_pos] != EMPTY){
+        if (m_chessboard.colors[next_pos] != m_chessboard.colors[curr_pos])
             local_attack_flag = true;
         else
             return false;
     }
-    int8 direction = (move / this->current_move_distance[this->chessboard.colors[curr_pos]])%8;
+    int8 direction = (move / m_currentMoveDistance[m_chessboard.colors[curr_pos]])%8;
     if (direction < 0)direction += 8;
     if (direction > 5){//movement to the left
         if (curr_pos % 8 < (move + curr_pos) % 8)
@@ -247,7 +247,7 @@ bool Generator::validateMovement(int8 curr_pos, int8 move, bool& attacked){
             return false;
     }
     if (local_attack_flag){
-        attack[this->chessboard.colors[curr_pos]] = true;
+        m_attack[m_chessboard.colors[curr_pos]] = true;
         attacked = true;
     }
     return true;
@@ -294,17 +294,17 @@ int8 Generator::getFigureFromPosition(const Board &chessboard, int8 color, int8 
 
 int8 Generator::manageSpecialMoves(int8 color){
     manageSpecialMoves_begin: //goto statement
-    if (this->special_moves[color] <= 8){// pawns double move
-        int8 fig = this->special_moves[color] + 7 + color * 16;
-        int8 curr_pos = this->chessboard.positions[fig];
+    if (m_specialMoves[color] <= 8){// pawns double move
+        int8 fig = m_specialMoves[color] + 7 + color * 16;
+        int8 curr_pos = m_chessboard.positions[fig];
         int8 next_move = curr_pos + ((-color * 2) - 1) * 16;
-        this->special_moves[color]++;
+        m_specialMoves[color]++;
         if (!(curr_pos / 8 == color * 5 + 1) || !pawnCondition(color, next_move, true))
             goto manageSpecialMoves_begin;
-        this->current_figure[color] = fig;
-        this->current_move[color] = 1; // set because in GetNextPosition is condition whose check current move = 0
+        m_currentFigure[color] = fig;
+        m_currentMove[color] = 1; // set because in GetNextPosition is condition whose check current move = 0
     }
-    if (this->special_moves[color] == 9){ //left castling
+    if (m_specialMoves[color] == 9){ //left castling
         //very big condition to late to write this
     }
     return -1;
@@ -312,28 +312,28 @@ int8 Generator::manageSpecialMoves(int8 color){
 
 int8 Generator::nextPos(int8 color){
     nextPos_begin: //goto statement
-    if (this->current_figure[color] > 15){
-        if (this->special_moves[color] == 0){
-            this->special_moves[color] = 1;        //phase of the pawns attack
-            this->current_figure[color] -= 8;
+    if (m_currentFigure[color] > 15){
+        if (m_specialMoves[color] == 0){
+            m_specialMoves[color] = 1;        //phase of the pawns attack
+            m_currentFigure[color] -= 8;
         }
         else
             return manageSpecialMoves(color);
     }
-    int8 attack_pawns = this->special_moves[color] * 2;
-    int8 fig = this->current_figure[color] + color * 16;
-    int8 curr_pos = this->chessboard.positions[fig];
+    int8 attack_pawns = m_specialMoves[color] * 2;
+    int8 fig = m_currentFigure[color] + color * 16;
+    int8 curr_pos = m_chessboard.positions[fig];
     int8 fig_move_idx = FigInfo::getFigNumber(fig, color) + attack_pawns;
-    int8 movement = g_figMoves[fig_move_idx][this->current_move[color]] * this->current_move_distance[color];
+    int8 movement = g_figMoves[fig_move_idx][m_currentMove[color]] * m_currentMoveDistance[color];
     bool attacked = false;
     if (curr_pos == DESTROYED || !validateMovement(curr_pos, movement, attacked) || !pawnCondition(color, curr_pos + movement)){
-        this->slideMovement(fig, fig_move_idx);
+        slideMovement(fig, fig_move_idx);
         goto nextPos_begin;
         //return nextPos(color);
     }
-    this->slideMovement(fig, fig_move_idx, true);
+    slideMovement(fig, fig_move_idx, true);
     #ifdef DEBUG
-        print((int)fig); print((int)curr_pos); print((int)movement); printTab((int)this->chessboard.positions, 32);
+        print((int)fig); print((int)curr_pos); print((int)movement); printTab((int)m_chessboard.positions, 32);
     #endif
     return curr_pos + movement;
 }
@@ -411,12 +411,12 @@ vector<int8> Generator::getFiguresOrder(const Board &chessboard, int8 color){
 
 void Generator::destroyAttackedFig(Board &board, int8 pos, int8 color, int8 nextPos){
     if (nextPos == -1){//sequential mode
-        if (this->current_move_distance[color] != 1){
-            int8 fig = this->current_figure[color] + color * 16;
-            this->slideMovement(fig, FigInfo::getFigNumber(fig, color));
+        if (m_currentMoveDistance[color] != 1){
+            int8 fig = m_currentFigure[color] + color * 16;
+            slideMovement(fig, FigInfo::getFigNumber(fig, color));
         }
-        this->attack[color] = false;
-        nextPos = this->next_pos[color];
+        m_attack[color] = false;
+        nextPos = m_nextPos[color];
     }
     int8 attacked_fig = FigInfo::getPosIndex(board.board[nextPos], (color + 1) % 2);
     int8 number = 1;
@@ -446,15 +446,15 @@ void Generator::staticDestroyAttackedFig(Board &board, int8 pos, int8 color, int
 
 void Generator::slideMovement(int8 fig, int8 fig_move_idx, bool increase_range){
     int8 color = fig / 16;
-    if (increase_range && *g_figMoves[FigInfo::getFigNumber(fig,color)].rbegin() == RANGED_FAR && this->current_move_distance[color] < 8){
-        this->current_move_distance[color]++;
+    if (increase_range && *g_figMoves[FigInfo::getFigNumber(fig,color)].rbegin() == RANGED_FAR && m_currentMoveDistance[color] < 8){
+        m_currentMoveDistance[color]++;
         return;
     }
-    this->current_move_distance[color] = 1;
-    if (this->current_move[color] < (int8)g_figMoves[fig_move_idx].size() - 1){
-        this->current_move[color]++;
+    m_currentMoveDistance[color] = 1;
+    if (m_currentMove[color] < (int8)g_figMoves[fig_move_idx].size() - 1){
+        m_currentMove[color]++;
         return;
     }
-    this->current_move[color] = 0;
-    this->current_figure[color]++;
+    m_currentMove[color] = 0;
+    m_currentFigure[color]++;
 }

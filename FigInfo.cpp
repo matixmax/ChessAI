@@ -1,3 +1,4 @@
+
 #include "FigInfo.h"
 
 int8 FigInfo::getPosIndex(int8 fig, int8 color, int8 number) {

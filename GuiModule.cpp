@@ -1,4 +1,5 @@
-﻿#include "Definitions.h"
+﻿
+#include "Definitions.h"
 #include "GuiModule.h"
 #include <string>
 #include "Globals.h"

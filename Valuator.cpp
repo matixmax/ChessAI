@@ -1,3 +1,4 @@
+
 #include "Valuator.h"
 #include "Board.h"
 #include "FigInfo.h"

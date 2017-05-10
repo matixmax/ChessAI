@@ -9,10 +9,10 @@ typedef std::unordered_map<std::string, std::vector<std::string>> multiDictionar
 class Special
 {
 public:
-	Special(std::string name = "special");
-	virtual ~Special() = default;
-	virtual void update() = 0;
-	virtual bool isMyCode(std::pair<int, int> code) = 0;
+    Special(std::string name = "special");
+    virtual ~Special() = default;
+    virtual void update() = 0;
+    virtual bool isMyCode(std::pair<int, int> code) = 0;
 private:
-	static std::vector<std::string> m_instances;
+    static std::vector<std::string> m_instances;
 };

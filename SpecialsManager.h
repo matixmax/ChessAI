@@ -10,14 +10,14 @@ using SpecialsDictionary = std::unordered_map<std::string, std::unique_ptr<Speci
 class SpecialsManager
 {
 public:
-	static SpecialsManager& i();
+    static SpecialsManager& i();
 
-	bool isSpecialCode(std::pair<int, int> code);
-	Special* getFormCode(std::pair<int, int> code);
-	Special* getFromName(std::string name);
+    bool isSpecialCode(std::pair<int, int> code);
+    Special* getFormCode(std::pair<int, int> code);
+    Special* getFromName(std::string name);
 
 private:
-	SpecialsManager();
+    SpecialsManager();
 
-	SpecialsDictionary m_specials;
+    SpecialsDictionary m_specials;
 };

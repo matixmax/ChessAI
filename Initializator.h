@@ -2,8 +2,8 @@
 
 class Initializator {
 public:
-	static void init();
+    static void init();
 private:
-	static void setInitialBoard();
-	static void setMoves();
+    static void setInitialBoard();
+    static void setMoves();
 };

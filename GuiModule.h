@@ -4,11 +4,11 @@
 
 class GuiModule {
 public:
-	static void printBoard();
-	static void printBoard(const Board &chessboard);
-	static void printWelcomeInfo();
+    static void printBoard();
+    static void printBoard(const Board &chessboard);
+    static void printWelcomeInfo();
 private:
-	static std::string numToSign(int8 a, int8 color);
+    static std::string numToSign(int8 a, int8 color);
 };
 
 

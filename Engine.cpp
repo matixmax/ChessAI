@@ -33,21 +33,21 @@ bool Engine::checkFiguresMovement(int curr_pos, int next_pos, const Board &chess
         if (g_figMoves[figure][0] * 2 + curr_pos == next_pos)
             return true;
         if (chessboard.colors[next_pos] == FigInfo::not(chessboard.colors[curr_pos]) 
-				&& g_figMoves[figure + 2][0] + curr_pos == next_pos)
+                && g_figMoves[figure + 2][0] + curr_pos == next_pos)
             return true;
         if (chessboard.colors[next_pos] == FigInfo::not(chessboard.colors[curr_pos]) 
-				&& g_figMoves[figure + 2][1] + curr_pos == next_pos)
+                && g_figMoves[figure + 2][1] + curr_pos == next_pos)
             return true;
     }
     return false;
 }
 
 bool Engine::checkShah(const Board &chessboard, int8 color){
-	auto possibleAttacks = Generator::GetPosAttackMove(	chessboard,
-								chessboard.positions[FigInfo::getPosIndex(K, color)],
-								FigInfo::not(color),
-								true);
-	if ( possibleAttacks.size() == 0 )
+    auto possibleAttacks = Generator::GetPosAttackMove(    chessboard,
+                                chessboard.positions[FigInfo::getPosIndex(K, color)],
+                                FigInfo::not(color),
+                                true);
+    if ( possibleAttacks.size() == 0 )
         return false;
     return true;
 }
@@ -156,7 +156,7 @@ int Engine::ForcefulAlfaBeta(int level, const Board &position, int8 color, int o
         int tmp_value = ForcefulAlfaBeta(level - 1, next_position, FigInfo::not(color), old_material, !max);
         if (max){
             //if (tmp_value > best)best = tmp_value;
-			best = std::max(best, tmp_value);
+            best = std::max(best, tmp_value);
         }
         else{
             if (tmp_value < worst)worst = tmp_value;
@@ -193,8 +193,8 @@ Board Engine::NormalAlfaBeta(Board &position, int8 color, int level){
     for (i = 0; i < static_cast<int>( available_positions.size() ); i++){
         values[i] = AlfaBetaMinimax(level - 1, available_positions[i], FigInfo::not(color), alfa, beta, false);
     }
-	auto it = std::max_element(values.begin(), values.end());
-	best_id = std::distance(values.begin(), it);
+    auto it = std::max_element(values.begin(), values.end());
+    best_id = std::distance(values.begin(), it);
     if (available_positions[best_id].states.shah == color)
         available_positions[best_id].states.shah = EMPTY;
     return available_positions[best_id];

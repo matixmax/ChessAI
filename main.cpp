@@ -13,9 +13,9 @@
 using namespace std;
 
 int main() {
-	
-	GameModule::i().startGame(BLACK);
+    
+    GameModule::i().startGame(BLACK);
 
-	GameModule::i().onGamePlay();
-	system("pause");
+    GameModule::i().onGamePlay();
+    system("pause");
 }

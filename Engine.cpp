@@ -11,7 +11,7 @@
 using namespace std;
 
 bool Engine::checkFiguresMovement(int curr_pos, int next_pos, const Board &chessboard){
-    int8 figure = chessboard.board[curr_pos];
+    int figure = chessboard.board[curr_pos];
     int distance = 1;
     for (unsigned int move_id = 0; move_id < g_figMoves[figure].size() && distance < 8; move_id++){
         if (g_figMoves[figure][move_id] == RANGED_FAR){
@@ -43,7 +43,7 @@ bool Engine::checkFiguresMovement(int curr_pos, int next_pos, const Board &chess
     return false;
 }
 
-bool Engine::checkShah(const Board &chessboard, int8 color){
+bool Engine::checkShah(const Board &chessboard, int color){
     auto possibleAttacks = Generator::GetPosAttackMove(    chessboard,
                                 chessboard.positions[FigInfo::getPosIndex(K, color)],
                                 FigInfo::not(color),
@@ -53,7 +53,7 @@ bool Engine::checkShah(const Board &chessboard, int8 color){
     return true;
 }
 
-bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int8 color, bool trick_mode){
+bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int color, bool trick_mode){
     int figure = 0;
     if (curr_pos > 63 || curr_pos < 0 || next_pos > 63 || next_pos < 0 || chessboard.board[curr_pos] == EMPTY){
         cout << "bad position " << endl;
@@ -99,7 +99,7 @@ bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int8 color,
     return true;
 }
 
-int Engine::MarkPosition(const Board &position, int8 color){
+int Engine::MarkPosition(const Board &position, int color){
     //printBoard(position);
     int result = Valuator::i().materialValuation(position, WHITE);
     int phase = Valuator::i().getGamePhase(position);
@@ -114,11 +114,11 @@ int Engine::MarkPosition(const Board &position, int8 color){
     return result;
 }
 
-int Engine::MarkMaterial(const Board &position, int8 color){
+int Engine::MarkMaterial(const Board &position, int color){
     return Valuator::i().materialValuation(position, color);
 }
 
-int Engine::AlfaBetaMinimax(int level, const Board &position, int8 color, int alfa, int beta, bool max){
+int Engine::AlfaBetaMinimax(int level, const Board &position, int color, int alfa, int beta, bool max){
     if (level == 0){
         int material = MarkMaterial(position, color);
         int result = ForcefulAlfaBeta(4, position, color, material, true) - material;
@@ -146,7 +146,7 @@ int Engine::AlfaBetaMinimax(int level, const Board &position, int8 color, int al
     return beta;
 }
 
-int Engine::ForcefulAlfaBeta(int level, const Board &position, int8 color, int old_material, bool max){
+int Engine::ForcefulAlfaBeta(int level, const Board &position, int color, int old_material, bool max){
     if (level == 0) return MarkMaterial(position, WHITE);
     vector<Board> available_positions = Generator::GetAttackMovements(position, color);
     //SortingPositions(position, available_moves)
@@ -168,7 +168,7 @@ int Engine::ForcefulAlfaBeta(int level, const Board &position, int8 color, int o
     return worst;
 }
 
-Board Engine::NormalAlfaBeta(Board &position, int8 color, int level){
+Board Engine::NormalAlfaBeta(Board &position, int color, int level){
     vector<Board> available_positions = Generator::GetAvailableMovements(position, color);
     available_positions.pop_back(); //empty movement erase
     vector<Board> no_shah_moves;

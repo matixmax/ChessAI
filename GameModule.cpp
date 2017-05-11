@@ -40,7 +40,7 @@ GameModule& GameModule::i()
 
 void GameModule::onGamePlay()
 {
-    int8 currentPlayerColor = WHITE;
+    int currentPlayerColor = WHITE;
     while (m_gameExitCondition == false) {
         m_lastBoard = getCurrentPlayerMove(currentPlayerColor);
         if (m_lastBoard.states.shah == END) {
@@ -64,7 +64,7 @@ Board GameModule::makeUserMove(Board last_board)
     return last_board;
 }
 
-Board GameModule::getCurrentPlayerMove(int8 currentPlayerColor)
+Board GameModule::getCurrentPlayerMove(int currentPlayerColor)
 {
     if (m_userColor == currentPlayerColor) {
         return makeUserMove(m_lastBoard);
@@ -74,7 +74,7 @@ Board GameModule::getCurrentPlayerMove(int8 currentPlayerColor)
     }
 }
 
-void GameModule::startGame(int8 userColor)
+void GameModule::startGame(int userColor)
 {
     Initializator::init();
     GuiModule::printWelcomeInfo();

@@ -34,5 +34,3 @@
 #define RANGED_FAR 0 // if figure is ranged far then RANGED_FAR stay in end of moves vector
 #define DESTROYED -1 // when the figure is attacked her position changes on DESTROYED
 #define END 3
-
-using int8 = int;

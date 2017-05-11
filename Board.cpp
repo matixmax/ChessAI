@@ -6,12 +6,12 @@ using namespace std;
 
 Board::Board() {}
 
-Board::Board(vector<int8> board, vector<int8> positions, vector<int8> colors, BoardStates state)
+Board::Board(vector<int> board, vector<int> positions, vector<int> colors, BoardStates state)
     : board(board), positions(positions), colors(colors), states(state) {}
 
 Board Board::createEmptyBoard()
 {
-    return Board(vector<int8>(BOARD_SIZE, E), 
-        vector<int8>(NUMBER_OF_POSITIONS, E), 
-        vector<int8>(BOARD_SIZE, DESTROYED));
+    return Board(vector<int>(BOARD_SIZE, E), 
+        vector<int>(NUMBER_OF_POSITIONS, E), 
+        vector<int>(BOARD_SIZE, DESTROYED));
 }

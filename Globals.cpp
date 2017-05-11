@@ -3,5 +3,5 @@
 
 Board g_baseBoard;
 std::vector<Special*> g_specials;
-std::vector<int8> *g_figMoves = new std::vector<int8>[10];
+std::vector<int> *g_figMoves = new std::vector<int>[10];
 const int c_unknownPosition = -404;

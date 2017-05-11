@@ -10,7 +10,7 @@
 
 using namespace std;
 
-vector<Board> Debug::GenerateMoves(const Board &position, int8 color) {
+vector<Board> Debug::GenerateMoves(const Board &position, int color) {
     vector<Board> availablePositions;
     Generator generator(position);
     while (generator.HasNext(color))
@@ -18,7 +18,7 @@ vector<Board> Debug::GenerateMoves(const Board &position, int8 color) {
     return availablePositions;
 }
 
-void Debug::printValues(const Board &test_board, int8 color) {
+void Debug::printValues(const Board &test_board, int color) {
     int phase = Valuator::i().getGamePhase(test_board);
     cout << "phase " << phase << endl;
     cout << "material valuation " << Valuator::i().materialValuation(test_board, color) << endl;

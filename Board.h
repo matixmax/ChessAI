@@ -4,14 +4,14 @@
 #include "Definitions.h"
 
 struct Board {
-    std::vector<int8> board;
-    std::vector<int8> positions;
-    std::vector<int8> colors;
+    std::vector<int> board;
+    std::vector<int> positions;
+    std::vector<int> colors;
     BoardStates states;
     Board();
-    Board(    std::vector<int8> board, 
-            std::vector<int8> positions, 
-            std::vector<int8> colors, 
+    Board(  std::vector<int> board, 
+            std::vector<int> positions, 
+            std::vector<int> colors, 
             BoardStates state = BoardStates());
     static Board createEmptyBoard();
 };

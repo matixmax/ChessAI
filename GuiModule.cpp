@@ -12,7 +12,7 @@ void GuiModule::printWelcomeInfo()
     cout << "To show settings write -1 -1 as your move" << endl;
 }
 
-string GuiModule::numToSign(int8 a, int8 color){
+string GuiModule::numToSign(int a, int color){
     switch(a){
     case Pc:
         return "Pc";

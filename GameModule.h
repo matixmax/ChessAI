@@ -6,16 +6,16 @@ class GameModule
 public:
     static GameModule& i();
     void onGamePlay();
-    void startGame(int8 userColor);
+    void startGame(int userColor);
 
 private:
     std::pair<int,int> loadMove();
     Board makeUserMove(Board last_board);
-    Board getCurrentPlayerMove(int8 currentPlayerColor);
+    Board getCurrentPlayerMove(int currentPlayerColor);
     GameModule();
 
     Board m_lastBoard;
-    int8 m_userColor;
+    int m_userColor;
     bool m_gameExitCondition;
 
     

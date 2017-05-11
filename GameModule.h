@@ -9,6 +9,7 @@ public:
     void startGame(int8 userColor);
 
 private:
+    std::pair<int,int> loadMove();
     Board makeUserMove(Board last_board);
     Board getCurrentPlayerMove(int8 currentPlayerColor);
     GameModule();
@@ -16,7 +17,7 @@ private:
     Board m_lastBoard;
     int8 m_userColor;
     bool m_gameExitCondition;
-    
 
+    
 };
 

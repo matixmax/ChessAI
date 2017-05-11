@@ -19,7 +19,7 @@ vector<Board> Debug::GenerateMoves(const Board &position, int8 color) {
 }
 
 void Debug::printValues(const Board &test_board, int8 color) {
-    int phase = Valuator::i().checkGamePhase(test_board);
+    int phase = Valuator::i().getGamePhase(test_board);
     cout << "phase " << phase << endl;
     cout << "material valuation " << Valuator::i().materialValuation(test_board, color) << endl;
     if (phase == Valuator::MATTING)

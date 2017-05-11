@@ -11,5 +11,7 @@ Board::Board(vector<int8> board, vector<int8> positions, vector<int8> colors, Bo
 
 Board Board::createEmptyBoard()
 {
-    return Board(vector<int8>(BOARD_SIZE, E), vector<int8>(NUMBER_OF_POSITIONS, E), vector<int8>(BOARD_SIZE, E));
+    return Board(vector<int8>(BOARD_SIZE, E), 
+        vector<int8>(NUMBER_OF_POSITIONS, E), 
+        vector<int8>(BOARD_SIZE, DESTROYED));
 }

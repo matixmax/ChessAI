@@ -38,38 +38,29 @@ string GuiModule::numToSign(int8 a, int8 color){
 }
 
 void GuiModule::printBoard(){
-    for (int i = 0; i < 25; i++)
-        cout << "#";
-    cout << endl;
-    for (int i = 0; i < 8; i++){
-        cout << '#';
-        for (int j = 0; j < 7; j++)
-            cout << numToSign(g_baseBoard.board[i * 8 + j], g_baseBoard.colors[i * 8 + j]) << "|";
-        cout << numToSign(g_baseBoard.board[i * 8 + 7], g_baseBoard.colors[i * 8 + 7]) << '#' << endl;
-        if (i < 7){
-            cout << "#-----------------------#" << endl;
-        }
-    }
-    for (int i = 0; i < 25; i++)
-        cout << "#";
-    cout << endl;
+    printBoard( g_baseBoard );
 }
 
 void GuiModule::printBoard(const Board &chess_board){
-    for (int i = 0; i < 25; i++)
+    vector<char> leftLabels = { '1','2','3','4','5','6','7','8' };
+    vector<char> downLabels = { 'A','B','C','D','E','F','G','H' };
+    for (int i = 0; i < 27; i++)
         cout << "#";
     cout << endl;
-    for (int i = 0; i < 8; i++){
-        cout << '#';
+    for (int i = 0; i < 8; i++) {
+        cout << ' ' << leftLabels[i] << '#';
         for (int j = 0; j < 7; j++)
             cout << numToSign(chess_board.board[i * 8 + j], chess_board.colors[i * 8 + j]) << "|";
         cout << numToSign(chess_board.board[i * 8 + 7], chess_board.colors[i * 8 + 7]) << '#' << endl;
         if (i < 7){
-            cout << "#-----------------------#" << endl;
+            cout << "--#-----------------------#" << endl;
         }
     }
-    for (int i = 0; i < 25; i++)
+    for (int i = 0; i < 27; i++)
         cout << "#";
+    cout << endl << "###";
+    for (int i = 0; i < 8; i++)
+        cout <<" "<<downLabels[i]<< "|";
     cout << endl;
 }
 

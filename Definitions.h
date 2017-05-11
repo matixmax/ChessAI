@@ -8,6 +8,10 @@
 #include <unordered_map>
 #include <omp.h>
 
+#ifdef TESTS
+#define private public
+#endif // TESTS
+
 #define K 0 //king
 #define H 1 //queen 
 #define W 2 //rook
@@ -26,6 +30,7 @@
 #define BOARD_SIZE 64
 #define NUMBER_OF_POSITIONS 32
 #define NUMBER_OF_PIECES 10
+#define ROW_SIZE 8
 #define RANGED_FAR 0 // if figure is ranged far then RANGED_FAR stay in end of moves vector
 #define DESTROYED -1 // when the figure is attacked her position changes on DESTROYED
 #define END 3

@@ -15,7 +15,8 @@ int8 FigInfo::getFigNumber(int8 pos_index, int8 color) {
     pos_index -= color * 16;
     if (pos_index < 8)
         return index_maping[pos_index];
-    return 5 + color;
+    else
+        return 5 + color;
 }
 
 int8 FigInfo::not(int8 color) {

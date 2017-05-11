@@ -1,4 +1,4 @@
-
+#include <cctype>
 #include "GameModule.h"
 #include "Globals.h"
 #include "GuiModule.h"
@@ -11,6 +11,25 @@ using namespace std;
 
 GameModule::GameModule():m_gameExitCondition(false)
 {
+}
+
+std::pair<int,int> GameModule::loadMove()
+{
+    string currPos, nextPos;
+    cin >> currPos >> nextPos;
+    if (isalpha(currPos[0]) * isdigit(currPos[1]) * isalpha(nextPos[0]) * isdigit(nextPos[1]) == 0) {
+        try {
+            return make_pair(stoi(currPos), stoi(nextPos));
+        }
+        catch (...) {
+            return make_pair(c_unknownPosition, c_unknownPosition);
+        }
+    }
+    else {
+        int currPosInt = currPos[0] - 'A'+ (currPos[1] - '1') * 8 ;
+        int nextPosInt = nextPos[0] - 'A'+ (nextPos[1] - '1') * 8 ;
+        return make_pair(currPosInt, nextPosInt);
+    }
 }
 
 GameModule& GameModule::i()
@@ -34,14 +53,14 @@ void GameModule::onGamePlay()
 
 Board GameModule::makeUserMove(Board last_board)
 {
-    int curr_pos, next_pos;
+    pair<int, int> userMove;
     do {
-        cin >> curr_pos >> next_pos;
-        if (SpecialsManager::i().isSpecialCode(make_pair(curr_pos, next_pos))) {
-            SpecialsManager::i().getFormCode(make_pair(curr_pos, next_pos))->update();
-            cin >> curr_pos >> next_pos;
+        userMove = loadMove();
+        if (SpecialsManager::i().isSpecialCode(make_pair(userMove.first, userMove.second))) {
+            SpecialsManager::i().getFormCode(make_pair(userMove.first, userMove.second))->update();
+            userMove = loadMove();
         }
-    } while (!Engine::userMove(curr_pos, next_pos, last_board, BLACK));
+    } while (!Engine::userMove(userMove.first, userMove.second, last_board, BLACK));
     return last_board;
 }
 

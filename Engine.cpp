@@ -20,7 +20,7 @@ bool Engine::checkFiguresMovement(int curr_pos, int next_pos, const Board &chess
         }
         int previus_pos = curr_pos + (distance - 1) * g_figMoves[figure][move_id];
         int pos = curr_pos + distance * g_figMoves[figure][move_id];
-        if (pos< 0 || pos >= 64 || abs(pos % 8 - previus_pos % 8) > 2 )continue;
+        if (pos< 0 || pos >= BOARD_SIZE || abs(pos % 8 - previus_pos % 8) > 2 )continue;
         if (pos == next_pos){
             while (pos != curr_pos){
                 pos = pos - g_figMoves[figure][move_id];
@@ -61,7 +61,7 @@ bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int8 color,
     }
     while (chessboard.positions[figure] != curr_pos){
         figure++;
-        if (figure >= 32){
+        if (figure >= NUMBER_OF_POSITIONS){
             cout << "bad figure" << endl;
             return false;
         }
@@ -77,7 +77,7 @@ bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int8 color,
             return false;
         }
         int attacked_fig = 0;
-        while (attacked_fig < 32 && copy_board.positions[attacked_fig] != next_pos)attacked_fig++;
+        while (attacked_fig < NUMBER_OF_POSITIONS && copy_board.positions[attacked_fig] != next_pos)attacked_fig++;
         assert(copy_board.positions[attacked_fig] == next_pos);
         copy_board.positions[attacked_fig] = DESTROYED;
     }
@@ -102,7 +102,7 @@ bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int8 color,
 int Engine::MarkPosition(const Board &position, int8 color){
     //printBoard(position);
     int result = Valuator::i().materialValuation(position, WHITE);
-    int phase = Valuator::i().checkGamePhase(position);
+    int phase = Valuator::i().getGamePhase(position);
     if (phase == Valuator::MATTING)
         return result + Valuator::i().mattingPositionalValue(position, color);
     result += Valuator::i().pawnsPositionalValue(position, color, phase);

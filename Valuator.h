@@ -14,7 +14,7 @@ public:
         MATTING,
     };
     static Valuator& i();
-    int checkGamePhase(const Board & chessboard);
+    int getGamePhase(const Board & chessboard);
     int materialValuation(const Board & chessboard, int8 color);
     int pawnsPositionalValue(const Board & chessboard, int8 color, int phase);
     int rooksPositionalValue(const Board & chessboard, int8 color, int phase);

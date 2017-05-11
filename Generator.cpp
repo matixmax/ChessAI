@@ -224,38 +224,18 @@ bool Generator::pawnCondition(int8 color, int8 next_pos, bool double_move){
 }
 
 bool Generator::validateMovement(int8 curr_pos, int8 move, bool& attacked){
-    bool local_attack_flag = false;
-    if (move == RANGED_FAR)
-        return false;
-    int8 next_pos = curr_pos + move;
-    if (next_pos < 0 || next_pos > 63)
-        return false;
-    if (m_chessboard.board[next_pos] != EMPTY){
-        if (m_chessboard.colors[next_pos] != m_chessboard.colors[curr_pos])
-            local_attack_flag = true;
-        else
-            return false;
-    }
-    int8 direction = (move / m_currentMoveDistance[m_chessboard.colors[curr_pos]])%8;
-    if (direction < 0)direction += 8;
-    if (direction > 5){//movement to the left
-        if (curr_pos % 8 < (move + curr_pos) % 8)
-            return false;
-    }
-    else{//movement to the right
-        if (curr_pos % 8 > (move + curr_pos) % 8)
-            return false;
-    }
-    if (local_attack_flag){
-        m_attack[m_chessboard.colors[curr_pos]] = true;
-        attacked = true;
-    }
-    return true;
+    int distance = (m_chessboard.colors[curr_pos] != EMPTY) 
+        ? m_currentMoveDistance[m_chessboard.colors[curr_pos]] 
+        : 1;
+    return validateMovement(m_chessboard, curr_pos, move, attacked, distance);
 }
 
+//validation of physical opportunity of move no check logic ex. pawn maked 3 steps is validate true
 bool Generator::validateMovement(const Board &chessboard, int8 curr_pos, int8 move, bool& attacked, int8 distance){
     bool local_attack_flag = false;
     if (move == RANGED_FAR)
+        return false;
+    if (chessboard.board[curr_pos] == EMPTY)
         return false;
     int8 next_pos = curr_pos + move;
     if (next_pos < 0 || next_pos > 63)
@@ -451,7 +431,7 @@ void Generator::slideMovement(int8 fig, int8 fig_move_idx, bool increase_range){
         return;
     }
     m_currentMoveDistance[color] = 1;
-    if (m_currentMove[color] < (int8)g_figMoves[fig_move_idx].size() - 1){
+    if (m_currentMove[color] < g_figMoves[fig_move_idx].size() - 1){
         m_currentMove[color]++;
         return;
     }

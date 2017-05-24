@@ -24,6 +24,7 @@ public:
 
     static Board create(const std::array<Figure, BOARD_SIZE>& borad);
     static FigureData getFigureCommonData(Figure figure);
+    static int getHash(Board board);
 private:
     void fillCommonBoard(Figure figure, int boardIdx);
 

@@ -92,6 +92,14 @@ Wizard::FigureData Wizard::getFigureCommonData(Figure figure)
     }
 }
 
+int Wizard::getHash(Board board)
+{
+    int seed = 0;
+    for (int fig : board.board)
+        seed ^= std::hash<int>()(fig) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+    return seed;
+}
+
 void Wizard::fillCommonBoard(Figure figure, int boardIdx)
 {
     FigureData figData = getFigureCommonData(figure);

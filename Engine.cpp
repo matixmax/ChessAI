@@ -19,6 +19,7 @@
 #include "GuiModule.h"
 #include "Debug.h"
 #endif
+#include "BoardRememberer.h"
 
 using namespace std;
 using namespace Valuation;
@@ -199,7 +200,6 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
         return position;
     }
     int alfa = INT32_MIN, beta = INT32_MAX;
-    int best = INT32_MIN, best_id = 0;
     vector<int> values;
     values.resize(available_positions.size());
     int i;
@@ -207,8 +207,15 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
     for (i = 0; i < static_cast<int>(available_positions.size()); i++) {
         values[i] = AlfaBetaMinimax(level - 1, available_positions[i], FigInfo::not(color), alfa, beta, false);
     }
-    auto it = max_element(values.begin(), values.end());
-    best_id = distance(values.begin(), it);
+
+    int best = INT32_MIN, best_id = 0;
+    for (size_t idx = 0; idx < values.size(); idx++) {
+        if (values[idx] > best && !BoardRememberer::i().isRemembered(available_positions[idx])) {
+            best = values[idx];
+            best_id = idx;
+        }
+    }
+
     if (available_positions[best_id].states.shah == color)
         available_positions[best_id].states.shah = EMPTY;
 #ifdef DEBUG
@@ -218,6 +225,7 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
         GuiModule::printBoard(available_positions[i], cout);
     }
 #endif
+    BoardRememberer::i().addBoard(available_positions[best_id]);
     return available_positions[best_id];
 }
 

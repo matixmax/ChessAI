@@ -9,6 +9,7 @@
 #include "Initializator.h"
 #include "PawnsValuator.h"
 #include "RocksValuator.h"
+#include "QueensValuator.h"
 
 using namespace std;
 using namespace Valuation;
@@ -32,7 +33,7 @@ void Debug::printValues(const Board &test_board, int color) {
         cout << "knights pos value " << Valuator::i().knightsPositionalValue(test_board, color) << endl;
         cout << "bishops pos value " << Valuator::i().bishopsPositionalValue(test_board, color, phase) << endl;
         cout << "rooks pos value " << RocksValuator::getPositionalValue(test_board, color, phase) << endl;
-        cout << "queens pos value " << Valuator::i().queenPositionalValue(test_board, color, phase) << endl;
+        cout << "queens pos value " << QueenValuator::getPositionalValue(test_board, color, phase) << endl;
         cout << "king pos value " << Valuator::i().kingPositionalValue(test_board, color, phase) << endl;
     }
 }

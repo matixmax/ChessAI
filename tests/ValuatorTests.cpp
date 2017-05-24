@@ -4,6 +4,7 @@
 #include "../Valuator.h"
 #include "../PawnsValuator.h"
 #include "../RocksValuator.h"
+#include "../QueensValuator.h"
 
 using namespace Valuation;
 using namespace BoardWizard;
@@ -74,6 +75,6 @@ TEST(valuation_tests, strangeBoardTest)
     int result3 = valuator.knightsPositionalValue(commonBoard, BLACK);
     int result4 = valuator.bishopsPositionalValue(commonBoard, BLACK, DEBUT);
     int result5 = RocksValuator::getPositionalValue(commonBoard, BLACK, DEBUT);
-    int result6 = valuator.queenPositionalValue(commonBoard, BLACK, DEBUT);
+    int result6 = QueenValuator::getPositionalValue(commonBoard, BLACK, DEBUT);
     int result7 = valuator.kingPositionalValue(commonBoard, BLACK, DEBUT);
 }

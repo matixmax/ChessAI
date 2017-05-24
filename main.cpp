@@ -14,8 +14,8 @@
 using namespace std;
 
 int main() {
-    GameModule::i().startGame(BLACK);
-    //GameModule::i().startTestMode(BLACK, 0);
+    //GameModule::i().startGame(BLACK);
+    GameModule::i().startTestMode(BLACK, 1);
     GameModule::i().onGameAITurnament();
     //GameModule::i().onGamePlayWithPlayer();
     system("pause");

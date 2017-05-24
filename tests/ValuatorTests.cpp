@@ -50,6 +50,33 @@ TEST(valuation_tests, countMaterialTest)
     EXPECT_LE(valuator.countMaterial(commonBoard).second, maxMaterial);
 }
 
+TEST(valuation_tests, symetricBoardMaterialValuationTest)
+{
+    array<Figure, BOARD_SIZE> board = {
+        Rbl, Kbl, Bbl, Qnb, Kgb, Bbr, Kbr, Rbr,
+        Pb1, Pb2, Pb3, Pb4, Pb5, Pb6, Pb7, Pb8,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Pw1, Pw2, Pw3, Pw4, Pw5, Pw6, Pw7, Pw8,
+        Rwl, Kwl, Bwl, Qnw, Kgw, Bwr, Kwr, Rwr };
+    vector<int>figValues = { 20000,  //king
+        950,    //queen
+        500,    //rook
+        290,    //knight
+        310,    //bishop
+        100,    //black pawn
+        100 };  //white pawn
+
+    Board commonBoard = Wizard::create(board);
+    Valuator valuator;
+    valuator.m_figValues = figValues;
+
+    EXPECT_EQ(valuator.materialValuation(commonBoard, BLACK), valuator.materialValuation(commonBoard, WHITE));
+}
+
+
 TEST(valuation_tests, strangeBoardTest)
 {
     array<Figure, BOARD_SIZE> board = {

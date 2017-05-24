@@ -49,14 +49,14 @@ Valuation::GameState Valuator::getGamePhase(const Board & chessboard)
 	int white_material = material.first;
 	if (getFiguresInStartPos(chessboard) >= 14)
 	    return DEBUT;
-	if (black_material - white_material >= 450 && matCondition(chessboard, BLACK))
-	    return MATTING;
-	if (white_material - black_material >= 450 && matCondition(chessboard, WHITE))
-	    return MATTING;
 	if (white_material + black_material > 4300)
 	    return MID_GAME;
 	if (white_material + black_material > 2800)
 	    return EARLY_ENDING;
+    if (black_material - white_material >= 450 && matCondition(chessboard, BLACK))
+	    return MATTING;
+	if (white_material - black_material >= 450 && matCondition(chessboard, WHITE))
+	    return MATTING;
 	return ENDING;
 }
 

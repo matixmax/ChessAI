@@ -48,7 +48,7 @@ void GameModule::onGameAITurnament()
 {
     fstream turnamentOutputFile;
     turnamentOutputFile.open("turnamentOutputFile.out", fstream::out);
-    int currentPlayerColor = BLACK;
+    int currentPlayerColor = WHITE;
     while (m_gameExitCondition == false) {
         m_lastBoard = Engine::NormalAlfaBeta(m_lastBoard, currentPlayerColor, 4);
         if (m_lastBoard.states.shah == END) {

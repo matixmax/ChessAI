@@ -15,6 +15,11 @@
 #include "KnightsValuator.h"
 #include "BishopsValuator.h"
 
+#ifdef DEBUG
+#include "GuiModule.h"
+#include "Debug.h"
+#endif
+
 using namespace std;
 using namespace Valuation;
 
@@ -110,7 +115,7 @@ bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int color, 
 
 int Engine::MarkPosition(const Board &position, int color){
    // GuiModule::printBoard(position, cout);
-    int result = Valuator::i().materialValuation(position, WHITE);
+    int result = Valuator::i().materialValuation(position, color);
     GameState phase = Valuator::i().getGamePhase(position);
     if (phase == MATTING)
         return result + Valuator::i().mattingPositionalValue(position, color);
@@ -131,7 +136,7 @@ int Engine::AlfaBetaMinimax(int level, const Board &position, int color, int alf
     if (level == 0){
         int material = MarkMaterial(position, color);
         int result = ForcefulAlfaBeta(4, position, color, material, true) - material;
-        return result + MarkPosition(position, WHITE);
+        return result + MarkPosition(position, color);
     }
     vector<Board> available_positions;
     if (level==1)
@@ -155,7 +160,7 @@ int Engine::AlfaBetaMinimax(int level, const Board &position, int color, int alf
 }
 
 int Engine::ForcefulAlfaBeta(int level, const Board &position, int color, int old_material, bool max){
-    if (level == 0) return MarkMaterial(position, WHITE);
+    if (level == 0) return MarkMaterial(position, color);
     vector<Board> available_positions = Generator::GetAttackMovements(position, color);
     //SortingPositions(position, available_moves)
     int best = INT32_MIN, worst = INT32_MAX;
@@ -176,16 +181,16 @@ int Engine::ForcefulAlfaBeta(int level, const Board &position, int color, int ol
     return worst;
 }
 
-Board Engine::NormalAlfaBeta(Board &position, int color, int level){
+Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
     vector<Board> available_positions = Generator::GetAvailableMovements(position, color);
     available_positions.pop_back(); //empty movement erase
     vector<Board> no_shah_moves;
-    for (Board &next_pos : available_positions){
+    for (Board &next_pos : available_positions) {
         if (!checkShah(next_pos, color))
             no_shah_moves.push_back(next_pos);
     }
     available_positions = no_shah_moves;
-    if (available_positions.size() == 0){
+    if (available_positions.size() == 0) {
         if (position.states.shah != EMPTY)
             cout << "CHECKMATE BLACK WIN" << endl;
         else
@@ -198,14 +203,21 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level){
     vector<int> values;
     values.resize(available_positions.size());
     int i;
-    #pragma omp parallel for default(none) private(i) shared(values, level, available_positions, color, alfa, beta)
-    for (i = 0; i < static_cast<int>( available_positions.size() ); i++){
+#pragma omp parallel for default(none) private(i) shared(values, level, available_positions, color, alfa, beta)
+    for (i = 0; i < static_cast<int>(available_positions.size()); i++) {
         values[i] = AlfaBetaMinimax(level - 1, available_positions[i], FigInfo::not(color), alfa, beta, false);
     }
-    auto it = std::max_element(values.begin(), values.end());
-    best_id = std::distance(values.begin(), it);
+    auto it = max_element(values.begin(), values.end());
+    best_id = distance(values.begin(), it);
     if (available_positions[best_id].states.shah == color)
         available_positions[best_id].states.shah = EMPTY;
+#ifdef DEBUG
+    for (int i = 0; i < values.size(); i++) {
+        cout << values[i]<<endl;
+        Debug::printValues(available_positions[i], color);
+        GuiModule::printBoard(available_positions[i], cout);
+    }
+#endif
     return available_positions[best_id];
 }
 

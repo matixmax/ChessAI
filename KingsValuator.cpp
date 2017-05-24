@@ -22,7 +22,7 @@ int KingsValuator::getOneSidePositionalValue(const Board & chessboard, int color
     int value = 0;
     value += getValueForSafetyKing(myKing, color, phase);
     value += getValueForProximityToCenterOnEnding(phase, myKing, color, chessboard);
-    value += getValueForWallOfPawns(chessboard, color, myKing);
+    value += getValueForWallOfPawns(chessboard, color, myKing, phase);
 
     return value;
 }
@@ -62,17 +62,19 @@ int KingsValuator::getValueForSafetyKing(int kingPos, int color, GameState phase
 
 std::vector<int> KingsValuator::getKingSafetyTab()
 {
-    return{   15,   25,   10,   -5,  -10,   5,    25,   15,
-              10,   15,  -40,  -40,  -40, -40,    15,   10,
+    return{   15,   25,   10,   10,    5,   10,   25,   15,
+              10,    5,  -40,  -40,  -40, -40,     5,   10,
             -100, -100, -100, -100, -100, -100, -100, -100,
             -200, -200, -200, -200, -200, -200, -200, -200,
             -200, -200, -200, -200, -200, -200, -200, -200,
             -100, -100, -100, -100, -100, -100, -100, -100,
-              10,   15,  -40,  -40,  -40,  -40,   15,   10,
-              15,   25,   10,   -5,  -10,    5,   25,   15 };
+              10,    5,  -40,  -40,  -40,  -40,    5,   10,
+              15,   25,   10,   10,    5,    10,   25,   15 };
 }
 
-int KingsValuator::getValueForWallOfPawns(const Board & chessboard, int color, int kingPos) {
+int KingsValuator::getValueForWallOfPawns(const Board & chessboard, int color, int kingPos, GameState phase) {
+    if (phase != MID_GAME)
+        return 0;
     int value = 0;
     int colorDirection = (color == WHITE) ? -1 : 1;
     int lastLine = (color == WHITE) ? 7 : 0;

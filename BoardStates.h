@@ -3,5 +3,6 @@
 
 struct BoardStates {
     int shah;
+    std::vector<bool> figOnStartPos;
     BoardStates();
 };

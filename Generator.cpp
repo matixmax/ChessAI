@@ -216,6 +216,7 @@ Board Generator::getBoard(const Board &chessboard, int color, int figure, int ne
     result.colors[next_pos] = color;
     result.positions[figure] = next_pos;
     result = PawnsPromotion::promoteAll(result);
+    result.states.figOnStartPos[figure] = false;
     return result;
 }
 
@@ -374,6 +375,7 @@ vector<Board> Generator::getAttackPawnMoves(const Board &chessboard, int color){
 }
 
 vector<Board> Generator::getSpecialMoves(const Board &chessboard, int color){
+    vector<Board> specialMoves;
     vector<Board> double_moves;
     for (int figure = 8; figure < 16; figure++){
         int curr_pos = chessboard.positions[figure + 16 * color];
@@ -385,7 +387,9 @@ vector<Board> Generator::getSpecialMoves(const Board &chessboard, int color){
             double_moves.push_back(Generator::getBoard(chessboard, color, figure + 16 * color, next_move));
         
     }
-    return double_moves;
+    specialMoves = getCastingMoves(chessboard, color);
+    specialMoves.insert(specialMoves.end(), double_moves.begin(), double_moves.end());
+    return specialMoves;
 }
 
 vector<int> Generator::getFiguresOrder(const Board &chessboard, int color){
@@ -423,6 +427,39 @@ void Generator::destroyAttackedFig(Board &board, int pos, int color, int nextPos
         runtime_error("figure attack not found");
 
     board.positions[attacked_fig] = DESTROYED;
+}
+
+vector<Board> Generator::getCastingMoves(const Board &chessboard, int color)
+{
+    int kingPosIdx = FigInfo::getPosIndex(K, color);
+    if (chessboard.states.figOnStartPos[kingPosIdx]) {
+        int slideToLeftOnCastling = -1, slideToRightOnCastling = 1;
+        auto leftCastling = getSingleCastling(color, kingPosIdx, chessboard, slideToLeftOnCastling);
+        auto rightCastling = getSingleCastling(color, kingPosIdx, chessboard, slideToRightOnCastling);
+        leftCastling.insert(leftCastling.end(), rightCastling.begin(), rightCastling.end());
+        return leftCastling;
+    }
+    else {
+        return{};
+    }
+}
+
+vector<Board> Generator::getSingleCastling(int color, int kingPosIdx, const Board &chessboard, int slide)
+{
+    int kingPos = chessboard.positions[kingPosIdx];
+    vector<int> rooksPosIdx = { FigInfo::getPosIndex(W, color, 0), FigInfo::getPosIndex(W, color, 1) };
+    for (int newPos = kingPos + slide; newPos / ROW_SIZE == kingPos / ROW_SIZE && newPos >= 0; newPos += slide) {
+        const int rooksNumber = 2;
+        for (int i = 0; i < rooksNumber; i++) {
+            if (newPos == chessboard.positions[rooksPosIdx[i]] && chessboard.states.figOnStartPos[rooksPosIdx[i]]) {
+                Board tmp = getBoard(chessboard, color, kingPosIdx, newPos - slide);
+                return{ getBoard(tmp, color, rooksPosIdx[i], newPos - 2 * slide) };
+            }
+        }
+        if (chessboard.board[newPos] != EMPTY)
+            break;
+    }
+    return {};
 }
 
 bool Generator::isNotAKing(int color, int posIdx)

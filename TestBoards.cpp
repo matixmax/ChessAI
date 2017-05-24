@@ -9,7 +9,7 @@ using namespace std;
 void TestsBoards::initTests()
 {
     array<Figure, BOARD_SIZE> board = {
-        Emp, Emp, Emp, Emp, Kgb, Emp, Emp, Emp,
+        Rbl, Emp, Emp, Emp, Kgb, Emp, Emp, Rbr,
         Emp, Pw2, Emp, Emp, Pb5, Emp, Pw7, Emp,
         Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
         Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
@@ -19,6 +19,19 @@ void TestsBoards::initTests()
         Emp, Emp, Emp, Emp, Kgw, Emp, Emp, Emp };
 
     Board commonBoard = Wizard::create(board);
+    m_testBoards.push_back(commonBoard);
+
+    board = {
+        Rbl, Emp, Emp, Emp, Kgb, Emp, Emp, Rbr,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Emp, Emp, Pb3, Emp, Pw5, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Kgw, Emp, Emp, Emp };
+
+    commonBoard = Wizard::create(board);
     m_testBoards.push_back(commonBoard);
 }
 

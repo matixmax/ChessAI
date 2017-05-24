@@ -18,6 +18,8 @@ public:
     static std::vector<Board> getOnPositionPawnsAttack(const Board &chessboard, int target, int color, bool one_attack);
 
 private:
+    static std::vector<Board> getCastingMoves(const Board &chessboard, int color);
+    static std::vector<Board> getSingleCastling(int color, int kingPos, const Board &chessboard, int slide);
     static std::vector<Board> getAttackPawnMoves(const Board &chessboard, int color);
     static std::vector<Board> getSpecialMoves(const Board &chessboard, int color);
     static std::vector<int> getFiguresOrder(const Board &chessboard, int color);
@@ -33,6 +35,7 @@ private:
     bool validateMovement(int current_pos, int move, bool &attacked);
     void slideMovement(int fig, int fig_move_idx, bool increase_range = false);
     void destroyAttackedFig(Board &board, int pos, int color, int nextPos = -1);
+
     Board m_chessboard;
     bool m_attack[2];
     int m_currentFigure[2];
@@ -40,4 +43,5 @@ private:
     int m_currentMoveDistance[2];
     int m_nextPos[2];
     int m_specialMoves[2];
+    
 };

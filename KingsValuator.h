@@ -11,7 +11,7 @@ private:
     static int getOneSidePositionalValue(const Board & chessboard, int color, GameState phase);
     static int getValueForProximityToCenterOnEnding(GameState phase, int myKing, int color, const Board &chessboard);
     static int getValueForSafetyKing(int kingPos, int color, GameState phase);
-    static int getValueForWallOfPawns(const Board & chessboard, int color, int kingPos);
+    static int getValueForWallOfPawns(const Board & chessboard, int color, int kingPos, GameState phase);
     static std::vector<int> getKingSafetyTab();
 };
 }

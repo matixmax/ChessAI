@@ -10,13 +10,13 @@
 #include "Globals.h"
 #include "Initializator.h"
 #include "GameModule.h"
-
+#include <fstream>
 using namespace std;
 
 int main() {
-    
     GameModule::i().startGame(BLACK);
-
-    GameModule::i().onGamePlay();
+    //GameModule::i().startTestMode(BLACK, 0);
+    GameModule::i().onGameAITurnament();
+    //GameModule::i().onGamePlayWithPlayer();
     system("pause");
 }

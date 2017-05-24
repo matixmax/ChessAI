@@ -6,10 +6,10 @@
 
 using namespace std;
 
-void GuiModule::printWelcomeInfo()
+void GuiModule::printWelcomeInfo(ostream &output)
 {
-    cout << "Welocme player" << endl;
-    cout << "To show settings write -1 -1 as your move" << endl;
+    output << "Welocme player" << endl;
+    output << "To show settings write -1 -1 as your move" << endl;
 }
 
 string GuiModule::numToSign(int a, int color){
@@ -38,29 +38,29 @@ string GuiModule::numToSign(int a, int color){
 }
 
 void GuiModule::printBoard(){
-    printBoard( g_baseBoard );
+    printBoard( g_baseBoard, cout );
 }
 
-void GuiModule::printBoard(const Board &chess_board){
+void GuiModule::printBoard(const Board &chess_board, ostream &output) {
     vector<char> leftLabels = { '1','2','3','4','5','6','7','8' };
     vector<char> downLabels = { 'A','B','C','D','E','F','G','H' };
     for (int i = 0; i < 27; i++)
-        cout << "#";
-    cout << endl;
+        output << "#";
+    output << endl;
     for (int i = 0; i < 8; i++) {
-        cout << ' ' << leftLabels[i] << '#';
+        output << ' ' << leftLabels[i] << '#';
         for (int j = 0; j < 7; j++)
-            cout << numToSign(chess_board.board[i * 8 + j], chess_board.colors[i * 8 + j]) << "|";
-        cout << numToSign(chess_board.board[i * 8 + 7], chess_board.colors[i * 8 + 7]) << '#' << endl;
+            output << numToSign(chess_board.board[i * 8 + j], chess_board.colors[i * 8 + j]) << "|";
+        output << numToSign(chess_board.board[i * 8 + 7], chess_board.colors[i * 8 + 7]) << '#' << endl;
         if (i < 7){
-            cout << "--#-----------------------#" << endl;
+            output << "--#-----------------------#" << endl;
         }
     }
     for (int i = 0; i < 27; i++)
-        cout << "#";
-    cout << endl << "###";
+        output << "#";
+    output << endl << "###";
     for (int i = 0; i < 8; i++)
-        cout <<" "<<downLabels[i]<< "|";
-    cout << endl;
+        output <<" "<<downLabels[i]<< "|";
+    output << endl;
 }
 

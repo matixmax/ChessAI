@@ -7,8 +7,12 @@
 #include "Board.h"
 #include "Globals.h"
 #include "FigInfo.h"
+#include "PawnsValuator.h"
+#include "RocksValuator.h"
+#include "PawnsPromotion.h"
 
 using namespace std;
+using namespace Valuation;
 
 bool Engine::checkFiguresMovement(int curr_pos, int next_pos, const Board &chessboard){
     int figure = chessboard.board[curr_pos];
@@ -44,7 +48,7 @@ bool Engine::checkFiguresMovement(int curr_pos, int next_pos, const Board &chess
 }
 
 bool Engine::checkShah(const Board &chessboard, int color){
-    auto possibleAttacks = Generator::GetPosAttackMove(    chessboard,
+    auto possibleAttacks = Generator::GetOnPositionAttackMove(chessboard,
                                 chessboard.positions[FigInfo::getPosIndex(K, color)],
                                 FigInfo::not(color),
                                 true);
@@ -95,22 +99,23 @@ bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int color, 
         cout << "shah detect" << endl;
         return false;
     }
+    copy_board = PawnsPromotion::promoteAll(copy_board);
     chessboard = copy_board;
     return true;
 }
 
 int Engine::MarkPosition(const Board &position, int color){
-    //printBoard(position);
+   // GuiModule::printBoard(position, cout);
     int result = Valuator::i().materialValuation(position, WHITE);
-    int phase = Valuator::i().getGamePhase(position);
-    if (phase == Valuator::MATTING)
+    GameState phase = Valuator::i().getGamePhase(position);
+    if (phase == MATTING)
         return result + Valuator::i().mattingPositionalValue(position, color);
-    result += Valuator::i().pawnsPositionalValue(position, color, phase);
+    result += PawnsValuator::getPositionalValue(position, color, phase);
     result += Valuator::i().knightsPositionalValue(position, color);
     result += Valuator::i().bishopsPositionalValue(position, color, phase);
-    result += Valuator::i().rooksPositionalValue(position, color, phase);
+    result += RocksValuator::getPositionalValue(position, color, phase);
     result += Valuator::i().queenPositionalValue(position, color, phase);
-    result += Valuator::i().kingPositionalValue(position, color, phase);
+    //result += Valuator::i().kingPositionalValue(position, color, phase);
     return result;
 }
 
@@ -118,7 +123,7 @@ int Engine::MarkMaterial(const Board &position, int color){
     return Valuator::i().materialValuation(position, color);
 }
 
-int Engine::AlfaBetaMinimax(int level, const Board &position, int color, int alfa, int beta, bool max){
+int Engine::AlfaBetaMinimax(int level, const Board &position, int color, int alfa, int beta, bool isMaximalizePhase){
     if (level == 0){
         int material = MarkMaterial(position, color);
         int result = ForcefulAlfaBeta(4, position, color, material, true) - material;
@@ -130,10 +135,10 @@ int Engine::AlfaBetaMinimax(int level, const Board &position, int color, int alf
     else
         available_positions = Generator::GetAvailableMovements(position, color);
     //SortingPositions(position, available_moves)
-    if (available_positions.size() == 0)return AlfaBetaMinimax(0, position, color, alfa, beta, max);
+    if (available_positions.size() == 0)return AlfaBetaMinimax(0, position, color, alfa, beta, isMaximalizePhase);
     for (Board next_position : available_positions){
-        int tmp_value = AlfaBetaMinimax(level - 1, next_position, FigInfo::not(color), alfa, beta, !max);
-        if (max){
+        int tmp_value = AlfaBetaMinimax(level - 1, next_position, FigInfo::not(color), alfa, beta, !isMaximalizePhase);
+        if (isMaximalizePhase){
             if (tmp_value >= beta)return tmp_value;
             if (tmp_value > alfa)alfa = tmp_value;
         }
@@ -142,8 +147,7 @@ int Engine::AlfaBetaMinimax(int level, const Board &position, int color, int alf
             if (tmp_value < beta)beta = tmp_value;
         }
     }
-    if (max)return alfa;
-    return beta;
+    return (isMaximalizePhase) ? alfa : beta;
 }
 
 int Engine::ForcefulAlfaBeta(int level, const Board &position, int color, int old_material, bool max){

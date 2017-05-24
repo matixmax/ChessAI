@@ -7,8 +7,11 @@
 #include "Globals.h"
 #include "Board.h"
 #include "Initializator.h"
+#include "PawnsValuator.h"
+#include "RocksValuator.h"
 
 using namespace std;
+using namespace Valuation;
 
 vector<Board> Debug::GenerateMoves(const Board &position, int color) {
     vector<Board> availablePositions;
@@ -19,16 +22,16 @@ vector<Board> Debug::GenerateMoves(const Board &position, int color) {
 }
 
 void Debug::printValues(const Board &test_board, int color) {
-    int phase = Valuator::i().getGamePhase(test_board);
+    GameState phase = Valuator::i().getGamePhase(test_board);
     cout << "phase " << phase << endl;
     cout << "material valuation " << Valuator::i().materialValuation(test_board, color) << endl;
-    if (phase == Valuator::MATTING)
+    if (phase == MATTING)
         cout << "matting pos value " << Valuator::i().mattingPositionalValue(test_board, color) << endl;
     else {
-        cout << "pawn pos value " << Valuator::i().pawnsPositionalValue(test_board, color, phase) << endl;
+        cout << "pawn pos value " << PawnsValuator::getPositionalValue(test_board, color, phase) << endl;
         cout << "knights pos value " << Valuator::i().knightsPositionalValue(test_board, color) << endl;
         cout << "bishops pos value " << Valuator::i().bishopsPositionalValue(test_board, color, phase) << endl;
-        cout << "rooks pos value " << Valuator::i().rooksPositionalValue(test_board, color, phase) << endl;
+        cout << "rooks pos value " << RocksValuator::getPositionalValue(test_board, color, phase) << endl;
         cout << "queens pos value " << Valuator::i().queenPositionalValue(test_board, color, phase) << endl;
         cout << "king pos value " << Valuator::i().kingPositionalValue(test_board, color, phase) << endl;
     }
@@ -43,7 +46,7 @@ void Debug::posValuationTest() {
             cin >> curr_pos >> next_pos;
             if (curr_pos == -1)break;
             Engine::userMove(curr_pos, next_pos, test_board, BLACK, true);
-            GuiModule::printBoard(test_board);
+            GuiModule::printBoard(test_board, cout);
         }
         cout << "WHITE" << endl;
         printValues(test_board, WHITE);
@@ -61,13 +64,13 @@ void Debug::boardStatesAndAttackPosTest() {
             cin >> curr_pos >> next_pos;
             if (curr_pos == -1)break;
             Engine::userMove(curr_pos, next_pos, test_board, BLACK);
-            GuiModule::printBoard(test_board);
+            GuiModule::printBoard(test_board, cout);
         }
         cin >> next_pos;
         cout << "Possible attack" << endl;
-        vector<Board> attack_boards = Generator::GetPosAttackMove(test_board, next_pos, WHITE);
+        vector<Board> attack_boards = Generator::GetOnPositionAttackMove(test_board, next_pos, WHITE);
         for (Board position : attack_boards) {
-            GuiModule::printBoard(position);
+            GuiModule::printBoard(position, cout);
             if (position.states.shah != EMPTY)cout << "SHAH" << endl;
         }
     }

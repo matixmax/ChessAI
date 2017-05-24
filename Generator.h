@@ -14,7 +14,8 @@ public:
     bool HasNext(int color);
     static std::vector<Board> GetAttackMovements(const Board &chessboard, int color);
     static std::vector<Board> GetAvailableMovements(const Board &chessboard, int color, bool attack_movement = false);
-    static std::vector<Board> GetPosAttackMove(const Board &chessboard, int target, int color, bool one_attack = false);
+    static std::vector<Board> GetOnPositionAttackMove(const Board &chessboard, int target, int color, bool one_attack = false);
+    static std::vector<Board> getOnPositionPawnsAttack(const Board &chessboard, int target, int color, bool one_attack);
 
 private:
     static std::vector<Board> getAttackPawnMoves(const Board &chessboard, int color);
@@ -24,6 +25,7 @@ private:
     static int getFigureFromPosition(const Board &chessboard, int color, int figure, int position);
     static int searchAttackFigure(const Board &chessboard, int next_pos, int color, int move_nb);
     static bool validateMovement(const Board &chessboard, int current_pos, int move, bool &attacked, int distance = -1);
+    static bool isNotAKing(int color, int posIdx);
     static void staticDestroyAttackedFig(Board &board, int pos, int color, int nextPos = -1);
     int manageSpecialMoves(int color);
     int nextPos(int color);
@@ -31,7 +33,6 @@ private:
     bool validateMovement(int current_pos, int move, bool &attacked);
     void slideMovement(int fig, int fig_move_idx, bool increase_range = false);
     void destroyAttackedFig(Board &board, int pos, int color, int nextPos = -1);
-
     Board m_chessboard;
     bool m_attack[2];
     int m_currentFigure[2];

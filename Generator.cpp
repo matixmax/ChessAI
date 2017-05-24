@@ -1,10 +1,11 @@
-
+#include <array>
 #include "Definitions.h"
 #include "GuiModule.h"
 #include "Generator.h"
 #include "Board.h"
 #include "Globals.h"
 #include "FigInfo.h"
+#include "PawnsPromotion.h"
 
 using namespace std;
 
@@ -66,8 +67,8 @@ vector<Board> Generator::GetAttackMovements(const Board &chessboard, int color){
     int figure;
     #pragma omp parallel for default(none) private(figure, tmp) shared(attack_moves, chessboard, color)
     for (figure = 16 * FigInfo::not(color); figure < 8 + FigInfo::not(color) * 16; figure++){
-        if (chessboard.positions[figure] != DESTROYED){
-            tmp = GetPosAttackMove(chessboard, chessboard.positions[figure], color);
+        if (chessboard.positions[figure] != DESTROYED && isNotAKing(color, figure)){
+            tmp = GetOnPositionAttackMove(chessboard, chessboard.positions[figure], color);
             attack_moves.insert(attack_moves.end(), tmp.begin(), tmp.end());
         }
     }
@@ -124,38 +125,18 @@ vector<Board> Generator::GetAvailableMovements(const Board &chessboard, int colo
     return attack_moves;
 }
 
-vector<Board> Generator::GetPosAttackMove(const Board &chessboard, int target, int color, bool one_attack){
+vector<Board> Generator::GetOnPositionAttackMove(const Board &chessboard, int target, int color, bool one_attack){
     vector<Board> available_moves[3];
     int target_x = target % 8, target_y = target / 8;
-    int knights_moves[] = { 1, -2, 2, -1, 2, 1, 1, 2, -1, 2, -2, 1, -2, -1, -1, -2 };
-    int distance_moves[] = { 0, -1, 1, -1, 1, 0, 1, 1, 0, 1, -1, 1, -1, 0, -1, -1 };
+    vector<pair<int,int>> knights_moves = { {1, -2}, {2, -1}, {2, 1}, {1, 2}, {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2} };
+    vector<pair<int, int>> distance_moves = { {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1} };
+
+    available_moves[0] = getOnPositionPawnsAttack(chessboard, target, color, one_attack);
+
     int figure;
-    if (color == WHITE && target_y != 7){
-        if (target_x != 7 && chessboard.board[target + 9] == Pb){
-            figure = getFigureFromPosition(chessboard, color, Pb, target + 9);
-            available_moves[0].push_back(Generator::getBoard(chessboard, color, figure, target));
-            if (one_attack)return available_moves[0];
-        }
-        if (target_x != 0 && chessboard.board[target + 7] == Pb){
-            figure = getFigureFromPosition(chessboard, color, Pb, target + 7);
-            available_moves[0].push_back(Generator::getBoard(chessboard, color, figure, target));
-            if (one_attack)return available_moves[0];
-        }
-    }
-    if (color == BLACK && target_y != 0){
-        if (target_x != 7 && chessboard.board[target - 7] == Pc){
-            figure = getFigureFromPosition(chessboard, color, Pc, target - 7);
-            available_moves[0].push_back(Generator::getBoard(chessboard, color, figure, target));
-            if (one_attack)return available_moves[0];
-        }
-        if (target_x != 0 && chessboard.board[target - 9] == Pc){
-            figure = getFigureFromPosition(chessboard, color, Pc, target - 9);
-            available_moves[0].push_back(Generator::getBoard(chessboard, color, figure, target));
-            if (one_attack)return available_moves[0];
-        }
-    }
     for (int i = 0; i < 8; i++){
-        int next_x = target_x + knights_moves[2 * i], next_y = target_y + knights_moves[2 * i + 1];
+        int next_x = target_x + knights_moves[i].first;
+        int next_y = target_y + knights_moves[i].second;
         if (next_x < 0 || next_x > 7 || next_y < 0 || next_y > 7)continue;
         if (chessboard.board[next_x + next_y * 8] == S && chessboard.colors[next_x + next_y * 8] == color){
             figure = getFigureFromPosition(chessboard, color, S, next_x + next_y * 8);
@@ -164,15 +145,16 @@ vector<Board> Generator::GetPosAttackMove(const Board &chessboard, int target, i
         }
     }
     for (int i = 0; i < 8; i++){
-        int next_x = target_x + distance_moves[2 * i], next_y = target_y + distance_moves[2 * i + 1];
+        int next_x = target_x + distance_moves[i].first;
+        int next_y = target_y + distance_moves[i].second;
         if (next_x < 0 || next_x > 7 || next_y < 0 || next_y > 7)continue;
         if (next_x + next_y * 8 == chessboard.positions[FigInfo::getPosIndex(K, color)]){
             available_moves[2].push_back(Generator::getBoard(chessboard, color, FigInfo::getPosIndex(K, color), target));
             if (one_attack)return available_moves[2];
         }
         for (int distance = 1; distance < 8; distance++){
-            next_x = target_x + distance * distance_moves[2 * i];
-            next_y = target_y + distance * distance_moves[2 * i + 1];
+            next_x = target_x + distance * distance_moves[i].first;
+            next_y = target_y + distance * distance_moves[i].second;
             if (next_x < 0 || next_x > 7 || next_y < 0 || next_y > 7)break;
             int next_pos = next_x + next_y * 8;
             if (chessboard.board[next_pos] != EMPTY){
@@ -192,6 +174,38 @@ vector<Board> Generator::GetPosAttackMove(const Board &chessboard, int target, i
     return available_moves[2];
 }
 
+vector<Board> Generator::getOnPositionPawnsAttack(const Board &chessboard, int target, int color, bool one_attack)
+{
+    vector<Board> available_moves;
+    int target_x = target % 8, target_y = target / 8;
+    int figure;
+    if (color == WHITE && target_y != 7) {
+        if (target_x != 7 && chessboard.board[target + 9] == Pb) {
+            figure = getFigureFromPosition(chessboard, color, Pb, target + 9);
+            available_moves.push_back(Generator::getBoard(chessboard, color, figure, target));
+            if (one_attack)return available_moves;
+        }
+        if (target_x != 0 && chessboard.board[target + 7] == Pb) {
+            figure = getFigureFromPosition(chessboard, color, Pb, target + 7);
+            available_moves.push_back(Generator::getBoard(chessboard, color, figure, target));
+            if (one_attack)return available_moves;
+        }
+    }
+    if (color == BLACK && target_y != 0) {
+        if (target_x != 7 && chessboard.board[target - 7] == Pc) {
+            figure = getFigureFromPosition(chessboard, color, Pc, target - 7);
+            available_moves.push_back(Generator::getBoard(chessboard, color, figure, target));
+            if (one_attack)return available_moves;
+        }
+        if (target_x != 0 && chessboard.board[target - 9] == Pc) {
+            figure = getFigureFromPosition(chessboard, color, Pc, target - 9);
+            available_moves.push_back(Generator::getBoard(chessboard, color, figure, target));
+            if (one_attack)return available_moves;
+        }
+    }
+    return available_moves;
+}
+
 Board Generator::getBoard(const Board &chessboard, int color, int figure, int next_pos){
     Board result = chessboard;
     if (result.board[next_pos] != EMPTY)
@@ -201,6 +215,7 @@ Board Generator::getBoard(const Board &chessboard, int color, int figure, int ne
     result.board[next_pos] = FigInfo::getFigNumber(figure, color);
     result.colors[next_pos] = color;
     result.positions[figure] = next_pos;
+    result = PawnsPromotion::promoteAll(result);
     return result;
 }
 
@@ -256,6 +271,8 @@ bool Generator::validateMovement(const Board &chessboard, int curr_pos, int move
         if (curr_pos % 8 > (move + curr_pos) % 8)
             return false;
     }
+    if (chessboard.positions[0] == DESTROYED || chessboard.positions[16] == DESTROYED)
+        return false;
     if (local_attack_flag)
         attacked = true;
     return true;
@@ -312,9 +329,6 @@ int Generator::nextPos(int color){
         //return nextPos(color);
     }
     slideMovement(fig, fig_move_idx, true);
-    #ifdef DEBUG
-        print((int)fig); print((int)curr_pos); print((int)movement); printTab((int)m_chessboard.positions, 32);
-    #endif
     return curr_pos + movement;
 }
 
@@ -409,6 +423,11 @@ void Generator::destroyAttackedFig(Board &board, int pos, int color, int nextPos
         runtime_error("figure attack not found");
 
     board.positions[attacked_fig] = DESTROYED;
+}
+
+bool Generator::isNotAKing(int color, int posIdx)
+{
+    return FigInfo::getFigNumber(posIdx, color) != K;
 }
 
 void Generator::staticDestroyAttackedFig(Board &board, int pos, int color, int next_pos){

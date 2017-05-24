@@ -10,6 +10,7 @@
 
 #ifdef TESTS
 #define private public
+#define protected public
 #endif // TESTS
 
 #define K 0 //king

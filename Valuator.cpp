@@ -41,7 +41,7 @@ pair<int, int> Valuator::countMaterial(const Board & chessboard) {
 	black_material = material_sum - white_material;
 	return make_pair(white_material, black_material);
 }
-	
+
 Valuation::GameState Valuator::getGamePhase(const Board & chessboard)
 {
 	pair<int, int> material = countMaterial(chessboard);
@@ -59,7 +59,7 @@ Valuation::GameState Valuator::getGamePhase(const Board & chessboard)
 	    return EARLY_ENDING;
 	return ENDING;
 }
-	
+
 int Valuator::materialValuation(const Board & chessboard, int color) {
 	int better_side_color;
 	int material_advantage;
@@ -83,18 +83,7 @@ int Valuator::materialValuation(const Board & chessboard, int color) {
 	else
 	    return -MathLogicStore::getValueOfMaterial(pawns_material, material_advantage, material);
 }
-	
-int Valuator::knightsPositionalValue(const Board & chessboard, int color) {
-	int valuate = 0;
-	valuate += proximityToTheCenter(chessboard.positions[FigInfo::getPosIndex(S, color, 0)]);
-	valuate += proximityToTheCenter(chessboard.positions[FigInfo::getPosIndex(S, color, 1)]);
-	valuate -= proximityToTheCenter(
-	    chessboard.positions[FigInfo::getPosIndex(S, FigInfo::not(color), 0)]);
-	valuate -= proximityToTheCenter(
-	    chessboard.positions[FigInfo::getPosIndex(S, FigInfo::not(color), 1)]);
-	return valuate;
-}
-	
+
 int Valuator::bishopsPositionalValue(const Board & chessboard, int color, int phase) {
 	int bishop_movements[] = { 7,  7,  7,  7,  7,  7,  7,  7,
 	    7,  9,  9,  9,  9,  9,  9,  7,
@@ -144,7 +133,7 @@ int Valuator::bishopsPositionalValue(const Board & chessboard, int color, int ph
 	if (color == WHITE)return values[0] + values[1] - values[2] - values[3];
 	return values[2] + values[3] - values[0] - values[1];
 }
-	
+
 int Valuator::mattingPositionalValue(const Board & chessboard, int color) {//color = matting page color
 	int value = 0;
 	int enemy_king = chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))];
@@ -158,7 +147,7 @@ int Valuator::mattingPositionalValue(const Board & chessboard, int color) {//col
 	    value += 2;
 	return value;
 }
-			
+
 int Valuator::proximityToTheCenter(int pos) {
 	if (pos == DESTROYED)
 	    return 0;
@@ -166,7 +155,7 @@ int Valuator::proximityToTheCenter(int pos) {
 	int y = pos % ROW_SIZE;
 	return 7 - (int)(abs(3.5 - (float)x) + abs(3.5 - (float)y));
 }
-	
+
 int Valuator::proximityOfFields(int pos1, int pos2) {
 	if (pos1 == DESTROYED || pos2 == DESTROYED)
 	    return 0;
@@ -174,7 +163,7 @@ int Valuator::proximityOfFields(int pos1, int pos2) {
 	int y1 = pos1 % ROW_SIZE, y2 = pos2 % ROW_SIZE;
 	return 7 - (abs(x1 - x2) + abs(y1 - y2));
 }
-	
+
 bool Valuator::matCondition(const Board &chessboard, int color) {
 	if (chessboard.positions[FigInfo::getPosIndex(H, color)] != DESTROYED)
 	    return true;
@@ -186,7 +175,7 @@ bool Valuator::matCondition(const Board &chessboard, int color) {
 	    return true;
 	return false;
 }
-	
+
 int Valuator::getFiguresInStartPos(const Board & chessboard) {
 	int figures_in_start = 0;
 	int begin_positions[NUMBER_OF_POSITIONS] =
@@ -200,7 +189,7 @@ int Valuator::getFiguresInStartPos(const Board & chessboard) {
 	}
 	return figures_in_start;
 }
-	
+
 int Valuator::countSumOfPawns(const Board & chessboard, int color) {
 	int sum_of_pawns = 0;
 	for (int i = 0; i < 8; i++) {

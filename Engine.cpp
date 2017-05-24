@@ -12,6 +12,7 @@
 #include "PawnsPromotion.h"
 #include "QueensValuator.h"
 #include "KingsValuator.h"
+#include "KnightsValuator.h"
 
 using namespace std;
 using namespace Valuation;
@@ -113,7 +114,7 @@ int Engine::MarkPosition(const Board &position, int color){
     if (phase == MATTING)
         return result + Valuator::i().mattingPositionalValue(position, color);
     result += PawnsValuator::getPositionalValue(position, color, phase);
-    result += Valuator::i().knightsPositionalValue(position, color);
+    result += KnightsValuator::getPositionalValue(position, color);
     result += Valuator::i().bishopsPositionalValue(position, color, phase);
     result += RocksValuator::getPositionalValue(position, color, phase);
     result += QueenValuator::getPositionalValue(position, color, phase);

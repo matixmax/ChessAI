@@ -1,6 +1,5 @@
 #pragma once
 #include "Valuator.h"
-#include <array>
 
 namespace Valuation {
 

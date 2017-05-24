@@ -12,6 +12,7 @@
 #include "QueensValuator.h"
 #include "KingsValuator.h"
 #include "KnightsValuator.h"
+#include "BishopsValuator.h"
 
 using namespace std;
 using namespace Valuation;
@@ -33,7 +34,7 @@ void Debug::printValues(const Board &test_board, int color) {
     else {
         cout << "pawn pos value " << PawnsValuator::getPositionalValue(test_board, color, phase) << endl;
         cout << "knights pos value " << KnightsValuator::getPositionalValue(test_board, color) << endl;
-        cout << "bishops pos value " << Valuator::i().bishopsPositionalValue(test_board, color, phase) << endl;
+        cout << "bishops pos value " << BishopsValuator::getPositionalValue(test_board, color, phase) << endl;
         cout << "rooks pos value " << RocksValuator::getPositionalValue(test_board, color, phase) << endl;
         cout << "queens pos value " << QueenValuator::getPositionalValue(test_board, color, phase) << endl;
         cout << "king pos value " << KingsValuator::getPositionalValue(test_board, color, phase) << endl;

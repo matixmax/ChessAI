@@ -84,56 +84,6 @@ int Valuator::materialValuation(const Board & chessboard, int color) {
 	    return -MathLogicStore::getValueOfMaterial(pawns_material, material_advantage, material);
 }
 
-int Valuator::bishopsPositionalValue(const Board & chessboard, int color, int phase) {
-	int bishop_movements[] = { 7,  7,  7,  7,  7,  7,  7,  7,
-	    7,  9,  9,  9,  9,  9,  9,  7,
-	    7,  9, 11, 11, 11, 11,  9,  7,
-	    7,  9, 11, 13, 13, 11,  9,  7,
-	    7,  9, 11, 13, 13, 11,  9,  7,
-	    7,  9, 11, 11, 11, 11,  9,  7,
-	    7,  9,  9,  9,  9,  9,  9,  7,
-	    7,  7,  7,  7,  7,  7,  7,  7 };
-	int points_for_black[] = { 0, 3, 2, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0, 0, 0,
-	    10, 9, 5, 0, 3, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	int points_for_white[] = { 10, 9, 5, 0, 3, 0, 4, 0, -1, 0, 0, 0, 0, 0, 0, 0,
-	    0, 3, 2, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	//points for the presence of the pieces, my pieces in begin look down for figures_in_diagonals
-	int values[] = { 0, 0, 0, 0 };
-	int bishop_colors[] = { WHITE, WHITE, BLACK, BLACK };
-	for (int i = 0; i < 4; i++) {
-	    int my_pos = chessboard.positions[FigInfo::getPosIndex(G, bishop_colors[i], i % 2)];
-	    if (my_pos == DESTROYED)
-	        continue;
-	    int figures_in_diagonals[] = { -1, -1, -1, -1 };//diagonals in accordance with the clockwise
-	    int max_distance = 7 - my_pos % ROW_SIZE; // to the right
-	    for (int distance = 1; distance <= max_distance; distance++) {
-	        if (figures_in_diagonals[0] == -1 && my_pos + (-7 * distance) > 0 && chessboard.board[my_pos + (-7 * distance)] != EMPTY)
-	            figures_in_diagonals[0] = FigInfo::getPosIndex(chessboard.board[my_pos + (-7 * distance)], chessboard.colors[my_pos + (-7 * distance)]);
-	        if (figures_in_diagonals[1] == -1 && my_pos + (9 * distance) < BOARD_SIZE && chessboard.board[my_pos + (9 * distance)] != EMPTY)
-	            figures_in_diagonals[1] = FigInfo::getPosIndex(chessboard.board[my_pos + (9 * distance)], chessboard.colors[my_pos + (9 * distance)]);
-	    }
-	    max_distance = my_pos % ROW_SIZE; // to the left
-	    for (int distance = 1; distance <= max_distance; distance++) {
-	        if (figures_in_diagonals[2] == -1 && my_pos + (7 * distance) < BOARD_SIZE && chessboard.board[my_pos + (7 * distance)] != EMPTY)
-	            figures_in_diagonals[2] = FigInfo::getPosIndex(chessboard.board[my_pos + (7 * distance)], chessboard.colors[my_pos + (7 * distance)]);
-	        if (figures_in_diagonals[3] == -1 && my_pos + (-9 * distance) > 0 && chessboard.board[my_pos + (-9 * distance)] != EMPTY)
-	            figures_in_diagonals[3] = FigInfo::getPosIndex(chessboard.board[my_pos + (-9 * distance)], chessboard.colors[my_pos + (-9 * distance)]);
-	    }
-	    for (int j = 0; j < 4; j++) {
-	        if (figures_in_diagonals[j] != -1) {
-	            if (i < 2)
-	                values[i] += points_for_white[figures_in_diagonals[j]];
-	            else
-	                values[i] += points_for_black[figures_in_diagonals[j]];
-	        }
-	    }
-	    //TODO: should check pawns in front read more http://www.apsys.waw.pl/joanna2002/pracmag.pdf page 44
-	    values[i] += 7 - bishop_movements[my_pos];
-	}
-	if (color == WHITE)return values[0] + values[1] - values[2] - values[3];
-	return values[2] + values[3] - values[0] - values[1];
-}
-
 int Valuator::mattingPositionalValue(const Board & chessboard, int color) {//color = matting page color
 	int value = 0;
 	int enemy_king = chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))];

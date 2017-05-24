@@ -11,6 +11,7 @@
 #include "RocksValuator.h"
 #include "PawnsPromotion.h"
 #include "QueensValuator.h"
+#include "KingsValuator.h"
 
 using namespace std;
 using namespace Valuation;
@@ -116,7 +117,7 @@ int Engine::MarkPosition(const Board &position, int color){
     result += Valuator::i().bishopsPositionalValue(position, color, phase);
     result += RocksValuator::getPositionalValue(position, color, phase);
     result += QueenValuator::getPositionalValue(position, color, phase);
-    //result += Valuator::i().kingPositionalValue(position, color, phase);
+    result += KingsValuator::getPositionalValue(position, color, phase);
     return result;
 }
 

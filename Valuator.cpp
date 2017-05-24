@@ -84,55 +84,6 @@ int Valuator::materialValuation(const Board & chessboard, int color) {
 	    return -MathLogicStore::getValueOfMaterial(pawns_material, material_advantage, material);
 }
 	
-//int Valuator::queenPositionalValue(const Board & chessboard, int color, int phase) {
-//	int value = 0;
-//	int factor = 0;
-//	int my_queen = chessboard.positions[FigInfo::getPosIndex(H, color)];
-//	int enemy_queen = chessboard.positions[FigInfo::getPosIndex(H, FigInfo::not(color))];
-//	int my_king = chessboard.positions[FigInfo::getPosIndex(K, color)];
-//	int enemy_king = chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))];
-//	switch (phase) {
-//	case DEBUT:
-//	    factor = -2;
-//	    break;
-//	case MID_GAME:
-//	    factor = 0;
-//	    break;
-//	case EARLY_ENDING:
-//	    factor = 2;
-//	    break;
-//	case ENDING:
-//	    factor = 4;
-//	    break;
-//	}
-//	value += factor * proximityToTheCenter(my_queen);
-//	value -= factor * proximityToTheCenter(enemy_queen);
-//	if (phase != DEBUT) {
-//	    value += 3 * proximityOfFields(my_queen, enemy_king);
-//	    value -= 3 * proximityOfFields(enemy_queen, my_king);
-//	}
-//	return value;
-//}
-//	
-int Valuator::kingPositionalValue(const Board & chessboard, int color, int phase) {
-	int value = 0;
-	int factor = 0;
-	switch (phase) {
-	case DEBUT:
-	case MID_GAME:
-	    value += safetyKingPossitionalValue(chessboard, color);
-	    break;
-	case ENDING:
-	    factor += 5;
-	case EARLY_ENDING:
-	    factor += 3;
-	    value += factor * proximityToTheCenter(chessboard.positions[FigInfo::getPosIndex(K, color)]);
-	    value -= factor * proximityToTheCenter(chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))]);
-	    break;
-	}
-	return value;
-}
-	
 int Valuator::knightsPositionalValue(const Board & chessboard, int color) {
 	int valuate = 0;
 	valuate += proximityToTheCenter(chessboard.positions[FigInfo::getPosIndex(S, color, 0)]);
@@ -207,86 +158,7 @@ int Valuator::mattingPositionalValue(const Board & chessboard, int color) {//col
 	    value += 2;
 	return value;
 }
-	
-int Valuator::safetyKingPossitionalValue(const Board & chessboard, int color) {
-    int king_safety[] = {    15,   25,   10,  -5,   -10,   5,    25,   15,
-                             10,   15,  -40,  -40,  -40,  -40,   15,   10,
-                            -100, -100, -100, -100, -100, -100, -100, -100,
-                            -200, -200, -200, -200, -200, -200, -200, -200,
-                            -200, -200, -200, -200, -200, -200, -200, -200,
-                            -100, -100, -100, -100, -100, -100, -100, -100,
-                             10,   15,  -40,  -40,  -40,  -40,   15,   10,
-                             15,   25,   10,  -5,   -10,   5,    25,   15 };
-	int value = 0;
-	int my_king = chessboard.positions[FigInfo::getPosIndex(K, color)];
-	int enemy_king = chessboard.positions[FigInfo::getPosIndex(K, FigInfo::not(color))];
-    if (my_king == DESTROYED || enemy_king == DESTROYED)
-        return 0;
-	if (color == WHITE) {
-	    (my_king / ROW_SIZE < 4) ? value -= 400 : value += king_safety[my_king];
-	    (enemy_king / ROW_SIZE >= 4) ? value += 400 : value -= king_safety[enemy_king];
-	}
-	else {
-	    (my_king / ROW_SIZE >= 4) ? value -= 400 : value += king_safety[my_king];
-	    (enemy_king / ROW_SIZE < 4) ? value += 400 : value -= king_safety[enemy_king];
-	}
-	int kings_pos[] = { my_king, enemy_king };
-	value += wallOfPawnsValuation(chessboard, color, kings_pos);
-	return value;
-}
-	
-int Valuator::wallOfPawnsValuation(const Board & chessboard, int color, int *kings_pos) {
-	int value[2] = { 0, 0 };
-	int color_direction[] = { 1, -1 };
-	int last_line[] = { 7, 0 };
-	for (int i = 0; i < 2; i++) {
-	    if (kings_pos[i] / ROW_SIZE != last_line[color]) {
-	        if (chessboard.board[kings_pos[i] + ROW_SIZE * color_direction[color]] == P + color)
-	            value[i] += 15;
-	        if (kings_pos[i] % ROW_SIZE != 0 && chessboard.board[kings_pos[i] + ROW_SIZE * color_direction[color] - 1] == P + color)
-	            value[i] += 15;
-	        if (kings_pos[i] % ROW_SIZE != 7 && chessboard.board[kings_pos[i] + ROW_SIZE * color_direction[color] + 1] == P + color)
-	            value[i] += 15;
-	        if (value[i] == 45)value[i] = 0;
-	    }
-	}
-	return value[0] - value[1];
-}
-	
-//int Valuator::connectedRooksAndMobilityValue(const Board & chessboard, int* rooks_pos, int* rooks_color) {
-//	int values[] = { 0, 0, 0, 0 };
-//	for (int i = 0; i < 4; i++) {
-//	    if (rooks_pos[i] == DESTROYED)
-//	        continue;
-//	    int figures_in_lines[] = { -1, -1, -1, -1 };
-//	    int move[] = { 0, -1, 1, 0, 0, 1, -1, 0 };
-//	    int movement_counter = 0;
-//	    int pos_x = rooks_pos[i] % ROW_SIZE, pos_y = rooks_pos[i] / ROW_SIZE;
-//	    for (int j = 0; j < 4; j++) {
-//	        int pos[2] = { pos_x + move[2 * j], pos_y + move[2 * j + 1] };
-//	        while (pos[0] >= 0 && pos[1] >= 0 && pos[0] <= 7 && pos[1] <= 7) {
-//	            if (chessboard.board[pos[1] * ROW_SIZE + pos[0]] != EMPTY) {
-//	                figures_in_lines[j] = FigInfo::getPosIndex(chessboard.board[pos[1] * ROW_SIZE + pos[0]], chessboard.colors[pos[1] * ROW_SIZE + pos[0]]);
-//	                break;
-//	            }
-//	            movement_counter++;
-//	            pos[0] += move[2 * j];
-//	            pos[1] += move[2 * j + 1];
-//	        }
-//	        if (figures_in_lines[j] != -1) {
-//	            if (figures_in_lines[j] / 16 == FigInfo::not(rooks_color[i]))
-//	                movement_counter++;
-//	            else {
-//	                if (FigInfo::getFigNumber(figures_in_lines[j], rooks_color[i]) == W)
-//	                    values[i] += 10;
-//	            }
-//	        }
-//	        values[i] += movement_counter;
-//	    }
-//	}
-//	return values[0] + values[1] - values[2] - values[3];
-//}
-		
+			
 int Valuator::proximityToTheCenter(int pos) {
 	if (pos == DESTROYED)
 	    return 0;

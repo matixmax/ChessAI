@@ -21,7 +21,7 @@ public:
     //int pawnsPositionalValue(const Board & chessboard, int color, int phase);//
     //int rooksPositionalValue(const Board & chessboard, int color, int phase);
     //int queenPositionalValue(const Board & chessboard, int color, int phase);
-    int kingPositionalValue(const Board & chessboard, int color, int phase);
+    //int kingPositionalValue(const Board & chessboard, int color, int phase);
     int mattingPositionalValue(const Board & chessboard, int color);
     int knightsPositionalValue(const Board & chessboard, int color);
     int bishopsPositionalValue(const Board & chessboard, int color, int phase);
@@ -29,8 +29,8 @@ public:
 protected:
     Valuator();
 
-    int safetyKingPossitionalValue(const Board & chessboard, int color);
-    int wallOfPawnsValuation(const Board & chessboard, int color, int *kings_pos);
+    //int safetyKingPossitionalValue(const Board & chessboard, int color);
+    //int wallOfPawnsValuation(const Board & chessboard, int color, int *kings_pos);
     //int connectedRooksAndMobilityValue(const Board & chessboard, int* rooks_pos, int* rooks_color);
     //int rookInOpenLineValue(const Board & chessboard, int* rooks_pos, int* rooks_color);
     static int proximityToTheCenter(int pos);

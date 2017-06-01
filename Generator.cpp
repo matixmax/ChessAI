@@ -63,9 +63,10 @@ bool Generator::HasNext(int color){
 }
 
 vector<Board> Generator::GetAttackMovements(const Board &chessboard, int color){
-    vector<Board> attack_moves, tmp;
+    vector<Board> attack_moves;
+    vector<Board> tmp;
     int figure;
-    #pragma omp parallel for default(none) private(figure, tmp) shared(attack_moves, chessboard, color)
+   // #pragma omp parallel for default(none) private(figure, tmp) shared(attack_moves, chessboard, color)
     for (figure = 16 * FigInfo::not(color); figure < 8 + FigInfo::not(color) * 16; figure++){
         if (chessboard.positions[figure] != DESTROYED && isNotAKing(color, figure)){
             tmp = GetOnPositionAttackMove(chessboard, chessboard.positions[figure], color);

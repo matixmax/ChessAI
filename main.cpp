@@ -6,7 +6,7 @@
 #include "Valuator.h"
 #include "Engine.h"
 #include "SpecialsManager.h"
-#include "Debug.h"
+#include "Statistics.h"
 #include "Globals.h"
 #include "Initializator.h"
 #include "GameModule.h"
@@ -14,9 +14,9 @@
 using namespace std;
 
 int main() {
-    //GameModule::i().startGame(BLACK);
-    GameModule::i().startTestMode(BLACK, 1);
-    //GameModule::i().onGameAITurnament();
-    GameModule::i().onGamePlayWithPlayer();
+    GameModule::i().startGame(BLACK);
+    //GameModule::i().startTestMode(BLACK, 1);
+    GameModule::i().onGameAITurnament();
+    //GameModule::i().onGamePlayWithPlayer();
     system("pause");
 }

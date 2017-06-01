@@ -9,6 +9,8 @@
 #include "BoardWizard.h"
 #include <fstream>
 #include "testBoards.h"
+#include "Statistics.h"
+#include "properties.h"
 
 using namespace std;
 using namespace BoardWizard;
@@ -30,8 +32,8 @@ std::pair<int,int> GameModule::loadMove()
         }
     }
     else {
-        int currPosInt = currPos[0] - 'A'+ (currPos[1] - '1') * 8 ;
-        int nextPosInt = nextPos[0] - 'A'+ (nextPos[1] - '1') * 8 ;
+        int currPosInt = currPos[0] - 'A'+ (currPos[1] - '1') * ROW_SIZE ;
+        int nextPosInt = nextPos[0] - 'A'+ (nextPos[1] - '1') * ROW_SIZE ;
         return make_pair(currPosInt, nextPosInt);
     }
 }
@@ -46,13 +48,16 @@ void GameModule::onGameAITurnament()
 {
     fstream turnamentOutputFile;
     turnamentOutputFile.open("turnamentOutputFile.out", fstream::out);
+    turnamentOutputFile << "Properties:" << endl;
+    turnamentOutputFile << Properies::addToStream();
     int currentPlayerColor = WHITE;
     while (m_gameExitCondition == false) {
-        m_lastBoard = Engine::NormalAlfaBeta(m_lastBoard, currentPlayerColor, 4);
+        m_lastBoard = Engine::NormalAlfaBeta(m_lastBoard, currentPlayerColor, 3);
         if (m_lastBoard.states.shah == END) {
             break;
         }
         GuiModule::printBoard(m_lastBoard, turnamentOutputFile);
+        Statistics::printValues(m_lastBoard, currentPlayerColor, turnamentOutputFile);
         GuiModule::printBoard(m_lastBoard, cout);
         currentPlayerColor = FigInfo::not(currentPlayerColor);
     }

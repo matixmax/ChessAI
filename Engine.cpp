@@ -17,7 +17,7 @@
 
 #ifdef DEBUG
 #include "GuiModule.h"
-#include "Debug.h"
+#include "Statistics.h"
 #endif
 #include "BoardRememberer.h"
 
@@ -133,14 +133,18 @@ int Engine::MarkPosition(const Board &position, int color){
    // GuiModule::printBoard(position, cout);
     int result = Valuator::i().materialValuation(position, color);
     GameState phase = Valuator::i().getGamePhase(position);
-    if (phase == MATTING)
-        return result + Valuator::i().mattingPositionalValue(position, color);
+    if (phase == MATTING) {
+        if (checkDraw(position, color))
+            return -1000;
+        else
+            return result + Valuator::i().mattingPositionalValue(position, color);
+    }
     result += PawnsValuator::getPositionalValue(position, color, phase);
     result += KnightsValuator::getPositionalValue(position, color);
     result += BishopsValuator::getPositionalValue(position, color, phase);
     result += RocksValuator::getPositionalValue(position, color, phase);
     result += QueenValuator::getPositionalValue(position, color, phase);
-    result += KingsValuator::getPositionalValue(position, color, phase);
+    //result += KingsValuator::getPositionalValue(position, color, phase);
     return result;
 }
 
@@ -150,9 +154,10 @@ int Engine::MarkMaterial(const Board &position, int color){
 
 int Engine::AlfaBetaMinimax(int level, const Board &position, int color, int alfa, int beta, bool isMaximalizePhase){
     if (level == 0){
-        int material = MarkMaterial(position, color);
+        int material = MarkMaterial(position, FigInfo::not(color));
         int result = ForcefulAlfaBeta(4, position, color, material, true) - material;
-        return result + MarkPosition(position, color);
+        //GuiModule::printBoard(position, cout);
+        return result + MarkPosition(position, FigInfo::not(color));
     }
     vector<Board> available_positions;
     if (level==1)
@@ -160,23 +165,27 @@ int Engine::AlfaBetaMinimax(int level, const Board &position, int color, int alf
     else
         available_positions = Generator::GetAvailableMovements(position, color);
     //SortingPositions(position, available_moves)
-    if (available_positions.size() == 0)return AlfaBetaMinimax(0, position, color, alfa, beta, isMaximalizePhase);
+    if (available_positions.size() == 0)
+        return AlfaBetaMinimax(0, position, FigInfo::not(color), alfa, beta, isMaximalizePhase);
     for (Board next_position : available_positions){
         int tmp_value = AlfaBetaMinimax(level - 1, next_position, FigInfo::not(color), alfa, beta, !isMaximalizePhase);
         if (isMaximalizePhase){
-            if (tmp_value >= beta)return tmp_value;
-            if (tmp_value > alfa)alfa = tmp_value;
+            alfa = max(alfa, tmp_value);
         }
         else{
-            if (tmp_value <= alfa)return tmp_value;
-            if (tmp_value < beta)beta = tmp_value;
+            beta = min(beta, tmp_value);
+        }
+        if (beta <= alfa) {
+            //GuiModule::printBoard(position, cout);
+            return tmp_value;
         }
     }
+    //GuiModule::printBoard(position, cout);
     return (isMaximalizePhase) ? alfa : beta;
 }
 
 int Engine::ForcefulAlfaBeta(int level, const Board &position, int color, int old_material, bool max){
-    if (level == 0) return MarkMaterial(position, color);
+    if (level == 0) return MarkMaterial(position, FigInfo::not(color));
     vector<Board> available_positions = Generator::GetAttackMovements(position, color);
     //SortingPositions(position, available_moves)
     int best = INT32_MIN, worst = INT32_MAX;
@@ -234,6 +243,13 @@ int Engine::isCastlingMove(int curr_pos, int next_pos, const Board &chessboard)
         }
     }
     return false;
+}
+
+bool Engine::checkDraw(const Board & position, int color)
+{
+    return  position.positions[FigInfo::getPosIndex(K, color)] != DESTROYED 
+            && !checkShah(position, color) 
+            && Generator::GetAvailableMovements(position, FigInfo::not(color)).size() == 0;
 }
 
 Board Engine::makeCastlingMove(int curr_pos, int next_pos, Board & chessboard)
@@ -295,14 +311,14 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
     vector<int> values;
     values.resize(available_positions.size());
     int i;
-#pragma omp parallel for default(none) private(i) shared(values, level, available_positions, color, alfa, beta)
+//#pragma omp parallel for default(none) private(i) shared(values, level, available_positions, color, alfa, beta)
     for (i = 0; i < static_cast<int>(available_positions.size()); i++) {
         values[i] = AlfaBetaMinimax(level - 1, available_positions[i], FigInfo::not(color), alfa, beta, false);
     }
 
     int best = INT32_MIN, best_id = 0;
     for (size_t idx = 0; idx < values.size(); idx++) {
-        if (values[idx] > best && !BoardRememberer::i().isRemembered(available_positions[idx])) {
+        if (values[idx] >= best && !BoardRememberer::i().isRemembered(available_positions[idx])) {
             best = values[idx];
             best_id = idx;
         }
@@ -313,8 +329,8 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
 #ifdef DEBUG
     for (int i = 0; i < values.size(); i++) {
         cout << values[i]<<endl;
-        Debug::printValues(available_positions[i], color);
-        GuiModule::printBoard(available_positions[i], cout);
+        //Statistics::printValues(available_positions[i], color);
+        //GuiModule::printBoard(available_positions[i], cout);
     }
 #endif
     BoardRememberer::i().addBoard(available_positions[best_id]);

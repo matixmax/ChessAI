@@ -23,7 +23,7 @@ void TestsBoards::initTests()
 
     board = {
         Rbl, Emp, Emp, Emp, Kgb, Emp, Emp, Rbr,
-        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Emp, Pb6, Pb7, Pb8,
         Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
         Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
         Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,

@@ -1,5 +1,6 @@
 #include "BishopsValuator.h"
 #include "FigInfo.h"
+#include "properties.h"
 
 using namespace std;
 
@@ -11,7 +12,7 @@ int BishopsValuator::getPositionalValue(const Board & chessboard, int color, Gam
     int value = 0;
     value += getOneSidePositionalValue(chessboard, color, phase);
     value -= getOneSidePositionalValue(chessboard, FigInfo::not(color), phase);
-    return value;
+    return Properies::bishopsPosFact[color] * value;
 }
 
 int BishopsValuator::getOneSidePositionalValue(const Board & chessboard, int color, GameState phase)

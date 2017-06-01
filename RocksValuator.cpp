@@ -10,7 +10,7 @@ int RocksValuator::getPositionalValue(const Board & chessboard, int color, GameS
     int value = 0; 
     value += getOneSidePositionalValue(chessboard, color, phase);
     value -= getOneSidePositionalValue(chessboard, FigInfo::not(color), phase);
-    return value;
+    return Properies::rocksPosFact[color] * value;
 }
 
 int RocksValuator::getOneSidePositionalValue(const Board & chessboard, int color, GameState phase) {

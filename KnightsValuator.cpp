@@ -8,7 +8,7 @@ int Valuation::KnightsValuator::getPositionalValue(const Board & chessboard, int
     int value = 0;
     value += getOneSidePositionalValue(chessboard, color);
     value -= getOneSidePositionalValue(chessboard, FigInfo::not(color));
-    return value;
+    return Properies::knightsPosFact[color] * value;
 }
 
 int KnightsValuator::getOneSidePositionalValue(const Board & chessboard, int color)

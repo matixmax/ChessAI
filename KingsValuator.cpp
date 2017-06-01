@@ -10,7 +10,7 @@ int KingsValuator::getPositionalValue(const Board & chessboard, int color, GameS
     int value = 0;
     value += getOneSidePositionalValue(chessboard, color, phase);
     value -= getOneSidePositionalValue(chessboard, FigInfo::not(color), phase);
-    return value;
+    return Properies::kingsPosFact[color] * value;
 }
 
 int KingsValuator::getOneSidePositionalValue(const Board & chessboard, int color, GameState phase)

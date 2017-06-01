@@ -19,12 +19,12 @@ int PawnsValuator::getOneSidePositionalValue(const Board & chessboard, int color
     return value;
 }
 
-int PawnsValuator::getPositionalValue(const Board & chessboard, int myColor, GameState phase)
+int PawnsValuator::getPositionalValue(const Board & chessboard, int color, GameState phase)
 {
     int value = 0;
-    value += getOneSidePositionalValue(chessboard, myColor, phase);
-    value -= getOneSidePositionalValue(chessboard, FigInfo::not(myColor), phase);
-    return value;
+    value += getOneSidePositionalValue(chessboard, color, phase);
+    value -= getOneSidePositionalValue(chessboard, FigInfo::not(color), phase);
+    return Properies::pawnsPosFact[color] * value;
 }
 
 int PawnsValuator::countValueForIzolation(const Board & chessboard, int color, int pos)

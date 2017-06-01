@@ -2,6 +2,7 @@
 
 #include "Definitions.h"
 #include "Board.h"
+#include "properties.h"
 
 namespace Valuation {
 
@@ -19,6 +20,7 @@ public:
     GameState getGamePhase(const Board & chessboard);
     int materialValuation(const Board & chessboard, int color);
     int mattingPositionalValue(const Board & chessboard, int color);
+    std::pair<int, int> countMaterial(const Board & chessboard);
 
 protected:
     Valuator();
@@ -28,7 +30,6 @@ protected:
     bool matCondition(const Board &chessboard, int color);
     int getFiguresInStartPos(const Board & chessboard);
     int countSumOfPawns(const Board & chessboard, int color);
-    std::pair<int, int> countMaterial(const Board & chessboard);
 
     std::vector<int> m_figValues;
 };

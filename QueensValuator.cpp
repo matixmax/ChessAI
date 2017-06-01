@@ -10,7 +10,7 @@ int QueenValuator::getPositionalValue(const Board & chessboard, int color, GameS
     value += getOneSidePositionalValue(chessboard, color, phase);
     value -= getOneSidePositionalValue(chessboard, FigInfo::not(color), phase);
     
-    return value;
+    return Properies::queenPosFact[color] * value;
 }
 
 int QueenValuator::getOneSidePositionalValue(const Board & chessboard, int color, GameState phase)

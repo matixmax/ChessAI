@@ -27,6 +27,9 @@ using namespace Valuation;
 bool Engine::checkFiguresMovement(int curr_pos, int next_pos, const Board &chessboard){
     int figure = chessboard.board[curr_pos];
     int distance = 1;
+    if (isCastlingMove(curr_pos, next_pos, chessboard)) {
+        return true;
+    }
     for (unsigned int move_id = 0; move_id < g_figMoves[figure].size() && distance < 8; move_id++){
         if (g_figMoves[figure][move_id] == RANGED_FAR){
             distance++;
@@ -84,23 +87,17 @@ bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int color, 
         cout << "bad movement" << endl;
         return false;
     }
-    Board copy_board = chessboard;
-    if (copy_board.board[next_pos] != EMPTY){
-        if (copy_board.colors[next_pos] == copy_board.colors[curr_pos]){
-            cout << "can't attack myself" << endl;
-            return false;
-        }
-        int attacked_fig = 0;
-        while (attacked_fig < NUMBER_OF_POSITIONS && copy_board.positions[attacked_fig] != next_pos)attacked_fig++;
-        assert(copy_board.positions[attacked_fig] == next_pos);
-        copy_board.positions[attacked_fig] = DESTROYED;
+    if (chessboard.board[next_pos] != EMPTY && chessboard.colors[next_pos] == chessboard.colors[curr_pos]) {
+        cout << "can't attack myself" << endl;
+        return false;
     }
-
-    copy_board.positions[figure] = next_pos;
-    copy_board.board[curr_pos] = EMPTY;
-    copy_board.colors[curr_pos] = EMPTY;
-    copy_board.board[next_pos] = FigInfo::getFigNumber(figure, figure / 16);
-    copy_board.colors[next_pos] = figure / 16;
+    Board copy_board;
+    if (isCastlingMove(curr_pos, next_pos, chessboard)) {
+        copy_board = makeCastlingMove(curr_pos, next_pos, chessboard);
+    }
+    else {
+        copy_board = makeCommonMove(chessboard, next_pos, curr_pos, figure);
+    }
     if (!trick_mode && checkShah(copy_board, color))
         copy_board.states.shah = color;
     if (!trick_mode && checkShah(copy_board, FigInfo::not(color)))
@@ -112,6 +109,24 @@ bool Engine::userMove(int curr_pos, int next_pos, Board &chessboard, int color, 
     copy_board = PawnsPromotion::promoteAll(copy_board);
     chessboard = copy_board;
     return true;
+}
+
+Board Engine::makeCommonMove(const Board &chessboard, int next_pos, int curr_pos, int figure)
+{
+    Board copy_board = chessboard;
+    if (copy_board.board[next_pos] != EMPTY) {
+        int attacked_fig = 0;
+        while (attacked_fig < NUMBER_OF_POSITIONS && copy_board.positions[attacked_fig] != next_pos)attacked_fig++;
+        assert(copy_board.positions[attacked_fig] == next_pos);
+        copy_board.positions[attacked_fig] = DESTROYED;
+    }
+
+    copy_board.positions[figure] = next_pos;
+    copy_board.board[curr_pos] = EMPTY;
+    copy_board.colors[curr_pos] = EMPTY;
+    copy_board.board[next_pos] = FigInfo::getFigNumber(figure, figure / 16);
+    copy_board.colors[next_pos] = FigInfo::getColor(figure);
+    return copy_board;
 }
 
 int Engine::MarkPosition(const Board &position, int color){
@@ -180,6 +195,83 @@ int Engine::ForcefulAlfaBeta(int level, const Board &position, int color, int ol
     }
     if (max)return best;
     return worst;
+}
+
+int Engine::isCastlingMove(int curr_pos, int next_pos, const Board &chessboard)
+{
+    int myColor = chessboard.colors[curr_pos];
+    bool kingInitialCondition = (   chessboard.board[curr_pos] == K 
+                                    && chessboard.states.figOnStartPos[FigInfo::getPosIndex(K, myColor)]);
+    if (kingInitialCondition == false)
+        return false;
+    
+    if (myColor == WHITE) {
+        if (next_pos == 62) {
+            bool freePath = chessboard.board[next_pos] == EMPTY && chessboard.board[next_pos - 1] == EMPTY;
+            bool rookIsNeighbor = chessboard.board[next_pos + 1] == W;
+            bool rookIsInStartPos = chessboard.states.figOnStartPos[FigInfo::getPosIndex(W, WHITE, 1)];
+            return freePath && rookIsNeighbor && rookIsInStartPos;
+        }
+        else if (next_pos == 57) {
+            bool freePath = chessboard.board[next_pos] == EMPTY && chessboard.board[next_pos + 1] == EMPTY  && chessboard.board[next_pos + 2] == EMPTY;
+            bool rookIsNeighbor = chessboard.board[next_pos - 1] == W;
+            bool rookIsInStartPos = chessboard.states.figOnStartPos[FigInfo::getPosIndex(W, WHITE, 0)];
+            return freePath && rookIsNeighbor && rookIsInStartPos;
+        }
+    }
+    else {
+        if (next_pos == 6) {
+            bool freePath = chessboard.board[next_pos] == EMPTY && chessboard.board[next_pos - 1] == EMPTY;
+            bool rookIsNeighbor = chessboard.board[next_pos + 1] == W;
+            bool rookIsInStartPos = chessboard.states.figOnStartPos[FigInfo::getPosIndex(W, BLACK, 1)];
+            return freePath && rookIsNeighbor && rookIsInStartPos;
+        }
+        else if (next_pos == 57) {
+            bool freePath = chessboard.board[next_pos] == EMPTY && chessboard.board[next_pos + 1] == EMPTY  && chessboard.board[next_pos + 2] == EMPTY;
+            bool rookIsNeighbor = chessboard.board[next_pos - 1] == W;
+            bool rookIsInStartPos = chessboard.states.figOnStartPos[FigInfo::getPosIndex(W, BLACK, 0)];
+            return freePath && rookIsNeighbor && rookIsInStartPos;
+        }
+    }
+    return false;
+}
+
+Board Engine::makeCastlingMove(int curr_pos, int next_pos, Board & chessboard)
+{
+    Board copy_board = chessboard;
+    int myColor = chessboard.colors[curr_pos];
+    int kingPosIdx = FigInfo::getPosIndex(K, myColor);
+    copy_board.positions[kingPosIdx] = next_pos;
+    copy_board.board[curr_pos] = EMPTY;
+    copy_board.colors[curr_pos] = EMPTY;
+    copy_board.states.figOnStartPos[kingPosIdx] = false;
+    copy_board.board[next_pos] = K;
+    copy_board.colors[next_pos] = myColor;
+    const int shiftToRight = 1, shiftToLeft = -1;
+    if (next_pos == 62 || next_pos == 6) {
+        int rookPosIdx = FigInfo::getPosIndex(W, myColor, 1);
+        return moveRookOnCastling(rookPosIdx, copy_board, next_pos, shiftToRight);
+    }
+    else if (next_pos == 57 || next_pos == 1) {
+        int rookPosIdx = FigInfo::getPosIndex(W, myColor, 0);
+        return moveRookOnCastling(rookPosIdx, copy_board, next_pos, shiftToLeft);
+    }
+    else {
+        throw runtime_error("something wrong with next pos on castling in user move");
+    }
+
+}
+
+Board Engine::moveRookOnCastling(int rookPosIdx, Board &copy_board, int next_pos, int shiftToRockPos)
+{
+    int myColor = FigInfo::getColor(rookPosIdx);
+    copy_board.positions[rookPosIdx] = next_pos - shiftToRockPos;
+    copy_board.board[next_pos + shiftToRockPos] = EMPTY;
+    copy_board.colors[next_pos + shiftToRockPos] = EMPTY;
+    copy_board.states.figOnStartPos[rookPosIdx] = false;
+    copy_board.board[next_pos - shiftToRockPos] = W;
+    copy_board.colors[next_pos - shiftToRockPos] = rookPosIdx;
+    return copy_board;
 }
 
 Board Engine::NormalAlfaBeta(Board &position, int color, int level) {

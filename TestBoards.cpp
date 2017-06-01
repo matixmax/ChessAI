@@ -28,7 +28,7 @@ void TestsBoards::initTests()
         Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
         Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
         Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
-        Emp, Emp, Pb3, Emp, Pw5, Emp, Emp, Emp,
+        Emp, Emp, Emp, Emp, Emp, Emp, Emp, Emp,
         Emp, Emp, Emp, Emp, Kgw, Emp, Emp, Emp };
 
     commonBoard = Wizard::create(board);

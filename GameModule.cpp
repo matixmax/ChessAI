@@ -17,8 +17,6 @@ GameModule::GameModule():m_gameExitCondition(false)
 {
 }
 
-
-
 std::pair<int,int> GameModule::loadMove()
 {
     string currPos, nextPos;

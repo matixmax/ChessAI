@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{577E4E9F-14B3-4E39-B1DF-5BD77B2E7871}</ProjectGuid>
+    <RootNamespace>GraAI</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <SourcePath>$(VC_SourcePath)\src;</SourcePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <OpenMPSupport>true</OpenMPSupport>
+      <AdditionalIncludeDirectories>F:\FILES\SZKOŁA\STUDIA\PW\Projekt\GraAIDev\GraAI\boost_1_63_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>G:\FILES\Sources\STUDIA\Licencjat\GraAIMAster\GraAI\googleTest\gtest-md;G:\FILES\Sources\STUDIA\Licencjat\GraAIMAster\GraAI\googleTest\gtest;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\BishopsValuator.h" />
+    <ClInclude Include="src\Board.h" />
+    <ClInclude Include="src\BoardRememberer.h" />
+    <ClInclude Include="src\BoardStates.h" />
+    <ClInclude Include="src\BoardWizard.h" />
+    <ClInclude Include="src\PropertiesLoader.h" />
+    <ClInclude Include="src\Statistics.h" />
+    <ClInclude Include="src\Definitions.h" />
+    <ClInclude Include="src\Engine.h" />
+    <ClInclude Include="src\FigInfo.h" />
+    <ClInclude Include="src\GameModule.h" />
+    <ClInclude Include="src\Initializator.h" />
+    <ClInclude Include="src\GuiModule.h" />
+    <ClInclude Include="src\Generator.h" />
+    <ClInclude Include="src\Globals.h" />
+    <ClInclude Include="src\KingsValuator.h" />
+    <ClInclude Include="src\KnightsValuator.h" />
+    <ClInclude Include="src\MathLogicStore.h" />
+    <ClInclude Include="src\PawnsPromotion.h" />
+    <ClInclude Include="src\PawnsValuator.h" />
+    <ClInclude Include="src\properties.h" />
+    <ClInclude Include="src\QueensValuator.h" />
+    <ClInclude Include="src\RocksValuator.h" />
+    <ClInclude Include="src\Settings.h" />
+    <ClInclude Include="src\Special.h" />
+    <ClInclude Include="src\SpecialsManager.h" />
+    <ClInclude Include="src\TestBoards.h" />
+    <ClInclude Include="src\Utilities.hpp" />
+    <ClInclude Include="src\Valuator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\BishopsValuator.cpp" />
+    <ClCompile Include="src\Board.cpp" />
+    <ClCompile Include="src\BoardRememberer.cpp" />
+    <ClCompile Include="src\BoardStates.cpp" />
+    <ClCompile Include="src\BoardWizard.cpp" />
+    <ClCompile Include="src\Properties.cpp" />
+    <ClCompile Include="src\PropertiesLoader.cpp" />
+    <ClCompile Include="src\Statistics.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\FigInfo.cpp" />
+    <ClCompile Include="src\GameModule.cpp" />
+    <ClCompile Include="src\Initializator.cpp" />
+    <ClCompile Include="src\KingsValuator.cpp" />
+    <ClCompile Include="src\KnightsValuator.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Generator.cpp" />
+    <ClCompile Include="src\GuiModule.cpp" />
+    <ClCompile Include="src\MathLogicStore.cpp" />
+    <ClCompile Include="src\PawnsPromotion.cpp" />
+    <ClCompile Include="src\PawnsValuator.cpp" />
+    <ClCompile Include="src\QueensValuator.cpp" />
+    <ClCompile Include="src\RocksValuator.cpp" />
+    <ClCompile Include="src\Settings.cpp" />
+    <ClCompile Include="src\Globals.cpp" />
+    <ClCompile Include="src\Special.cpp" />
+    <ClCompile Include="src\SpecialsManager.cpp" />
+    <ClCompile Include="src\TestBoards.cpp" />
+    <ClCompile Include="src\Valuator.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

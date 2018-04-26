@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Special">
+      <UniqueIdentifier>{bda018a3-4365-46a7-a2ce-ceb9f7cf1758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{312f2cb0-8c8c-4584-a1fa-84cd02a3d907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Valuation">
+      <UniqueIdentifier>{5ecdc121-af27-4914-88ba-ad911f605b25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gui">
+      <UniqueIdentifier>{fef2c585-02e3-4592-9566-395c93836784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generation">
+      <UniqueIdentifier>{221fdab3-aef8-42a9-976b-03e4d6ffc950}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Settings.h">
+      <Filter>Source Files\Special</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Special.h">
+      <Filter>Source Files\Special</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpecialsManager.h">
+      <Filter>Source Files\Special</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Definitions.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Board.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BoardStates.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Globals.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Initializator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameModule.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FigInfo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BoardWizard.h">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Valuator.h">
+      <Filter>Source Files\Valuation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MathLogicStore.h">
+      <Filter>Source Files\Valuation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GuiModule.h">
+      <Filter>Source Files\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RocksValuator.h">
+      <Filter>Source Files\Valuation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Generator.h">
+      <Filter>Source Files\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PawnsPromotion.h">
+      <Filter>Source Files\Generation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TestBoards.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PawnsValuator.h">
+      <Filter>Source Files\Valuation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\QueensValuator.h">
+      <Filter>Source Files\Valuation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KingsValuator.h">
+      <Filter>Source Files\Valuation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KnightsValuator.h">
+      <Filter>Source Files\Valuation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BishopsValuator.h">
+      <Filter>Source Files\Valuation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BoardRememberer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\properties.h">
+      <Filter>Source Files\Valuation</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Statistics.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PropertiesLoader.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utilities.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Settings.cpp">
+      <Filter>Source Files\Special</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Special.cpp">
+      <Filter>Source Files\Special</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpecialsManager.cpp">
+      <Filter>Source Files\Special</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Board.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BoardStates.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Globals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Initializator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FigInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BoardWizard.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Valuator.cpp">
+      <Filter>Source Files\Valuation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MathLogicStore.cpp">
+      <Filter>Source Files\Valuation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PawnsValuator.cpp">
+      <Filter>Source Files\Valuation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GuiModule.cpp">
+      <Filter>Source Files\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Generator.cpp">
+      <Filter>Source Files\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PawnsPromotion.cpp">
+      <Filter>Source Files\Generation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RocksValuator.cpp">
+      <Filter>Source Files\Valuation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TestBoards.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\QueensValuator.cpp">
+      <Filter>Source Files\Valuation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KingsValuator.cpp">
+      <Filter>Source Files\Valuation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KnightsValuator.cpp">
+      <Filter>Source Files\Valuation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BishopsValuator.cpp">
+      <Filter>Source Files\Valuation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BoardRememberer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Statistics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Properties.cpp">
+      <Filter>Source Files\Valuation</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PropertiesLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

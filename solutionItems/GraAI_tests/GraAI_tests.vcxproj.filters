@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="..\src\Board.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BoardStates.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BoardWizard.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Engine.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FigInfo.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GameModule.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Generator.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Globals.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GuiModule.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Initializator.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Settings.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Special.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SpecialsManager.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Valuator.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tests\BoardWizardTests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tests\GeneratorTests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tests\FigInfoTests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tests\ValuatorTests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MathLogicStore.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PawnsValuator.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tests\PawnsValuatorTests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\RocksValuator.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PawnsPromotion.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tests\PawnsPromotionTests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TestBoards.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\QueensValuator.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\KingsValuator.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\KnightsValuator.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BishopsValuator.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Statistics.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Properties.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BoardRememberer.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PropertiesLoader.cpp">
+      <Filter>testSubjects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="tests">
+      <UniqueIdentifier>{017405d7-edfa-446a-9113-d93acbd8f817}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="testSubjects">
+      <UniqueIdentifier>{2c6d8483-d2f2-4237-9297-dc6f0408e70a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

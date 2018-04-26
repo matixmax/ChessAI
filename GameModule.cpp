@@ -11,6 +11,7 @@
 #include "testBoards.h"
 #include "Statistics.h"
 #include "properties.h"
+#include "PropertiesLoader.h"
 
 using namespace std;
 using namespace BoardWizard;
@@ -49,7 +50,7 @@ void GameModule::onGameAITurnament()
     fstream turnamentOutputFile;
     turnamentOutputFile.open("turnamentOutputFile.out", fstream::out);
     turnamentOutputFile << "Properties:" << endl;
-    turnamentOutputFile << Properies::addToStream();
+    turnamentOutputFile << Properies::getFactorsAsString();
     int currentPlayerColor = WHITE;
     while (m_gameExitCondition == false) {
         m_lastBoard = Engine::NormalAlfaBeta(m_lastBoard, currentPlayerColor, 3);
@@ -101,6 +102,7 @@ Board GameModule::getCurrentPlayerMove(int currentPlayerColor)
 
 void GameModule::startGame(int userColor)
 {
+	PropertiesLoader().load("properties.txt");
     Initializator::init();
     GuiModule::printWelcomeInfo(std::cout);
     m_lastBoard = g_baseBoard;

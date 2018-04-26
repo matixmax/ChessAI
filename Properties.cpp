@@ -4,14 +4,14 @@
 
 using namespace std;
 
-const array<int, 2> Properies::pawnsPosFact   { 2, 2 };
-const array<int, 2> Properies::knightsPosFact { 1, 1 };
-const array<int, 2> Properies::bishopsPosFact { 1, 1 };
-const array<int, 2> Properies::rocksPosFact   { 1, 1 };
-const array<int, 2> Properies::queenPosFact   { 1, 1 };
-const array<int, 2> Properies::kingsPosFact   { 1, 1 };
+array<int, 2> Properies::pawnsPosFact   { 2, 2 };
+array<int, 2> Properies::knightsPosFact { 1, 1 };
+array<int, 2> Properies::bishopsPosFact { 1, 1 };
+array<int, 2> Properies::rocksPosFact   { 1, 1 };
+array<int, 2> Properies::queenPosFact   { 1, 1 };
+array<int, 2> Properies::kingsPosFact   { 1, 1 };
 
-string Properies::addToStream()
+string Properies::getFactorsAsString()
 {
     stringstream stream;
     

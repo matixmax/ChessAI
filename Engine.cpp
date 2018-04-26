@@ -144,7 +144,7 @@ int Engine::MarkPosition(const Board &position, int color){
     result += BishopsValuator::getPositionalValue(position, color, phase);
     result += RocksValuator::getPositionalValue(position, color, phase);
     result += QueenValuator::getPositionalValue(position, color, phase);
-    //result += KingsValuator::getPositionalValue(position, color, phase);
+    result += KingsValuator::getPositionalValue(position, color, phase);
     return result;
 }
 
@@ -329,8 +329,8 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
 #ifdef DEBUG
     for (int i = 0; i < values.size(); i++) {
         cout << values[i]<<endl;
-        //Statistics::printValues(available_positions[i], color);
-        //GuiModule::printBoard(available_positions[i], cout);
+        Statistics::printValues(available_positions[i], color);
+        GuiModule::printBoard(available_positions[i], cout);
     }
 #endif
     BoardRememberer::i().addBoard(available_positions[best_id]);

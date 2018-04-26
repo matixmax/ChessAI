@@ -1,0 +1,6 @@
+pawnsPosFact;1;1
+knightsPosFact;1;1
+bishopsPosFact;1;1
+rocksPosFact;1;1
+queenPosFact;1;1
+kingsPosFact;1;1

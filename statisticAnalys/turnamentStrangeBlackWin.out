@@ -1,0 +1,2443 @@
+Properties:
+pawnsPosFact   WHITE 2        BLACK 2
+knightsPosFact WHITE 1        BLACK 1
+bishopsPosFact WHITE 1        BLACK 1
+rocksPosFact   WHITE 1        BLACK 1
+queenPosFact   WHITE 1        BLACK 1
+kingsPosFact   WHITE 1        BLACK 1
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|Gc|Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|Pc|Pc|Pc|Pc|Pc#
+--#-----------------------#
+ 3#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 4#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 6#  |  |  |  |Pb|  |  |  #
+--#-----------------------#
+ 7#Pb|Pb|Pb|Pb|  |Pb|Pb|Pb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|Gb|Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 62
+knights pos value 0
+bishops pos value 0
+rooks pos value 0
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|Gc|Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|Pc|  |Pc|Pc|Pc#
+--#-----------------------#
+ 3#  |  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 6#  |  |  |  |Pb|  |  |  #
+--#-----------------------#
+ 7#Pb|Pb|Pb|Pb|  |Pb|Pb|Pb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|Gb|Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value 0
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|Gc|Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|Pc|  |Pc|Pc|Pc#
+--#-----------------------#
+ 3#  |  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 5#  |  |Gb|  |  |  |  |  #
+--#-----------------------#
+ 6#  |  |  |  |Pb|  |  |  #
+--#-----------------------#
+ 7#Pb|Pb|Pb|Pb|  |Pb|Pb|Pb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value 0
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|Gc|Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|  |  |Pc|Pc|Pc#
+--#-----------------------#
+ 3#  |  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |Gb|  |  |  |  |  #
+--#-----------------------#
+ 6#  |  |  |  |Pb|  |  |  #
+--#-----------------------#
+ 7#Pb|Pb|Pb|Pb|  |Pb|Pb|Pb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 74
+knights pos value 0
+bishops pos value 0
+rooks pos value 0
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|Gc|Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|  |  |Pc|Pc|Pc#
+--#-----------------------#
+ 3#  |  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 6#  |Gb|  |  |Pb|  |  |  #
+--#-----------------------#
+ 7#Pb|Pb|Pb|Pb|  |Pb|Pb|Pb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value -74
+knights pos value 0
+bishops pos value 0
+rooks pos value 0
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|  |  |Pc|Pc|Pc#
+--#-----------------------#
+ 3#  |  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |Gc|Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 6#  |Gb|  |  |Pb|  |  |  #
+--#-----------------------#
+ 7#Pb|Pb|Pb|Pb|  |Pb|Pb|Pb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 74
+knights pos value 0
+bishops pos value 0
+rooks pos value 0
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|  |  |Pc|Pc|Pc#
+--#-----------------------#
+ 3#  |  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |Gc|Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#  |Gb|  |  |Pb|  |  |  #
+--#-----------------------#
+ 7#Pb|Pb|Pb|  |  |Pb|Pb|Pb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value 0
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|  |  |Pc|Pc|Pc#
+--#-----------------------#
+ 3#  |Gc|  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#  |Gb|  |  |Pb|  |  |  #
+--#-----------------------#
+ 7#Pb|Pb|Pb|  |  |Pb|Pb|Pb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value 0
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|  |  |Pc|Pc|Pc#
+--#-----------------------#
+ 3#  |Gc|  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#  |Gb|  |  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Pb|Pb|Pb|  |  |Pb|Pb|  #
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 42
+knights pos value 0
+bishops pos value 0
+rooks pos value 4
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|  |  |Pc|Pc|  #
+--#-----------------------#
+ 3#  |Gc|  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#  |Gb|  |  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Pb|Pb|Pb|  |  |Pb|Pb|  #
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value -2
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#Pc|Pc|Pc|  |  |Pc|Pc|  #
+--#-----------------------#
+ 3#  |Gc|  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|  |  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|Pb|  |  |Pb|Pb|  #
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 42
+knights pos value 0
+bishops pos value 0
+rooks pos value 6
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#  |Pc|Pc|  |  |Pc|Pc|  #
+--#-----------------------#
+ 3#Pc|Gc|  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|  |  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|Pb|  |  |Pb|Pb|  #
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value -4
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#  |Pc|Pc|  |  |Pc|Pc|  #
+--#-----------------------#
+ 3#Pc|Gc|  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|  |  |  |Pb|Pb|  #
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 42
+knights pos value 0
+bishops pos value 0
+rooks pos value 4
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Pc|  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|  |  |  |Pb|Pb|  #
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|Wb#
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value -4
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|Wc#
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Pc|  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|  |  |  |Pb|Pb|Wb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value 29
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Pc|Wc#
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|  |  |  |Pb|Pb|Wb#
+--#-----------------------#
+ 8#Wb|Sb|Gb|Hb|Kb|  |Sb|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value 0
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|Hc|Kc|  |Sc|  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Pc|Wc#
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |  |  |Pb|Pb|Wb#
+--#-----------------------#
+ 8#  |Sb|Gb|Hb|Kb|  |Sb|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value 25
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |Sc|  #
+--#-----------------------#
+ 2#  |Pc|Hc|  |  |Pc|Pc|Wc#
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |  |  |Pb|Pb|Wb#
+--#-----------------------#
+ 8#  |Sb|Gb|Hb|Kb|  |Sb|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase DEBUT
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 0
+rooks pos value -25
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |Sc|  #
+--#-----------------------#
+ 2#  |Pc|Hc|  |  |Pc|Pc|Wc#
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|Hb|  |  |Pb|Pb|Wb#
+--#-----------------------#
+ 8#  |Sb|Gb|  |Kb|  |Sb|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3950
+material BLACK 3950
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 6
+rooks pos value 27
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |Sc|  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Pc|Wc#
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|Hb|  |  |Pb|Pb|Hc#
+--#-----------------------#
+ 8#  |Sb|Gb|  |Kb|  |Sb|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3450
+material BLACK 3950
+material valuation 503
+pawn pos value 0
+knights pos value 0
+bishops pos value -15
+rooks pos value -2
+queens pos value 12
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |Sc|  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Pc|Hb#
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |  |  |Pb|Pb|Hc#
+--#-----------------------#
+ 8#  |Sb|Gb|  |Kb|  |Sb|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3450
+material BLACK 3450
+material valuation 0
+pawn pos value 0
+knights pos value 0
+bishops pos value 6
+rooks pos value 29
+queens pos value 0
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |Sc|  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Pc|Hb#
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |  |  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |Kb|  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 3450
+material valuation 294
+pawn pos value 0
+knights pos value 4
+bishops pos value -6
+rooks pos value -29
+queens pos value 6
+king pos value 0
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |Sc|  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Pc|Hb#
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 3450
+material valuation -294
+pawn pos value 0
+knights pos value -4
+bishops pos value 3
+rooks pos value 25
+queens pos value 0
+king pos value -60
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Pc|Hb#
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|Sc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 3450
+material valuation 294
+pawn pos value 0
+knights pos value 16
+bishops pos value -3
+rooks pos value -25
+queens pos value 0
+king pos value 60
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Hb|  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|Sc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 3350
+material valuation -194
+pawn pos value 4
+knights pos value -16
+bishops pos value 3
+rooks pos value 25
+queens pos value 3
+king pos value -60
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|Hb|  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |Sc#
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 3350
+material valuation 194
+pawn pos value -4
+knights pos value 12
+bishops pos value -3
+rooks pos value -25
+queens pos value -3
+king pos value 60
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|  |  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |Sc#
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |Hb|  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 3350
+material valuation -194
+pawn pos value 4
+knights pos value -12
+bishops pos value 3
+rooks pos value 25
+queens pos value -6
+king pos value -60
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|  |  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|Sc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |Hb|  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 3350
+material valuation 194
+pawn pos value -4
+knights pos value 16
+bishops pos value -3
+rooks pos value -25
+queens pos value 6
+king pos value 60
+###########################
+ 1#Wc|Sc|Gc|  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |  |  |Pc|  |  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|Sc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|Hb|  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 3350
+material valuation -194
+pawn pos value 4
+knights pos value -16
+bishops pos value 3
+rooks pos value 25
+queens pos value -6
+king pos value -60
+###########################
+ 1#Wc|Sc|  |  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |Gc|  |Pc|  |  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|Sc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|Hb|  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 3350
+material valuation 194
+pawn pos value -4
+knights pos value 16
+bishops pos value 39
+rooks pos value -25
+queens pos value 6
+king pos value 60
+###########################
+ 1#Wc|Sc|  |  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |Gc|  |Pc|  |  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|Hb|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 3060
+material valuation 104
+pawn pos value 4
+knights pos value 0
+bishops pos value -39
+rooks pos value 25
+queens pos value 3
+king pos value -60
+###########################
+ 1#Wc|Sc|  |Gc|Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |Gc|  |Pc|  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|Hb|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 3060
+material valuation -104
+pawn pos value -4
+knights pos value 0
+bishops pos value 3
+rooks pos value -25
+queens pos value -3
+king pos value 60
+###########################
+ 1#Wc|Sc|  |Gc|Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |Gc|  |Pc|  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|Hb|  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 3060
+material valuation 104
+pawn pos value 4
+knights pos value 0
+bishops pos value 6
+rooks pos value 25
+queens pos value 3
+king pos value -60
+###########################
+ 1#Wc|Sc|  |Gc|Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|Hb|  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 3060
+material valuation -104
+pawn pos value -42
+knights pos value 0
+bishops pos value -3
+rooks pos value -25
+queens pos value -3
+king pos value 45
+###########################
+ 1#Wc|Sc|  |Gc|Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|Hb|Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 3060
+material valuation 104
+pawn pos value 42
+knights pos value 0
+bishops pos value 3
+rooks pos value 25
+queens pos value 3
+king pos value -45
+###########################
+ 1#Wc|Sc|  |  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|  |Gc|Gc|  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|Hb|Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 3060
+material valuation -104
+pawn pos value -42
+knights pos value 0
+bishops pos value 48
+rooks pos value -25
+queens pos value -3
+king pos value 45
+###########################
+ 1#Wc|Sc|  |  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|Hb|Gc|Gc|  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 3060
+material valuation 104
+pawn pos value 42
+knights pos value 0
+bishops pos value -42
+rooks pos value 25
+queens pos value 3
+king pos value -45
+###########################
+ 1#Wc|Sc|  |Gc|Kc|  |  |  #
+--#-----------------------#
+ 2#  |Pc|Hb|Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 3060
+material valuation -104
+pawn pos value -42
+knights pos value 0
+bishops pos value 6
+rooks pos value -25
+queens pos value -3
+king pos value 45
+###########################
+ 1#Wc|Sc|  |Gc|Kc|  |  |  #
+--#-----------------------#
+ 2#  |Hb|  |Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 2960
+material valuation 204
+pawn pos value 86
+knights pos value 0
+bishops pos value 3
+rooks pos value 25
+queens pos value 0
+king pos value -45
+###########################
+ 1#  |Sc|  |Gc|Kc|  |  |  #
+--#-----------------------#
+ 2#Wc|Hb|  |Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 2960
+material valuation -204
+pawn pos value -86
+knights pos value 0
+bishops pos value -3
+rooks pos value 9
+queens pos value 0
+king pos value 45
+###########################
+ 1#  |Sc|  |Gc|Kc|  |  |  #
+--#-----------------------#
+ 2#Hb|  |  |Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 2460
+material valuation 704
+pawn pos value 86
+knights pos value 0
+bishops pos value 3
+rooks pos value 23
+queens pos value -3
+king pos value -45
+###########################
+ 1#  |Sc|  |  |Kc|  |  |  #
+--#-----------------------#
+ 2#Hb|  |  |Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|Gc|Pc|  |Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 2460
+material valuation -704
+pawn pos value -86
+knights pos value 0
+bishops pos value 48
+rooks pos value -23
+queens pos value 3
+king pos value 45
+###########################
+ 1#  |Sc|  |  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |  |  |Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|Hb|Pc|  |Pc|Pc|  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |  |  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 2150
+material valuation 1015
+pawn pos value 86
+knights pos value 0
+bishops pos value 153
+rooks pos value 23
+queens pos value -3
+king pos value -45
+###########################
+ 1#  |Sc|  |  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |  |  |Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|Hb|Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 2150
+material valuation -1015
+pawn pos value -24
+knights pos value 0
+bishops pos value -153
+rooks pos value -23
+queens pos value 3
+king pos value 45
+###########################
+ 1#  |Hb|  |  |Kc|  |  |  #
+--#-----------------------#
+ 2#  |  |  |Gc|  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation 1305
+pawn pos value 24
+knights pos value 4
+bishops pos value 153
+rooks pos value 23
+queens pos value 3
+king pos value -45
+###########################
+ 1#  |Hb|  |  |  |  |  |  #
+--#-----------------------#
+ 2#  |  |  |Gc|  |Kc|  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation -1305
+pawn pos value -24
+knights pos value -4
+bishops pos value -153
+rooks pos value -23
+queens pos value 3
+king pos value 0
+###########################
+ 1#  |  |  |Hb|  |  |  |  #
+--#-----------------------#
+ 2#  |  |  |Gc|  |Kc|  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation 1305
+pawn pos value 24
+knights pos value 4
+bishops pos value 153
+rooks pos value 23
+queens pos value 3
+king pos value 0
+###########################
+ 1#  |  |  |Hb|Gc|  |  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |Kc|  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |  |  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |Pb|Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation -1305
+pawn pos value -24
+knights pos value -4
+bishops pos value -198
+rooks pos value -23
+queens pos value -3
+king pos value 0
+###########################
+ 1#  |  |  |Hb|Gc|  |  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |Kc|  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |  |Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation 1305
+pawn pos value 48
+knights pos value 4
+bishops pos value 198
+rooks pos value 23
+queens pos value 3
+king pos value 0
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|  |Kb|  |  |Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation -1305
+pawn pos value -48
+knights pos value -4
+bishops pos value -198
+rooks pos value -21
+queens pos value -6
+king pos value 50
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |Pc|  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|Kb|  |  |  |Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation 1305
+pawn pos value 48
+knights pos value 4
+bishops pos value 201
+rooks pos value 21
+queens pos value 9
+king pos value -50
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |Pc|Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|Kb|  |  |  |Pb|  #
+--#-----------------------#
+ 8#  |Sb|Gb|  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation -1305
+pawn pos value -26
+knights pos value -4
+bishops pos value -204
+rooks pos value -21
+queens pos value -9
+king pos value 50
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |Pc|Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|Kb|Gb|  |  |Pb|  #
+--#-----------------------#
+ 8#  |Sb|  |  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation 1305
+pawn pos value 26
+knights pos value 4
+bishops pos value 246
+rooks pos value 21
+queens pos value 9
+king pos value -50
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |Pc|Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Wb|Pb|Kb|Gb|  |  |Pb|  #
+--#-----------------------#
+ 8#  |Sb|  |  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation -1305
+pawn pos value 14
+knights pos value -4
+bishops pos value -246
+rooks pos value -21
+queens pos value -9
+king pos value 50
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |Pc|Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Gb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|Kb|Gb|  |  |Pb|  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 3160
+material BLACK 1860
+material valuation 1305
+pawn pos value -14
+knights pos value 4
+bishops pos value 240
+rooks pos value -6
+queens pos value 9
+king pos value -50
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Pc|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|Kb|Gb|  |  |Pb|  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2850
+material BLACK 1860
+material valuation -995
+pawn pos value -50
+knights pos value -4
+bishops pos value -48
+rooks pos value 6
+queens pos value -9
+king pos value 50
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Kb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|  |Gb|  |  |Pb|  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |Hc|  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2850
+material BLACK 1760
+material valuation 1095
+pawn pos value 16
+knights pos value 4
+bishops pos value 48
+rooks pos value -6
+queens pos value 15
+king pos value -110
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|Kb|Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#  |Pb|  |Gb|  |  |Hc|  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation -995
+pawn pos value -12
+knights pos value -4
+bishops pos value -48
+rooks pos value 6
+queens pos value -12
+king pos value 110
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|  |Pb|  |  #
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |Hc|  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation 995
+pawn pos value 12
+knights pos value 4
+bishops pos value 48
+rooks pos value -10
+queens pos value 12
+king pos value 0
+###########################
+ 1#  |  |  |Hb|Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|Hc|Pb|  |  #
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation -995
+pawn pos value -12
+knights pos value -4
+bishops pos value -48
+rooks pos value 10
+queens pos value -12
+king pos value 0
+###########################
+ 1#  |  |Hb|  |Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Pc|  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|Hc|Pb|  |  #
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation 995
+pawn pos value 12
+knights pos value 4
+bishops pos value 48
+rooks pos value -10
+queens pos value 9
+king pos value 0
+###########################
+ 1#  |  |Hb|  |Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#Pc|  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|Hc|Pb|  |  #
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |Pb#
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation -995
+pawn pos value -10
+knights pos value -4
+bishops pos value -48
+rooks pos value 10
+queens pos value -9
+king pos value 0
+###########################
+ 1#  |  |Hb|  |Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |  |Pc|  |  |Pc#
+--#-----------------------#
+ 4#Pc|  |  |Pc|  |Pc|  |  #
+--#-----------------------#
+ 5#  |  |  |Pb|Hc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation 995
+pawn pos value 12
+knights pos value 4
+bishops pos value 48
+rooks pos value -10
+queens pos value 9
+king pos value 0
+###########################
+ 1#  |  |Hb|  |Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#Pc|  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#  |  |  |Pb|Hc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation -995
+pawn pos value -10
+knights pos value -4
+bishops pos value -45
+rooks pos value 10
+queens pos value -9
+king pos value 0
+###########################
+ 1#  |  |  |  |Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Hb|  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#Pc|  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#  |  |  |Pb|Hc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation 995
+pawn pos value 10
+knights pos value 4
+bishops pos value 45
+rooks pos value -10
+queens pos value -3
+king pos value 0
+###########################
+ 1#  |  |  |  |Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Hb|  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |  |Pb|Hc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation -995
+pawn pos value -10
+knights pos value -4
+bishops pos value -42
+rooks pos value 10
+queens pos value 3
+king pos value 0
+###########################
+ 1#  |  |  |  |Gc|Kc|  |  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |Hb|Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |  |Pb|Hc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation 995
+pawn pos value 10
+knights pos value 4
+bishops pos value 42
+rooks pos value -10
+queens pos value 6
+king pos value 0
+###########################
+ 1#  |  |  |  |Gc|  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |Hb|Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |  |Pb|Hc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation -995
+pawn pos value -10
+knights pos value -4
+bishops pos value -42
+rooks pos value 12
+queens pos value -3
+king pos value 15
+###########################
+ 1#  |  |  |  |Gc|  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Hb|  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |  |Pb|Hc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation 995
+pawn pos value 10
+knights pos value 4
+bishops pos value 42
+rooks pos value -12
+queens pos value -6
+king pos value -15
+###########################
+ 1#  |  |  |  |Gc|  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#Hb|  |  |  |Pc|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |  |Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|Hc|Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2750
+material BLACK 1760
+material valuation -995
+pawn pos value -10
+knights pos value -4
+bishops pos value -42
+rooks pos value 12
+queens pos value 18
+king pos value 15
+###########################
+ 1#  |  |  |  |Gc|  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |  |Hb|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |  |Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|Hc|Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2750
+material BLACK 1660
+material valuation 1095
+pawn pos value 80
+knights pos value 4
+bishops pos value 42
+rooks pos value -12
+queens pos value -6
+king pos value -15
+###########################
+ 1#  |  |  |  |  |  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |Gc|  |  #
+--#-----------------------#
+ 3#  |  |  |  |Hb|  |  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |  |Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|Hc|Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2750
+material BLACK 1660
+material valuation -1095
+pawn pos value -80
+knights pos value -4
+bishops pos value 6
+rooks pos value 12
+queens pos value 6
+king pos value 15
+###########################
+ 1#  |  |  |  |  |  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |Gc|  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |Hb|  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |  |Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|Hc|Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2750
+material BLACK 1660
+material valuation 1095
+pawn pos value 80
+knights pos value 4
+bishops pos value 0
+rooks pos value -12
+queens pos value -3
+king pos value -15
+###########################
+ 1#  |  |  |  |  |  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |Gc|  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |Hb|  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |  |Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |Pb|Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2750
+material BLACK 1660
+material valuation -1095
+pawn pos value -80
+knights pos value -4
+bishops pos value 0
+rooks pos value 12
+queens pos value -3
+king pos value 15
+###########################
+ 1#  |  |  |  |  |  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |Gc|  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |Hb|  |  #
+--#-----------------------#
+ 4#  |  |  |Pc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |Pb|Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2750
+material BLACK 1660
+material valuation 1095
+pawn pos value 62
+knights pos value 4
+bishops pos value -3
+rooks pos value -12
+queens pos value 3
+king pos value -15
+###########################
+ 1#  |  |  |  |  |  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |Gc|  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |Hb|  |  #
+--#-----------------------#
+ 4#  |  |  |  |  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |Pc|Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2650
+material BLACK 1660
+material valuation -995
+pawn pos value -84
+knights pos value -4
+bishops pos value 3
+rooks pos value 12
+queens pos value -3
+king pos value 15
+###########################
+ 1#  |  |  |  |  |  |Kc|  #
+--#-----------------------#
+ 2#  |  |  |  |  |Gc|  |  #
+--#-----------------------#
+ 3#  |  |Hb|  |  |  |  |  #
+--#-----------------------#
+ 4#  |  |  |  |  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |Pc|Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase MID_GAME
+material WHITE 2650
+material BLACK 1660
+material valuation 995
+pawn pos value 84
+knights pos value 4
+bishops pos value -3
+rooks pos value -12
+queens pos value -6
+king pos value -15
+###########################
+ 1#  |  |  |  |  |  |  |Kc#
+--#-----------------------#
+ 2#  |  |  |  |  |Gc|  |  #
+--#-----------------------#
+ 3#  |  |Hb|  |  |  |  |  #
+--#-----------------------#
+ 4#  |  |  |  |  |Pc|  |Pc#
+--#-----------------------#
+ 5#Pc|  |Pc|Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase MID_GAME
+material WHITE 2650
+material BLACK 1660
+material valuation -995
+pawn pos value -84
+knights pos value -4
+bishops pos value 3
+rooks pos value 14
+queens pos value 9
+king pos value 5
+###########################
+ 1#  |  |  |  |  |  |  |Kc#
+--#-----------------------#
+ 2#  |  |  |  |  |Gc|  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 4#  |  |  |  |  |Pc|  |Pc#
+--#-----------------------#
+ 5#Hb|  |Pc|Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase EARLY_ENDING
+material WHITE 2650
+material BLACK 1560
+material valuation 1096
+pawn pos value -12
+knights pos value 4
+bishops pos value -1
+rooks pos value -14
+queens pos value -25
+king pos value 3
+###########################
+ 1#  |  |  |  |  |  |  |Kc#
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 4#  |  |  |Gc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#Hb|  |Pc|Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase EARLY_ENDING
+material WHITE 2650
+material BLACK 1560
+material valuation -1096
+pawn pos value 12
+knights pos value -4
+bishops pos value 28
+rooks pos value 14
+queens pos value 25
+king pos value -3
+###########################
+ 1#  |  |  |  |  |  |  |Kc#
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 4#  |Hb|  |Gc|  |Pc|  |Pc#
+--#-----------------------#
+ 5#  |  |Pc|Pb|  |Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase EARLY_ENDING
+material WHITE 2650
+material BLACK 1560
+material valuation 1096
+pawn pos value -12
+knights pos value 4
+bishops pos value -28
+rooks pos value -14
+queens pos value -17
+king pos value 3
+###########################
+ 1#  |  |  |  |  |  |  |Kc#
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 4#  |Hb|  |  |  |Pc|  |Pc#
+--#-----------------------#
+ 5#  |  |Pc|Pb|Gc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|Pb|  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase EARLY_ENDING
+material WHITE 2650
+material BLACK 1560
+material valuation -1096
+pawn pos value 12
+knights pos value -4
+bishops pos value 31
+rooks pos value 14
+queens pos value 17
+king pos value -3
+###########################
+ 1#  |  |  |  |  |  |  |Kc#
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 4#  |Hb|  |  |  |Pc|  |Pc#
+--#-----------------------#
+ 5#  |Pb|Pc|Pb|Gc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |Hc|Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|  |  |Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color WHITE
+phase EARLY_ENDING
+material WHITE 2650
+material BLACK 1560
+material valuation 1096
+pawn pos value 4
+knights pos value 4
+bishops pos value -30
+rooks pos value -14
+queens pos value -17
+king pos value 3
+###########################
+ 1#  |  |  |  |  |  |  |Kc#
+--#-----------------------#
+ 2#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 3#  |  |  |  |  |  |  |  #
+--#-----------------------#
+ 4#  |Hb|  |  |  |Pc|  |Pc#
+--#-----------------------#
+ 5#  |Pb|Pc|Pb|Gc|Pb|  |Pb#
+--#-----------------------#
+ 6#Pb|  |  |  |Pb|  |  |  #
+--#-----------------------#
+ 7#Kb|  |Hc|Gb|  |  |  |  #
+--#-----------------------#
+ 8#Wb|Sb|  |  |  |  |  |  #
+###########################
+### A| B| C| D| E| F| G| H|
+color BLACK
+phase EARLY_ENDING
+material WHITE 2650
+material BLACK 1560
+material valuation -1096
+pawn pos value -4
+knights pos value -4
+bishops pos value 30
+rooks pos value 14
+queens pos value 19
+king pos value -3

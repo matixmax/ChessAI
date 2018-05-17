@@ -62,6 +62,7 @@ void GameModule::onGameAITurnament()
         GuiModule::printBoard(m_lastBoard, cout);
         currentPlayerColor = FigInfo::not(currentPlayerColor);
     }
+	turnamentOutputFile.close();
 }
 
 void GameModule::onGamePlayWithPlayer()

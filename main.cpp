@@ -18,5 +18,7 @@ int main() {
     //GameModule::i().startTestMode(BLACK, 1);
     GameModule::i().onGameAITurnament();
     //GameModule::i().onGamePlayWithPlayer();
-    system("pause");
+#ifdef _DEBUG
+	system("pause");
+#endif
 }

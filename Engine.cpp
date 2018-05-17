@@ -316,13 +316,19 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
         values[i] = AlfaBetaMinimax(level - 1, available_positions[i], FigInfo::not(color), alfa, beta, false);
     }
 
-    int best = INT32_MIN, best_id = 0;
+    int best = INT32_MIN, best_id = -1;
     for (size_t idx = 0; idx < values.size(); idx++) {
         if (values[idx] >= best && !BoardRememberer::i().isRemembered(available_positions[idx])) {
             best = values[idx];
             best_id = idx;
         }
     }
+
+	if (best_id == -1) {
+		cout << "STALEMATE NOBODY WIN" << endl;
+		position.states.shah = END;
+		return position;
+	}
 
     if (available_positions[best_id].states.shah == color)
         available_positions[best_id].states.shah = EMPTY;

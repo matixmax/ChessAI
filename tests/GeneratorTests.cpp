@@ -1,7 +1,7 @@
-#include "gtest/gtest.h"
-#include "../Board.h"
-#include "../Generator.h"
-#include "../BoardWizard.h"
+#include "stdafx.h"
+#include "Board.h"
+#include "Generator.h"
+#include "BoardWizard.h"
 
 using namespace BoardWizard;
 using namespace std;

@@ -1,13 +1,13 @@
-#include "gtest/gtest.h"
-#include "../Board.h"
-#include "../BoardWizard.h"
-#include "../Valuator.h"
-#include "../PawnsValuator.h"
-#include "../RocksValuator.h"
-#include "../QueensValuator.h"
-#include "../KingsValuator.h"
-#include "../KnightsValuator.h"
-#include "../BishopsValuator.h"
+#include "stdafx.h"
+#include "Board.h"
+#include "BoardWizard.h"
+#include "Valuator.h"
+#include "PawnsValuator.h"
+#include "RocksValuator.h"
+#include "QueensValuator.h"
+#include "KingsValuator.h"
+#include "KnightsValuator.h"
+#include "BishopsValuator.h"
 
 using namespace Valuation;
 using namespace BoardWizard;

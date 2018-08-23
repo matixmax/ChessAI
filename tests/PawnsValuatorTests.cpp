@@ -1,8 +1,9 @@
-#include "gtest/gtest.h"
-#include "../Board.h"
-#include "../BoardWizard.h"
-#include "../Valuator.h"
-#include "../PawnsValuator.h"
+#include "stdafx.h"
+#include "Board.h"
+#include "BoardWizard.h"
+#include "Valuator.h"
+#include "PawnsValuator.h"
+
 
 using namespace Valuation;
 using namespace BoardWizard;

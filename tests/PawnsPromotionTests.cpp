@@ -1,7 +1,7 @@
-#include "gtest/gtest.h"
-#include "../Board.h"
-#include "../BoardWizard.h"
-#include "../PawnsPromotion.h"
+#include "stdafx.h"
+#include "Board.h"
+#include "BoardWizard.h"
+#include "PawnsPromotion.h"
 
 using namespace BoardWizard;
 using namespace std;

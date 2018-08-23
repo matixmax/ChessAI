@@ -1,6 +1,6 @@
-#include "gtest/gtest.h"
-#include "../Board.h"
-#include "../BoardWizard.h"
+#include "stdafx.h"
+#include "Board.h"
+#include "BoardWizard.h"
 
 using namespace BoardWizard;
 

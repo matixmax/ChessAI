@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <SourcePath>$(VC_SourcePath)\src;</SourcePath>
+    <SourcePath>$(VC_SourcePath)\..;</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -47,12 +47,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <OpenMPSupport>true</OpenMPSupport>
-      <AdditionalIncludeDirectories>F:\FILES\SZKOŁA\STUDIA\PW\Projekt\GraAIDev\GraAI\boost_1_63_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>G:\FILES\Sources\STUDIA\Licencjat\GraAIMAster\GraAI\googleTest\gtest-md;G:\FILES\Sources\STUDIA\Licencjat\GraAIMAster\GraAI\googleTest\gtest;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\googleTest\gtest-md;..\googleTest\gtest;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -63,73 +63,75 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\googleTest\gtest-md;..\googleTest\gtest;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\BishopsValuator.h" />
-    <ClInclude Include="src\Board.h" />
-    <ClInclude Include="src\BoardRememberer.h" />
-    <ClInclude Include="src\BoardStates.h" />
-    <ClInclude Include="src\BoardWizard.h" />
-    <ClInclude Include="src\PropertiesLoader.h" />
-    <ClInclude Include="src\Statistics.h" />
-    <ClInclude Include="src\Definitions.h" />
-    <ClInclude Include="src\Engine.h" />
-    <ClInclude Include="src\FigInfo.h" />
-    <ClInclude Include="src\GameModule.h" />
-    <ClInclude Include="src\Initializator.h" />
-    <ClInclude Include="src\GuiModule.h" />
-    <ClInclude Include="src\Generator.h" />
-    <ClInclude Include="src\Globals.h" />
-    <ClInclude Include="src\KingsValuator.h" />
-    <ClInclude Include="src\KnightsValuator.h" />
-    <ClInclude Include="src\MathLogicStore.h" />
-    <ClInclude Include="src\PawnsPromotion.h" />
-    <ClInclude Include="src\PawnsValuator.h" />
-    <ClInclude Include="src\properties.h" />
-    <ClInclude Include="src\QueensValuator.h" />
-    <ClInclude Include="src\RocksValuator.h" />
-    <ClInclude Include="src\Settings.h" />
-    <ClInclude Include="src\Special.h" />
-    <ClInclude Include="src\SpecialsManager.h" />
-    <ClInclude Include="src\TestBoards.h" />
-    <ClInclude Include="src\Utilities.hpp" />
-    <ClInclude Include="src\Valuator.h" />
+    <ClInclude Include="..\BishopsValuator.h" />
+    <ClInclude Include="..\Board.h" />
+    <ClInclude Include="..\BoardRememberer.h" />
+    <ClInclude Include="..\BoardStates.h" />
+    <ClInclude Include="..\BoardWizard.h" />
+    <ClInclude Include="..\PropertiesLoader.h" />
+    <ClInclude Include="..\Statistics.h" />
+    <ClInclude Include="..\Definitions.h" />
+    <ClInclude Include="..\Engine.h" />
+    <ClInclude Include="..\FigInfo.h" />
+    <ClInclude Include="..\GameModule.h" />
+    <ClInclude Include="..\Initializator.h" />
+    <ClInclude Include="..\GuiModule.h" />
+    <ClInclude Include="..\Generator.h" />
+    <ClInclude Include="..\Globals.h" />
+    <ClInclude Include="..\KingsValuator.h" />
+    <ClInclude Include="..\KnightsValuator.h" />
+    <ClInclude Include="..\MathLogicStore.h" />
+    <ClInclude Include="..\PawnsPromotion.h" />
+    <ClInclude Include="..\PawnsValuator.h" />
+    <ClInclude Include="..\properties.h" />
+    <ClInclude Include="..\QueensValuator.h" />
+    <ClInclude Include="..\RocksValuator.h" />
+    <ClInclude Include="..\Settings.h" />
+    <ClInclude Include="..\Special.h" />
+    <ClInclude Include="..\SpecialsManager.h" />
+    <ClInclude Include="..\TestBoards.h" />
+    <ClInclude Include="..\Utilities.hpp" />
+    <ClInclude Include="..\Valuator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\BishopsValuator.cpp" />
-    <ClCompile Include="src\Board.cpp" />
-    <ClCompile Include="src\BoardRememberer.cpp" />
-    <ClCompile Include="src\BoardStates.cpp" />
-    <ClCompile Include="src\BoardWizard.cpp" />
-    <ClCompile Include="src\Properties.cpp" />
-    <ClCompile Include="src\PropertiesLoader.cpp" />
-    <ClCompile Include="src\Statistics.cpp" />
-    <ClCompile Include="src\Engine.cpp" />
-    <ClCompile Include="src\FigInfo.cpp" />
-    <ClCompile Include="src\GameModule.cpp" />
-    <ClCompile Include="src\Initializator.cpp" />
-    <ClCompile Include="src\KingsValuator.cpp" />
-    <ClCompile Include="src\KnightsValuator.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Generator.cpp" />
-    <ClCompile Include="src\GuiModule.cpp" />
-    <ClCompile Include="src\MathLogicStore.cpp" />
-    <ClCompile Include="src\PawnsPromotion.cpp" />
-    <ClCompile Include="src\PawnsValuator.cpp" />
-    <ClCompile Include="src\QueensValuator.cpp" />
-    <ClCompile Include="src\RocksValuator.cpp" />
-    <ClCompile Include="src\Settings.cpp" />
-    <ClCompile Include="src\Globals.cpp" />
-    <ClCompile Include="src\Special.cpp" />
-    <ClCompile Include="src\SpecialsManager.cpp" />
-    <ClCompile Include="src\TestBoards.cpp" />
-    <ClCompile Include="src\Valuator.cpp" />
+    <ClCompile Include="..\BishopsValuator.cpp" />
+    <ClCompile Include="..\Board.cpp" />
+    <ClCompile Include="..\BoardRememberer.cpp" />
+    <ClCompile Include="..\BoardStates.cpp" />
+    <ClCompile Include="..\BoardWizard.cpp" />
+    <ClCompile Include="..\Properties.cpp" />
+    <ClCompile Include="..\PropertiesLoader.cpp" />
+    <ClCompile Include="..\Statistics.cpp" />
+    <ClCompile Include="..\Engine.cpp" />
+    <ClCompile Include="..\FigInfo.cpp" />
+    <ClCompile Include="..\GameModule.cpp" />
+    <ClCompile Include="..\Initializator.cpp" />
+    <ClCompile Include="..\KingsValuator.cpp" />
+    <ClCompile Include="..\KnightsValuator.cpp" />
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\Generator.cpp" />
+    <ClCompile Include="..\GuiModule.cpp" />
+    <ClCompile Include="..\MathLogicStore.cpp" />
+    <ClCompile Include="..\PawnsPromotion.cpp" />
+    <ClCompile Include="..\PawnsValuator.cpp" />
+    <ClCompile Include="..\QueensValuator.cpp" />
+    <ClCompile Include="..\RocksValuator.cpp" />
+    <ClCompile Include="..\Settings.cpp" />
+    <ClCompile Include="..\Globals.cpp" />
+    <ClCompile Include="..\Special.cpp" />
+    <ClCompile Include="..\SpecialsManager.cpp" />
+    <ClCompile Include="..\TestBoards.cpp" />
+    <ClCompile Include="..\Valuator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

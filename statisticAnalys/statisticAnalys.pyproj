@@ -5,13 +5,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>92ff2ef7-041a-473c-b5b5-ca9c5c49473a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>statisticAnalys.py</StartupFile>
+    <StartupFile>testPreparator.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>statisticAnalys</Name>
     <RootNamespace>statisticAnalys</RootNamespace>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <CommandLineArguments>20</CommandLineArguments>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +26,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="statisticAnalys.py" />
+    <Compile Include="TestPlanRandomCreator.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="testPreparator.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

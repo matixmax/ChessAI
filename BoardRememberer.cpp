@@ -11,11 +11,19 @@ BoardRememberer& BoardRememberer::i()
 void BoardRememberer::addBoard(Board board)
 {
     if (!isRemembered(board))
-        m_memory.push_back(BoardWizard::Wizard::getHash(board));
+        m_memory.emplace(std::make_pair(BoardWizard::Wizard::getHash(board), 1));
+	m_memory.at(BoardWizard::Wizard::getHash(board))++;
 }
 
 bool BoardRememberer::isRemembered(Board board)
 {
-    auto it = std::find(m_memory.begin(), m_memory.end(), BoardWizard::Wizard::getHash(board));
+	auto it = m_memory.find(BoardWizard::Wizard::getHash(board));
     return it != m_memory.end();
+}
+
+bool BoardRememberer::moveIsDoubleSet(Board board)
+{
+	if (!isRemembered(board))
+		return false;
+	return m_memory.at(BoardWizard::Wizard::getHash(board)) >= 2;
 }

@@ -60,7 +60,7 @@
       </Command>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>xcopy Debug\GraAI.exe ..\statisticAnalys\</Command>
+      <Command>xcopy Debug\GraAI.exe ..\statisticAnalys\ /K /D /H /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -83,7 +83,7 @@
       </Command>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>copy Release\GraAI.exe ..\statisticAnalys\</Command>
+      <Command>xcopy Release\GraAI.exe ..\statisticAnalys\ /K /D /H /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@
 class Engine {
 public:
     static bool userMove(int curr_pos, int next_pos, Board &chessboard, int color, bool trick_mode = false);
-    static Board NormalAlfaBeta(Board &position, int color, int level);
+    static Board NormalAlfaBeta(Board &position, int color, int level, std::ostream &output);
 
 private:
     static Board makeCommonMove(const Board &chessboard, int next_pos, int curr_pos, int figure);

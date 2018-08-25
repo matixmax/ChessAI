@@ -290,7 +290,7 @@ Board Engine::moveRookOnCastling(int rookPosIdx, Board &copy_board, int next_pos
     return copy_board;
 }
 
-Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
+Board Engine::NormalAlfaBeta(Board &position, int color, int level, std::ostream &output) {
     vector<Board> available_positions = Generator::GetAvailableMovements(position, color);
     available_positions.pop_back(); //empty movement erase
     vector<Board> no_shah_moves;
@@ -301,9 +301,9 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
     available_positions = no_shah_moves;
     if (available_positions.size() == 0) {
         if (position.states.shah != EMPTY)
-            cout << "CHECKMATE BLACK WIN" << endl;
+			output << "CHECKMATE BLACK WIN" << endl;
         else
-            cout << "STALEMATE NOBODY WIN" << endl;
+			output << "STALEMATE NOBODY WIN" << endl;
         position.states.shah = END;
         return position;
     }
@@ -318,14 +318,14 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level) {
 
     int best = INT32_MIN, best_id = -1;
     for (size_t idx = 0; idx < values.size(); idx++) {
-        if (values[idx] >= best && !BoardRememberer::i().isRemembered(available_positions[idx])) {
+        if (values[idx] >= best && (!BoardRememberer::i().moveIsDoubleSet(available_positions[idx])|| available_positions.size() == 1)) {
             best = values[idx];
             best_id = idx;
         }
     }
 
 	if (best_id == -1) {
-		cout << "STALEMATE NOBODY WIN" << endl;
+		output << "STALEMATE NOBODY WIN" << endl;
 		position.states.shah = END;
 		return position;
 	}

@@ -25,6 +25,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="boardTransform.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="statisticAnalys.py" />
     <Compile Include="TestPlanRandomCreator.py">
       <SubType>Code</SubType>

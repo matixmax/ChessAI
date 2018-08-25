@@ -13,11 +13,20 @@
 #include <fstream>
 using namespace std;
 
+void turnament() {
+	GameModule::i().startGame(BLACK);
+	GameModule::i().onGameAITurnament();
+}
+
+void test(int number) {
+	GameModule::i().startTestMode(BLACK, number);
+	GameModule::i().onGamePlayWithPlayer();
+}
+
 int main() {
-    GameModule::i().startGame(BLACK);
-    //GameModule::i().startTestMode(BLACK, 1);
-    GameModule::i().onGameAITurnament();
-    //GameModule::i().onGamePlayWithPlayer();
+	//test(3);
+	turnament();
+
 #ifdef _DEBUG
 	system("pause");
 #endif

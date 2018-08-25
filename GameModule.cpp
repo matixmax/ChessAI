@@ -53,7 +53,7 @@ void GameModule::onGameAITurnament()
     turnamentOutputFile << Properies::getFactorsAsString();
     int currentPlayerColor = WHITE;
     while (m_gameExitCondition == false) {
-        m_lastBoard = Engine::NormalAlfaBeta(m_lastBoard, currentPlayerColor, 3);
+        m_lastBoard = Engine::NormalAlfaBeta(m_lastBoard, currentPlayerColor, 3, turnamentOutputFile);
         if (m_lastBoard.states.shah == END) {
             break;
         }
@@ -97,7 +97,7 @@ Board GameModule::getCurrentPlayerMove(int currentPlayerColor)
         return makeUserMove(m_lastBoard);
     }
     else {
-        return Engine::NormalAlfaBeta(m_lastBoard, FigInfo::not(m_userColor), 4);
+        return Engine::NormalAlfaBeta(m_lastBoard, FigInfo::not(m_userColor), 4, cout);
     }
 }
 

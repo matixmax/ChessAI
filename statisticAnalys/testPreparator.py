@@ -8,6 +8,8 @@ class testElement:
 
 class TestPreparator:
     def __init__(self):
+        if os.path.exists("Tests"):
+            shutil.rmtree("Tests")
         os.makedirs("Tests")
         self.data = self.getLines("testPropertiesChangePlan.txt")
         self.paramNames = self.getLineWithoutWitespaces(self.data[0]).split(';')

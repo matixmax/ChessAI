@@ -1,11 +1,15 @@
 #pragma once
 #include "Board.h"
+#include <map>
 
 class BoardRememberer{
 public:
     static BoardRememberer& i();
     void addBoard(Board board);
-    bool isRemembered(Board board);
+	bool moveIsDoubleSet(Board board);
+
 private:
-    std::vector<int> m_memory;
+    bool isRemembered(Board board);
+
+    std::map<int, unsigned> m_memory;
 };

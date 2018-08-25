@@ -252,6 +252,21 @@ bool Engine::checkDraw(const Board & position, int color)
             && Generator::GetAvailableMovements(position, FigInfo::not(color)).size() == 0;
 }
 
+void Engine::printWhoseWin(const Board& board, std::ostream &output)
+{
+	int blackKingPosition = board.positions[FigInfo::getPosIndex(K, BLACK)];
+	auto onBlackKingAttack = Generator::GetOnPositionAttackMove(board, blackKingPosition, WHITE);
+	int whiteKingPosition = board.positions[FigInfo::getPosIndex(K, WHITE)];
+	auto onWhiteKingAttack = Generator::GetOnPositionAttackMove(board, whiteKingPosition, BLACK);
+	assert(onWhiteKingAttack.size() == 0 || onBlackKingAttack.size() == 0);
+	if (onBlackKingAttack.size() > 0)
+		output << "WHITE WIN";
+	else if (onWhiteKingAttack.size() > 0)
+		output << "BLACK WIN";
+	else
+		output << "NOBODY WIN";
+}
+
 Board Engine::makeCastlingMove(int curr_pos, int next_pos, Board & chessboard)
 {
     Board copy_board = chessboard;
@@ -300,10 +315,7 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level, std::ostream
     }
     available_positions = no_shah_moves;
     if (available_positions.size() == 0) {
-        if (position.states.shah != EMPTY)
-			output << "CHECKMATE BLACK WIN" << endl;
-        else
-			output << "STALEMATE NOBODY WIN" << endl;
+		printWhoseWin(position, output);
         position.states.shah = END;
         return position;
     }
@@ -325,7 +337,7 @@ Board Engine::NormalAlfaBeta(Board &position, int color, int level, std::ostream
     }
 
 	if (best_id == -1) {
-		output << "STALEMATE NOBODY WIN" << endl;
+		printWhoseWin(position, output);
 		position.states.shah = END;
 		return position;
 	}

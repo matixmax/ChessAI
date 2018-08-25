@@ -18,5 +18,6 @@ private:
     static int AlfaBetaMinimax(int level, const Board &position, int color, int alfa, int beta, bool max);
     static int ForcefulAlfaBeta(int level, const Board &position, int color, int old_material, bool max);
     static int isCastlingMove(int curr_pos, int next_pos, const Board & chessboard);
-    static bool checkDraw(const Board & position, int color);
+    static bool checkDraw(const Board& position, int color);
+	static void printWhoseWin(const Board& position, std::ostream &output);
 };

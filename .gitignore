@@ -8,3 +8,4 @@ solutionItems/Release/
 solutionItems/ipch/
 statisticAnalys/GraAI.exe
 statisticAnalys/Tests/
+*.pyc

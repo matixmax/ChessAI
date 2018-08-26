@@ -5,10 +5,11 @@ import sys
 import matplotlib.pyplot as plt
 
 def readData(filename):
-	file = open(filename, 'r')
-	data = []
-	data = file.readlines()
-	return data
+    file = open(filename, 'r')
+    data = []
+    data = file.readlines()
+    file.close()
+    return data
 
 def extractProperties(propData):
 	properties = {}

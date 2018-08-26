@@ -8,8 +8,9 @@ class testElement:
 
 class TestPreparator:
     def __init__(self):
-        if os.path.exists("Tests"):
-            shutil.rmtree("Tests")
+        while(os.path.exists("Tests")):
+            print("remove Tests")
+            shutil.rmtree("Tests", ignore_errors=True)
         os.makedirs("Tests")
         self.data = self.getLines("testPropertiesChangePlan.txt")
         self.paramNames = self.getLineWithoutWitespaces(self.data[0]).split(';')
@@ -57,6 +58,7 @@ class TestPreparator:
         os.system("GraAI.exe")
         os.chdir(currentDir)
 
-TestPreparator().makeTests()
+if __name__ == "__main__":
+    TestPreparator().makeTests()
 
 

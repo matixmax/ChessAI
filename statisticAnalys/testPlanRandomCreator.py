@@ -31,18 +31,19 @@ class TestPlanRandomCreator(object):
                 file.write("\t;".join(str(el) for el in black) + "\n")
                 file.write("\t;".join(str(el) for el in white) + "\n")
                 file.write("\n")
-     
-blackMinRanges = [1,1,1,1,1,1]
-whiteMinRanges = [1,1,1,1,1,1]
-blackMaxRanges = [10,10,10,10,10,10]
-whiteMaxRanges = [10,10,10,10,10,10]              
+ 
+if __name__ == "__main__":   
+    blackMinRanges = [1,1,1,1,1,1]
+    whiteMinRanges = [1,1,1,1,1,1]
+    blackMaxRanges = [10,10,10,10,10,10]
+    whiteMaxRanges = [10,10,10,10,10,10]              
 
-if len(sys.argv) > 1:
-    numberOfTests = int(sys.argv[1])
-else:
-    numberOfTests = 100
+    if len(sys.argv) > 1:
+        numberOfTests = int(sys.argv[1])
+    else:
+        numberOfTests = 100
 
-testCreator = TestPlanRandomCreator(blackMinRanges, blackMaxRanges, whiteMinRanges, whiteMaxRanges)
-testCreator.createRandomTests(numberOfTests)
+    testCreator = TestPlanRandomCreator(blackMinRanges, blackMaxRanges, whiteMinRanges, whiteMaxRanges)
+    testCreator.createRandomTests(numberOfTests)
 
 

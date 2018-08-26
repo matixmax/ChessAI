@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>92ff2ef7-041a-473c-b5b5-ca9c5c49473a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>testPreparator.py</StartupFile>
+    <StartupFile>turnamentPlayer.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -13,8 +13,9 @@
     <Name>statisticAnalys</Name>
     <RootNamespace>statisticAnalys</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>20</CommandLineArguments>
+    <CommandLineArguments>30</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <Environment>khsgt99i999</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,9 @@
     <Compile Include="boardTransform.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="turnamentPlayer.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="statisticAnalys.py" />
     <Compile Include="TestPlanRandomCreator.py">
       <SubType>Code</SubType>
@@ -35,6 +39,7 @@
     <Compile Include="testPreparator.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="turnamentPreparator.py" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

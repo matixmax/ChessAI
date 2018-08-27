@@ -67,7 +67,7 @@ PropertiesLoader::PropertyType PropertiesLoader::getPropertyType(std::string pro
 	case getHash("queenPosFact"):
 		return PropertyType::QueenPosFact;
 	case getHash("kingsPosFact"):
-		return PropertyType::KnightsPosFact;
+		return PropertyType::KingsPosFact;
 	default:
 		throw std::exception(std::string("Property type not found for" + propTypeStr).c_str());
 	}

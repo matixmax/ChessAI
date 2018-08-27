@@ -109,13 +109,15 @@ def getStatisticData(name, gameData):
 
 properties, gameData = readGameOutput("turnamentOutputFile.out")
 while(True):
-	print("write statistic name or exit")
-	name = input()
-	if name == "exit":
-		break
-	singleStats = getStatisticData(name, gameData)
-	plt.plot(singleStats)
-	plt.xlabel(name)
-	plt.grid(True)
-	plt.xticks([x*2 for x in range(0, 45)])
-	plt.show()
+    print("write statistic name or exit")
+    name = input()
+    if name == "exit":
+        break
+    singleStats = getStatisticData(name, gameData)
+    plt.plot(singleStats)
+    plt.xlabel(name)
+    plt.grid(True)
+    numberOfMoves = len(gameData)
+    scaleDivider
+    plt.xticks([x*2 for x in range(0, 45)])
+    plt.show()

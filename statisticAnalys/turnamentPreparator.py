@@ -12,11 +12,11 @@ class TurnamentPreparator(object):
 
     def createTestFromWinners(self):
         winnersProps = self.extractWinners();
-        if len(winnersProps) % 2 != 0:
+        if not len(winnersProps) % 2 == 0:
             winnersProps.pop()
         with open("winnersPropertiesChangePlan_out.txt", 'w') as file:
             file.write("pawnsPosFact;knightsPosFact;bishopsPosFact;rocksPosFact;queenPosFact;kingsPosFact\n")
-            for i in range(0, len(winnersProps)/2):
+            for i in range(0, int(len(winnersProps)/2)):
                 black = winnersProps[i*2]
                 white = winnersProps[i*2+1]
                 file.write("\t;".join(str(el) for el in black) + "\n")
@@ -42,7 +42,7 @@ class TurnamentPreparator(object):
         if winnerString in ["BLACK WIN", "WHITE WIN", "NOBODY WIN"]:
             return winnerString
         else:
-            raise Exception("unknow win info in"+turnamentOutputPath)
+            return "NOBODY WIN"
 
     def getWinnerProperties(self, winnerString, propertiesFilePath):
         propertiesFilelines= self.getFileLines(propertiesFilePath)

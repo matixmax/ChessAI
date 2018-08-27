@@ -11,7 +11,11 @@ class TestPreparator:
         while(os.path.exists("Tests")):
             print("remove Tests")
             shutil.rmtree("Tests", ignore_errors=True)
-        os.makedirs("Tests")
+        while( not os.path.exists("Tests")):
+            try:
+                os.makedirs("Tests")
+            except:
+                pass
         self.data = self.getLines("testPropertiesChangePlan.txt")
         self.paramNames = self.getLineWithoutWitespaces(self.data[0]).split(';')
 
@@ -49,6 +53,7 @@ class TestPreparator:
                 file.write(line)
         
     def makeTest(self, test, testId):
+        print("Make test_"+str(testId))
         testDirShortPath = os.path.join("Tests", "Test_"+str(testId))
         os.makedirs(testDirShortPath)
         shutil.copy2("GraAI.exe", testDirShortPath)

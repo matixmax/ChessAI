@@ -78,7 +78,7 @@ def getSingleStatistic(name, gameData):
 def getSideSingleStatistic(name, color, gameData):
 	result = []
 	for singleTurnId in range(len(gameData)):
-		if gameData[singleTurnId][1]["color_"] == color:
+		if gameData[singleTurnId][1]["color_"] == color and gameData[singleTurnId][1].has_key(name):
 			result.append(gameData[singleTurnId][1][name])
 		else:
 			if len(result) > 0:
@@ -102,22 +102,46 @@ def getStatisticData(name, gameData):
 	elif name in ["material BLACK", "material WHITE", "color"]:
 		return getSingleStatistic(name, gameData)
 	else:
-		print("write color")
-		color = input()
+		color = "WHITE"
 		return getSideSingleStatistic(''.join(line + "_" for line in name.split()), color, gameData)
 
 
-properties, gameData = readGameOutput("turnamentOutputFile.out")
-while(True):
-    print("write statistic name or exit")
-    name = input()
-    if name == "exit":
-        break
+def setPlot(name, gameData):
     singleStats = getStatisticData(name, gameData)
-    plt.plot(singleStats)
-    plt.xlabel(name)
-    plt.grid(True)
-    numberOfMoves = len(gameData)
-    scaleDivider
-    plt.xticks([x*2 for x in range(0, 45)])
-    plt.show()
+    singleStats = [int(x) for x in singleStats]
+    plt.plot(singleStats, label=name)
+    return max(singleStats), min(singleStats)
+
+def preparePhasePlot(gameData, maxVal):
+    result = []   
+    statPhases = getPhaseStatistic(gameData)
+    statPhases = [x*(maxVal/4) for x in statPhases]
+    plt.plot(statPhases, label="phase")
+
+properties, gameData = readGameOutput("turnamentOutputFile.out")
+
+data = []
+data.append( setPlot("pawn_pos_value", gameData) )
+data.append( setPlot("knights_pos_value", gameData) )
+data.append( setPlot("bishops_pos_value", gameData) )
+data.append( setPlot("rocks_pos_value", gameData) )
+data.append( setPlot("queens_pos_value", gameData) )
+data.append( setPlot("knigs_pos_value", gameData) )
+
+plt.grid(True)
+maxval = max([x[0] for x in data])
+minval = min([x[1] for x in data])
+
+preparePhasePlot(gameData, maxval)
+
+numberOfMoves = len(gameData)
+scaleDivider = numberOfMoves / 30
+xtics=[x*scaleDivider for x in range(0, int(numberOfMoves/scaleDivider))]
+plt.xticks(xtics)
+plt.ylim(minval-10, maxval+10)
+plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+plt.subplots_adjust(right=0.7)
+fig = plt.gcf()
+fig.set_size_inches(18.5, 10.5)
+#plt.show()
+plt.savefig("fig.png")

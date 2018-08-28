@@ -6,7 +6,7 @@ class TurnamentPreparator(object):
             raise Exception("test folder path not exists " + testFolderPath)
         self.__testFolderPath = testFolderPath
 
-    def getFileLines(self,filePath):
+    def getFileLines(filePath):
         with open(filePath) as file:
             return file.readlines()
 
@@ -27,15 +27,31 @@ class TurnamentPreparator(object):
         winnersPropsStore = []
         for testDir in os.listdir(self.__testFolderPath):
             testDirFullPath = os.path.join(self.__testFolderPath, testDir)
-            winner = self.getWinner(os.path.join(testDirFullPath, "turnamentOutputFile.out"))
+            winner = TurnamentPreparator.getWinner(os.path.join(testDirFullPath, "turnamentOutputFile.out"))
             if winner == "NOBODY WIN":
                 continue
-            winnerProperties = self.getWinnerProperties(winner, os.path.join(testDirFullPath, "properties.txt") )
+            winnerProperties = TurnamentPreparator.getWinnerProperties(winner, os.path.join(testDirFullPath, "properties.txt") )
             winnersPropsStore.append(winnerProperties)
         return winnersPropsStore
 
-    def getWinner(self, turnamentOutputPath):
-        turnamentFilelines = self.getFileLines(turnamentOutputPath)
+    def getWinnerProp():
+        winner = TurnamentPreparator.getWinner("turnamentOutputFile.out")
+        if winner == "NOBODY WIN":
+            return None
+        return TurnamentPreparator.getWinnerProperties(winner,"properties.txt" )
+
+    def extractWinnersByWinnerName(self):
+        winnersPropsStore = []
+        for testDir in os.listdir(self.__testFolderPath):
+            testDirFullPath = os.path.join(self.__testFolderPath, testDir)
+            winner = TurnamentPreparator.getWinner(os.path.join(testDirFullPath, "turnamentOutputFile.out"))
+            if winner == "NOBODY WIN":
+                continue
+            winnersPropsStore.append(winner)
+        return winnersPropsStore
+
+    def getWinner(turnamentOutputPath):
+        turnamentFilelines = TurnamentPreparator.getFileLines(turnamentOutputPath)
         if len(turnamentFilelines) == 0:
             raise Exception("turnament file is empty" + turnamentOutputPath)
         winnerString = turnamentFilelines[-1]
@@ -44,8 +60,8 @@ class TurnamentPreparator(object):
         else:
             return "NOBODY WIN"
 
-    def getWinnerProperties(self, winnerString, propertiesFilePath):
-        propertiesFilelines= self.getFileLines(propertiesFilePath)
+    def getWinnerProperties(winnerString, propertiesFilePath):
+        propertiesFilelines= TurnamentPreparator.getFileLines(propertiesFilePath)
         winnerProperties =[]
         if winnerString == "BLACK WIN":
             winnerIndex = 1
